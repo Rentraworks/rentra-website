@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rentra | Property Management & Rental · Lisbon</title>
+<meta name="description" content="Rentra — Property management and rental services in Lisbon, Portugal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --g: #004539;
+  --au: #ddad75;
+  --cr: #ede5d2;
+  --cr2: #b8a98a;
+  --ink: rgba(237,229,210,0.85);
+  --line: rgba(221,173,117,0.18);
+  --line2: rgba(221,173,117,0.08);
+  --card: rgba(0,0,0,0.18);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Jost",sans-serif;background:var(--g);color:var(--cr);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── CURSOR ── */
+*, a, button { cursor: default; }
+
+/* ── GRAIN OVERLAY ── */
+body::before {
+  content:"";position:fixed;inset:0;z-index:999;pointer-events:none;opacity:0.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px 180px;
+}
+
+/* ── NAV ── */
+nav {
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 5%;
+  border-bottom:1px solid var(--line2);
+  background:rgba(0,69,57,0.92);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+}
+.nav-logo img{height:42px;width:auto;display:block}
+.nav-links{display:flex;gap:2.5rem;align-items:center}
+.nav-links a{
+  font-size:0.92rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--cr2);text-decoration:none;transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--au)}
+.nav-cta{
+  border:1px solid rgba(221,173,117,0.4)!important;color:var(--au)!important;
+  padding:0.5rem 1.4rem;border-radius:1px;
+  transition:background 0.25s,color 0.25s!important;
+  letter-spacing:0.18em!important;
+}
+.nav-cta:hover{background:var(--au)!important;color:var(--g)!important}
+.mob-btn{display:none;background:none;border:none;color:var(--au);font-size:1.4rem;cursor:pointer}
+.mob-menu{display:none;position:fixed;inset:0;background:var(--g);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:3rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:"Playfair Display",serif;font-size:3rem;font-weight:300;color:var(--cr);text-decoration:none;letter-spacing:0.05em}
+.mob-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--au);font-size:1.4rem;cursor:pointer}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:0 5%;padding-top:80px;
+  position:relative;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(221,173,117,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 80% at 10% 50%, rgba(0,0,0,0.3) 0%, transparent 70%),
+    var(--g);
+}
+.hero-lines{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(var(--line2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line2) 1px, transparent 1px);
+  background-size:72px 72px;
+  opacity:0.015;
+  mask-image:radial-gradient(ellipse 60% 60% at 60% 50%, black 0%, transparent 65%);
+}
+.hero-photo{position:absolute;right:0;top:0;bottom:0;width:44%;background:url("images/hero.jpg") center/cover;opacity:0.35;clip-path:polygon(14% 0,100% 0,100% 100%,0% 100%)}
+.hero-photo-overlay{position:absolute;right:0;top:0;bottom:0;width:44%;background:linear-gradient(90deg,var(--g) 0%,transparent 30%);pointer-events:none}
+.hero-content{position:relative;z-index:1;max-width:640px}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:1rem;
+  font-size:0.9rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--au);
+  margin-bottom:2.5rem;
+  animation:fadeUp 1s ease both;
+}
+.hero-eyebrow::before{content:"";display:block;width:40px;height:1px;background:var(--au);opacity:0.6;flex-shrink:0}
+h1.hero-title{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(3.2rem,6vw,5.5rem);
+  font-weight:300;line-height:0.95;color:var(--cr);
+  letter-spacing:-0.01em;
+  animation:fadeUp 1s ease 0.12s both;
+}
+h1.hero-title em{color:var(--au);font-style:italic;display:block}
+.hero-desc{
+  margin-top:2rem;font-size:1rem;font-weight:400;
+  line-height:1.95;color:var(--cr2);max-width:420px;
+  animation:fadeUp 1s ease 0.22s both;
+}
+.hero-actions{display:flex;gap:1rem;margin-top:3rem;animation:fadeUp 1s ease 0.32s both}
+.btn-primary{
+  background:var(--au);color:var(--g);border:none;
+  padding:1rem 2.4rem;font-family:"Jost",sans-serif;
+  font-size:0.92rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;
+  cursor:pointer;border-radius:1px;text-decoration:none;display:inline-block;
+  transition:background 0.2s,transform 0.2s;
+  box-shadow:0 4px 24px rgba(221,173,117,0.2);
+}
+.btn-primary:hover{background:#e8c48a;transform:translateY(-2px);box-shadow:0 8px 32px rgba(221,173,117,0.3)}
+.btn-secondary{
+  background:transparent;color:var(--cr);border:1px solid rgba(237,229,210,0.2);
+  padding:1rem 2.4rem;font-family:"Jost",sans-serif;
+  font-size:0.92rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;
+  cursor:pointer;border-radius:1px;text-decoration:none;display:inline-block;
+  transition:border-color 0.2s,color 0.2s;
+}
+.btn-secondary:hover{border-color:var(--au);color:var(--au)}
+.hero-scroll{
+  position:absolute;bottom:2.5rem;left:5%;
+  display:flex;align-items:center;gap:0.75rem;
+  font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--cr2);
+  animation:fadeUp 1s ease 0.5s both;
+}
+.hero-scroll-line{width:40px;height:1px;background:var(--cr2);opacity:0.4;animation:scrollPulse 2s ease-in-out infinite}
+
+/* ── SECTIONS ── */
+section{padding:7rem 5%}
+.s-tag{
+  font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--au);
+  display:flex;align-items:center;gap:0.75rem;margin-bottom:1.1rem;
+}
+.s-tag::before{content:"";width:28px;height:1px;background:var(--au);opacity:0.7;flex-shrink:0}
+.s-tag.center{justify-content:center}
+.s-tag.center::before{display:none}
+h2.s-title{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2rem,4vw,3.5rem);font-weight:300;line-height:1.05;color:var(--cr);
+  letter-spacing:-0.01em;
+}
+h2.s-title em{color:var(--au);font-style:italic}
+.s-body{font-size:1rem;color:var(--cr2);line-height:1.95;margin-top:1.1rem;max-width:460px}
+.gold-rule{width:48px;height:1px;background:var(--au);opacity:0.4;margin:2.5rem 0}
+
+/* ── ABOUT ── */
+#about{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line2);max-width:780px}
+.about-list{margin-top:2.5rem;display:flex;flex-direction:column}
+.about-item{
+  padding:1.4rem 0;border-bottom:1px solid var(--line2);
+  display:flex;gap:1.25rem;align-items:flex-start;
+  transition:padding-left 0.25s;
+}
+
+.about-item:first-child{border-top:1px solid var(--line2)}
+.a-num{
+  font-family:"Playfair Display",serif;font-size:0.92rem;font-weight:400;
+  color:var(--au);opacity:0.5;flex-shrink:0;margin-top:2px;letter-spacing:0.05em;
+}
+.about-item h4{font-size:0.92rem;font-weight:400;letter-spacing:0.05em;color:var(--cr);margin-bottom:0.3rem}
+.about-item p{font-size:0.9rem;color:var(--cr2);line-height:1.8}
+.about-visual{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:2px;overflow:hidden;
+  aspect-ratio:3/4;
+  background:linear-gradient(145deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.05) 100%);
+}
+.about-grid-inner{
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--line2) 1px,transparent 1px),linear-gradient(90deg,var(--line2) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+.about-center{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:1.25rem;
+}
+.about-city{
+  font-family:"Playfair Display",serif;font-size:5rem;font-weight:300;
+  color:rgba(221,173,117,0.12);letter-spacing:0.08em;line-height:1;
+  user-select:none;
+}
+.about-sep{width:36px;height:1px;background:var(--au);opacity:0.35}
+.about-pt{font-size:0.72rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--au);opacity:0.6}
+.about-office{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:1.5rem 1.75rem;
+  background:linear-gradient(0deg,rgba(0,0,0,0.6) 0%,transparent 100%);
+}
+.about-office-lbl{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--au);margin-bottom:0.35rem;opacity:0.8}
+.about-office-val{font-size:0.92rem;color:var(--cr)}
+
+/* ── SERVICES ── */
+#services{border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+.srv-head{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4rem}
+.srv-head-right p{font-size:0.92rem;color:var(--cr2);line-height:1.85;text-align:right}
+.srv-grid{display:grid;grid-template-columns:1fr}
+/* Service card main */
+.srv-main{
+  border:1px solid var(--line);border-radius:2px;overflow:hidden;
+  margin-bottom:1.5rem;
+  background:var(--card);
+  backdrop-filter:blur(4px);
+}
+.srv-main-header{padding:2.5rem 3rem 2rem;border-bottom:1px solid var(--line2)}
+.srv-main-num{
+  font-family:"Playfair Display",serif;font-size:3.5rem;font-weight:300;
+  color:rgba(221,173,117,0.12);line-height:1;margin-bottom:1rem;
+}
+.srv-main h3{
+  font-family:"Playfair Display",serif;font-size:2rem;font-weight:300;
+  color:var(--cr);letter-spacing:0.02em;margin-bottom:0.6rem;
+}
+.srv-main-desc{font-size:0.92rem;color:var(--cr2);line-height:1.8;max-width:520px}
+.srv-includes{
+  padding:1.75rem 3rem;border-bottom:1px solid var(--line2);
+  background:rgba(0,0,0,0.08);
+}
+.srv-includes-label{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--au);margin-bottom:1rem;opacity:0.8}
+.srv-includes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem 2.5rem}
+.srv-includes-grid li{
+  font-size:1rem;color:var(--cr2);list-style:none;
+  padding-left:0.9rem;position:relative;
+}
+.srv-includes-grid li::before{content:"";position:absolute;left:0;top:9px;width:4px;height:1px;background:var(--au)}
+.srv-tracks{display:grid;grid-template-columns:1fr 1fr}
+.srv-track{padding:2rem 3rem;position:relative}
+.srv-track:first-child{border-right:1px solid var(--line2)}
+.srv-track-label{
+  font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--au);
+  margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem;
+}
+.srv-track-label::after{content:"";flex:1;height:1px;background:var(--au);opacity:0.2}
+.srv-track p{font-size:0.92rem;color:var(--cr2);line-height:1.75;margin-bottom:1rem}
+.srv-track ul{list-style:none;display:flex;flex-direction:column;gap:0.45rem}
+.srv-track ul li{font-size:1rem;color:var(--cr2);padding-left:0.9rem;position:relative}
+.srv-track ul li::before{content:"";position:absolute;left:0;top:9px;width:4px;height:1px;background:var(--au)}
+.srv-fee{
+  margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--line2);
+  font-size:0.92rem;letter-spacing:0.1em;color:var(--au);
+}
+/* Trespasse card */
+.srv-trespasse{
+  border:1px solid var(--line);border-radius:2px;overflow:hidden;
+  background:var(--card);backdrop-filter:blur(4px);
+  padding:2.5rem 3rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;
+}
+.srv-trespasse .srv-main-num{margin-bottom:0.5rem}
+.srv-trespasse h3{font-family:"Playfair Display",serif;font-size:2rem;font-weight:300;color:var(--cr);letter-spacing:0.02em;margin-bottom:0.6rem}
+.srv-trespasse p{font-size:0.92rem;color:var(--cr2);line-height:1.8}
+.srv-trespasse ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-top:1rem}
+.srv-trespasse ul li{font-size:1rem;color:var(--cr2);padding-left:0.9rem;position:relative}
+.srv-trespasse ul li::before{content:"";position:absolute;left:0;top:9px;width:4px;height:1px;background:var(--au)}
+
+/* ── WHY ── */
+#why{border-top:1px solid var(--line2)}
+.why-head{text-align:center;max-width:520px;margin:0 auto 4.5rem}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.why-item{
+  padding:2.25rem 2rem;
+  border-right:1px solid var(--line2);border-bottom:1px solid var(--line2);
+  transition:background 0.3s;position:relative;overflow:hidden;
+}
+.why-item::before{
+  content:"";position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--au),transparent);
+  transform:scaleX(0);transition:transform 0.4s ease;
+}
+.why-item:hover::before{transform:scaleX(1)}
+.why-item:hover{background:rgba(221,173,117,0.03)}
+.why-item:nth-child(3n){border-right:none}
+.why-item:nth-child(n+4){border-bottom:none}
+.why-n{
+  font-family:"Playfair Display",serif;font-size:1.8rem;font-weight:300;
+  color:rgba(221,173,117,0.15);line-height:1;margin-bottom:1rem;
+}
+.why-item h4{font-size:0.92rem;font-weight:400;letter-spacing:0.06em;color:var(--cr);margin-bottom:0.5rem}
+.why-item p{font-size:0.9rem;color:var(--cr2);line-height:1.8}
+
+/* ── PROPERTIES ── */
+#properties{border-top:1px solid var(--line2)}
+.prop-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem}
+.prop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line2)}
+.prop-card{background:var(--g);overflow:hidden;transition:background 0.25s;position:relative}
+.prop-card:hover{background:rgba(0,0,0,0.15)}
+.prop-thumb{height:220px;position:relative;overflow:hidden}
+.prop-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(0.7) saturate(0.8);transition:transform 0.6s ease,filter 0.4s ease}
+.prop-card:hover .prop-thumb img{transform:scale(1.04);filter:brightness(0.8) saturate(0.9)}
+.prop-badge{
+  position:absolute;top:1rem;left:1rem;z-index:1;
+  font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;
+  background:rgba(0,69,57,0.9);color:var(--au);
+  border:1px solid rgba(221,173,117,0.35);padding:0.3rem 0.75rem;border-radius:1px;
+}
+.prop-body{padding:1.4rem 1.5rem;border-top:1px solid var(--line2)}
+.prop-price{
+  font-family:"Playfair Display",serif;font-size:1.4rem;font-weight:300;color:var(--au);
+}
+.prop-price span{font-family:"Jost",sans-serif;font-size:1rem;color:var(--cr2);font-weight:400}
+.prop-addr{font-size:0.92rem;color:var(--cr);margin-top:0.25rem;letter-spacing:0.02em}
+.prop-meta{display:flex;gap:1rem;margin-top:0.65rem;flex-wrap:wrap}
+.prop-meta span{font-size:0.92rem;color:var(--cr2)}
+.prop-cta{text-align:center;margin-top:3.5rem}
+.prop-cta p{font-size:0.92rem;color:var(--cr2);margin-bottom:1.25rem}
+
+/* ── PROCESS ── */
+#process{border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+.proc-head{text-align:center;max-width:500px;margin:0 auto 5rem}
+.proc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.proc-steps::before{
+  content:"";position:absolute;
+  top:20px;left:calc(12.5% + 0.5rem);right:calc(12.5% + 0.5rem);
+  height:1px;background:linear-gradient(90deg,var(--au),rgba(221,173,117,0.1));
+  z-index:0;
+}
+.proc-step{padding:0 1.5rem;text-align:center}
+.proc-circle{
+  width:40px;height:40px;border-radius:50%;
+  border:1px solid var(--au);background:var(--g);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.75rem;position:relative;z-index:1;
+  font-family:"Playfair Display",serif;font-size:1rem;color:var(--au);
+  transition:background 0.2s;
+}
+.proc-step:hover .proc-circle{background:rgba(221,173,117,0.1)}
+.proc-step h4{font-size:0.92rem;font-weight:500;color:var(--cr);margin-bottom:0.5rem}
+.proc-step p{font-size:0.9rem;color:var(--cr2);line-height:1.8}
+
+/* ── TESTIMONIALS ── */
+#testimonials{border-bottom:1px solid var(--line2)}
+.test-head{text-align:center;margin-bottom:3.5rem}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.test{
+  padding:2.25rem;border:1px solid var(--line);border-radius:2px;
+  display:flex;flex-direction:column;
+  background:var(--card);
+  transition:border-color 0.3s,transform 0.3s;
+}
+.test:hover{border-color:rgba(221,173,117,0.35);transform:translateY(-3px)}
+.test-mark{
+  font-family:"Playfair Display",serif;font-size:3rem;font-weight:300;
+  color:var(--au);opacity:0.3;line-height:0.8;margin-bottom:1rem;
+}
+.test-q{font-family:"Playfair Display",serif;font-size:1rem;font-weight:300;color:var(--cr);line-height:1.7;flex:1}
+.test-author{margin-top:1.75rem;padding-top:1.1rem;border-top:1px solid var(--line2)}
+.test-name{font-size:0.9rem;font-weight:400;letter-spacing:0.08em;color:var(--au)}
+.test-role{font-size:0.92rem;color:var(--cr2);margin-top:0.2rem}
+
+/* ── CONTACT ── */
+#contact{}
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:7rem;align-items:start}
+.c-list{margin-top:2.75rem;display:flex;flex-direction:column;gap:0}
+.c-item{
+  display:flex;gap:1.25rem;align-items:flex-start;
+  padding:1.4rem 0;border-bottom:1px solid var(--line2);
+}
+.c-item:first-child{border-top:1px solid var(--line2)}
+.c-icon{
+  width:34px;height:34px;border:1px solid var(--line);border-radius:1px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--au);flex-shrink:0;font-size:1rem;
+}
+.c-lbl{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--cr2)}
+.c-val{font-size:1rem;color:var(--cr);margin-top:0.2rem}
+.c-val a{color:inherit;text-decoration:none;transition:color 0.2s}
+.c-val a:hover{color:var(--au)}
+/* Form */
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.f-g{margin-bottom:0.9rem}
+.f-g label{display:block;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--cr2);margin-bottom:0.5rem}
+.f-g input,.f-g select,.f-g textarea{
+  width:100%;background:rgba(255,255,255,0.03);
+  border:none;border-bottom:1px solid rgba(221,173,117,0.2);
+  color:var(--cr);font-family:"Jost",sans-serif;font-size:1rem;
+  padding:0.75rem 0;outline:none;transition:border-color 0.2s;
+  border-radius:0;-webkit-appearance:none;
+}
+.f-g input::placeholder,.f-g textarea::placeholder{color:var(--cr2);opacity:0.4}
+.f-g input:focus,.f-g select:focus,.f-g textarea:focus{border-bottom-color:var(--au)}
+.f-g select{cursor:pointer}
+.f-g select option{background:var(--g);color:var(--cr)}
+.f-g textarea{min-height:100px;resize:none;border:none;border-bottom:1px solid rgba(221,173,117,0.2)}
+.f-submit{
+  width:100%;background:transparent;color:var(--au);
+  border:1px solid rgba(221,173,117,0.4);
+  padding:1.1rem;font-family:"Jost",sans-serif;
+  font-size:0.92rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;
+  cursor:pointer;border-radius:1px;
+  transition:background 0.25s,color 0.25s,border-color 0.25s;
+  margin-top:0.5rem;
+}
+.f-submit:hover{background:var(--au);color:var(--g);border-color:var(--au)}
+.f-note{font-size:0.92rem;color:var(--cr2);text-align:center;margin-top:0.75rem;opacity:0.5}
+
+/* ── FOOTER ── */
+footer{
+  padding:2rem 5%;
+  border-top:1px solid var(--line2);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.foot-logo img{height:32px;width:auto}
+.foot-links{display:flex;gap:2.5rem}
+.foot-links a{font-size:0.9rem;color:var(--cr2);text-decoration:none;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.2s}
+.foot-links a:hover{color:var(--au)}
+.foot-copy{font-size:0.9rem;color:var(--cr2);opacity:0.4}
+
+/* ── REVEAL ── */
+.r{opacity:0;transform:translateY(16px);transition:opacity 0.8s ease,transform 0.8s ease}
+.r.on{opacity:1;transform:none}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes scrollPulse{0%,100%{opacity:0.4;transform:scaleX(1)}50%{opacity:1;transform:scaleX(1.3)}}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  nav{padding:0.9rem 5%}
+  .nav-links{display:none}
+  .mob-btn{display:block}
+  section{padding:4.5rem 5%}
+  #about,.contact-grid,.srv-head{grid-template-columns:1fr;gap:3rem}
+  .about-visual{display:none}
+  .srv-head-right p{text-align:left}
+  .srv-main-header,.srv-includes,.srv-trespasse{padding:1.75rem}
+  .srv-tracks{grid-template-columns:1fr}
+  .srv-track:first-child{border-right:none;border-bottom:1px solid var(--line2)}
+  .srv-includes-grid{grid-template-columns:1fr 1fr}
+  .srv-trespasse{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .prop-grid{grid-template-columns:1fr}
+  .proc-steps{grid-template-columns:1fr 1fr}
+  .proc-step:nth-child(2){border-right:none}
+  .proc-step:nth-child(1),.proc-step:nth-child(2){border-bottom:1px solid var(--line2)}
+  .test-grid{grid-template-columns:1fr}
+  .f-row{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:1.5rem;text-align:center}
+  .prop-head{flex-direction:column;align-items:flex-start;gap:1rem}
+  h1.hero-title{font-size:3.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo"><img src="images/image2.png" alt="Rentra"></a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#properties">Properties</a>
+    <a href="#process">How It Works</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+  <button class="mob-btn" onclick="document.querySelector('.mob-menu').classList.add('open')">&#9776;</button>
+</nav>
+<div class="mob-menu">
+  <button class="mob-close" onclick="document.querySelector('.mob-menu').classList.remove('open')">&#10005;</button>
+  <a href="#about" onclick="document.querySelector('.mob-menu').classList.remove('open')">About</a>
+  <a href="#services" onclick="document.querySelector('.mob-menu').classList.remove('open')">Services</a>
+  <a href="#properties" onclick="document.querySelector('.mob-menu').classList.remove('open')">Properties</a>
+  <a href="#process" onclick="document.querySelector('.mob-menu').classList.remove('open')">How It Works</a>
+  <a href="#contact" onclick="document.querySelector('.mob-menu').classList.remove('open')">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-photo"></div>
+  <div class="hero-photo-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Property Management &middot; Lisbon</div>
+    <h1 class="hero-title">Your property,<em>perfectly managed.</em></h1>
+    <p class="hero-desc">Rentra is a Lisbon-based property management company specializing in serving international property owners.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get a Free Consultation</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="r">
+    <div class="s-tag">Who We Are</div>
+    <h2 class="s-title">A trusted partner<br><em>in Lisbon.</em></h2>
+    <p class="s-body">Founded to serve international property owners who need a reliable local partner. We combine market expertise, legal knowledge, and hands-on management so your investment works for you.</p>
+    <div class="about-list">
+      <div class="about-item"><div class="a-num">01</div><div><h4>Licensed Professionals</h4><p>Fully licensed under Portuguese real estate law, with expertise in residential and commercial transactions.</p></div></div>
+      <div class="about-item"><div class="a-num">02</div><div><h4>International Focus</h4><p>We work with international property owners and communicate in English, French, Hebrew and Portuguese.</p></div></div>
+      <div class="about-item"><div class="a-num">03</div><div><h4>End-to-End Management</h4><p>From tenant sourcing to maintenance, contracts, and monthly reporting, fully handled, fully transparent.</p></div></div>
+    </div>
+  </div>
+  </section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="srv-head r">
+    <div>
+      <div class="s-tag">What We Offer</div>
+      <h2 class="s-title">Two services,<br><em>one trusted partner.</em></h2>
+    </div>
+    <div class="srv-head-right">
+      <p>Every service is tailored to your property, your goals, and your preferred level of involvement.</p>
+    </div>
+  </div>
+
+  <div class="srv-grid r">
+    <!-- Service 1 -->
+    <div class="srv-main">
+      <div class="srv-main-header">
+        <div class="srv-main-num">01</div>
+        <h3>Property Management</h3>
+        <p class="srv-main-desc">Full end-to-end management for your property in Lisbon, from tenant sourcing to monthly reporting.</p>
+      </div>
+      <div class="srv-includes">
+        <div class="srv-includes-label">Included in all plans</div>
+        <ul class="srv-includes-grid">
+          <li>Market analysis &amp; pricing</li>
+          <li>Professional photography</li>
+          <li>Tenant screening</li>
+          <li>Contract signing</li>
+          <li>Check-in / check-out inventory</li>
+          <li>Maintenance coordination</li>
+        </ul>
+      </div>
+      <div class="srv-tracks">
+        <div class="srv-track">
+          <div class="srv-track-label">Long-Term Rental</div>
+          <p>Yearly leases for residents, families &amp; expats. Stable income, minimal turnover.</p>
+          <ul>
+            <li>NRAU-compliant contracts</li>
+            <li>Tenant background verification</li>
+            <li>Monthly reporting to owner</li>
+          </ul>
+          <div class="srv-fee">Commission: 15% of monthly rent</div>
+        </div>
+        <div class="srv-track">
+          <div class="srv-track-label">Mid-Term Rental</div>
+          <p>Monthly leases for digital nomads &amp; business professionals. Higher yield, flexible terms.</p>
+          <ul>
+            <li>Multi-platform advertising</li>
+            <li>High-standard cleaning &amp; inventory</li>
+            <li>Tenant support throughout stay</li>
+          </ul>
+          <div class="srv-fee">Commission: 15&ndash;20% of monthly rent</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 2 -->
+    <div class="srv-trespasse">
+      <div>
+        <div class="srv-main-num">02</div>
+        <h3>Trespasse</h3>
+        <p>Buying or selling a business in Lisbon? We manage the full transfer process, legally sound, fully coordinated, stress-free.</p>
+        <div class="srv-fee" style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--line2)">Fee: discussed per transaction</div>
+      </div>
+      <ul>
+        <li>Transaction coordination &amp; documentation</li>
+        <li>Due diligence support</li>
+        <li>Contract drafting &amp; legal review</li>
+        <li>License &amp; permit transfer handling</li>
+        <li>Buyer &amp; seller representation</li>
+        <li>Negotiation support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="why-head r">
+    <div class="s-tag center">Why Rentra</div>
+    <h2 class="s-title" style="text-align:center">Everything your <em>property needs.</em></h2>
+  </div>
+  <div class="why-grid r">
+    <div class="why-item"><div class="why-n">01</div><h4>Property Strategy</h4><p>We assess your property and the local market to define the optimal rental strategy, maximizing your return and reducing vacancy periods.</p></div>
+    <div class="why-item"><div class="why-n">02</div><h4>In-House Marketing</h4><p>Professional photography and multi-platform listings, handled internally to ensure quality, consistency, and fast time-to-market.</p></div>
+    <div class="why-item"><div class="why-n">03</div><h4>Maintenance Network</h4><p>We coordinate all maintenance work through trusted contractors and oversee every job from start to finish.</p></div>
+    <div class="why-item"><div class="why-n">04</div><h4>Tenant Screening</h4><p>We screen every applicant by reviewing income documents and employment contracts before any lease is signed.</p></div>
+    <div class="why-item"><div class="why-n">05</div><h4>Legal Compliance</h4><p>All contracts are drafted in compliance with Portuguese law, clearly defining the rights and obligations of both parties.</p></div>
+    <div class="why-item"><div class="why-n">06</div><h4>Furniture Solutions</h4><p>We source and install furniture suited to your rental type, from procurement to delivery and assembly.</p><p style="margin-top:0.5rem;font-size:0.72rem;color:var(--au);opacity:0.8;">Available as an additional paid service.</p></div>
+  </div>
+</section>
+
+<!-- PROPERTIES -->
+<section id="properties">
+  <div class="prop-head r">
+    <div>
+      <div class="s-tag">Current Listings</div>
+      <h2 class="s-title">Properties <em>for rent.</em></h2>
+    </div>
+    <a href="#contact" class="btn-secondary">View All</a>
+  </div>
+  <div class="prop-grid r">
+    <div class="prop-card" onclick="openGallery('arrochela')" style="cursor:pointer;">
+      <div class="prop-thumb" style="position:relative;">
+        <img src="placeholder.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <span class="prop-badge">For Rent</span>
+        <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">4 PHOTOS</div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-price">&euro;1,900 <span>/ month</span></div>
+        <div class="prop-addr">Travessa da Arrochela N23</div>
+        <div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>65 m&sup2;</span></div>
+      </div>
+    </div>
+    <div class="prop-card"><div class="prop-thumb"><img src="placeholder.jpg" alt=""><span class="prop-badge">For Rent</span></div><div class="prop-body"><div class="prop-price">&euro;1,800 <span>/ month</span></div><div class="prop-addr">R. S&atilde;o Jos&eacute; F</div><div class="prop-meta"><span>1 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>40 m&sup2;</span></div></div></div>
+    <div class="prop-card"><div class="prop-thumb"><img src="placeholder.jpg" alt=""><span class="prop-badge">Trespasse</span></div><div class="prop-body"><div class="prop-price">&euro;60,000</div><div class="prop-addr">R. de S&atilde;o Filipe</div><div class="prop-meta"><span>108 m&sup2;</span><span>&middot;</span><span>2 floors</span></div></div></div>
+    <div class="prop-card" onclick="openGallery('santa')" style="cursor:pointer;">
+      <div class="prop-thumb" style="position:relative;">
+        <img src="placeholder.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <span class="prop-badge">For Rent</span>
+        <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">13 PHOTOS</div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-price">&euro;2,100 <span>/ month</span></div>
+        <div class="prop-addr">Rua do Sol a Santa Catarina</div>
+        <div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>2 bath</span><span>&middot;</span><span>120 m&sup2;</span></div>
+      </div>
+    </div>
+    <div class="prop-card"><div class="prop-thumb"><img src="placeholder.jpg" alt=""><span class="prop-badge">For Rent</span></div><div class="prop-body"><div class="prop-price">&euro;2,300 <span>/ month</span></div><div class="prop-addr">Rua de S&atilde;o Paulo 14</div><div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>75 m&sup2;</span></div></div></div>
+    <div class="prop-card"><div class="prop-thumb"><img src="placeholder.jpg" alt=""><span class="prop-badge">For Rent</span></div><div class="prop-body"><div class="prop-price">&euro;1,650 <span>/ month</span></div><div class="prop-addr">Travessa do Almada 8</div><div class="prop-meta"><span>1 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>48 m&sup2;</span></div></div></div>
+  </div>
+  <!-- Gallery Modal -->
+    <div id="gallery-arrochela" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:var(--g);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:1rem;margin:0;padding:0;box-sizing:border-box;">
+      <button onclick="closeGallery('arrochela')" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--cr);font-size:2rem;cursor:pointer;z-index:1001;">&times;</button>
+      <div style="display:flex;align-items:center;gap:0;width:100%;height:75vh;padding:0 0.5rem;">
+        <button onclick="prevPhoto('arrochela')" style="background:none;border:1px solid rgba(221,173,117,0.3);color:var(--au);font-size:1.5rem;padding:0.5rem 1.2rem;cursor:pointer;border-radius:1px;flex-shrink:0;min-width:60px;text-align:center;">&#8592;</button>
+        <img id="gallery-arrochela-main" style="flex:1;height:100%;width:100%;object-fit:cover;" src="placeholder.jpg" style="flex:1;max-height:70vh;object-fit:contain;border-radius:2px;">
+        <button onclick="nextPhoto('arrochela')" style="background:none;border:1px solid rgba(221,173,117,0.3);color:var(--au);font-size:1.5rem;padding:0.5rem 1.2rem;cursor:pointer;border-radius:1px;flex-shrink:0;min-width:60px;text-align:center;">&#8594;</button>
+      </div>
+      <div style="display:flex;gap:0.75rem;margin-top:0.5rem;">
+        <img src="placeholder.jpg" onclick="setPhoto('arrochela',0)" style="width:80px;height:55px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;">
+        <img src="placeholder.jpg" onclick="setPhoto('arrochela',1)" style="width:80px;height:55px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;">
+        <img src="placeholder.jpg" onclick="setPhoto('arrochela',2)" style="width:80px;height:55px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;">
+        <img src="placeholder.jpg" onclick="setPhoto('arrochela',3)" style="width:80px;height:55px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;">
+      </div>
+      <div style="font-size:0.75rem;color:var(--au);letter-spacing:0.1em;margin-top:0.25rem;">Travessa da Arrochela N23 &middot; 65 m&sup2; &middot; &euro;1,900/mo</div>
+    </div>
+
+    <!-- Gallery Modal Santa Catarina -->
+    <div id="gallery-santa" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:var(--g);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:1rem;margin:0;padding:0;box-sizing:border-box;">
+      <button onclick="closeGallery('santa')" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--cr);font-size:2rem;cursor:pointer;z-index:10001;">&times;</button>
+      <div style="display:flex;align-items:center;gap:0;width:100%;height:75vh;padding:0 0.5rem;">
+        <button onclick="prevPhoto('santa')" style="background:none;border:1px solid rgba(221,173,117,0.3);color:var(--au);font-size:1.5rem;padding:0.5rem 1.2rem;cursor:pointer;border-radius:1px;flex-shrink:0;min-width:60px;text-align:center;">&#8592;</button>
+        <img id="gallery-santa-main" src="placeholder.jpg" style="flex:1;height:100%;width:100%;object-fit:cover;">
+        <button onclick="nextPhoto('santa')" style="background:none;border:1px solid rgba(221,173,117,0.3);color:var(--au);font-size:1.5rem;padding:0.5rem 1.2rem;cursor:pointer;border-radius:1px;flex-shrink:0;min-width:60px;text-align:center;">&#8594;</button>
+      </div>
+      <div style="display:flex;gap:0.5rem;margin-top:0.5rem;overflow-x:auto;max-width:95%;padding:0.25rem;">
+        <img src="placeholder.jpg" onclick="setPhoto('santa',0)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="placeholder.jpg" onclick="setPhoto('santa',1)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="placeholder.jpg" onclick="setPhoto('santa',2)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="placeholder.jpg" onclick="setPhoto('santa',3)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="placeholder.jpg" onclick="setPhoto('santa',4)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="placeholder.jpg" onclick="setPhoto('santa',5)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="placeholder.jpg" onclick="setPhoto('santa',6)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="placeholder.jpg" onclick="setPhoto('santa',7)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="placeholder.jpg" onclick="setPhoto('santa',8)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="placeholder.jpg" onclick="setPhoto('santa',9)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="placeholder.jpg" onclick="setPhoto('santa',10)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="placeholder.jpg" onclick="setPhoto('santa',11)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="placeholder.jpg" onclick="setPhoto('santa',12)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;">
+      </div>
+      <div style="font-size:0.75rem;color:var(--au);letter-spacing:0.1em;">Rua do Sol a Santa Catarina &middot; 120 m&sup2; &middot; &euro;2,100/mo</div>
+    </div>
+  <div class="prop-cta r"><p>More properties available, contact us for the full portfolio.</p><a href="#contact" class="btn-primary">Enquire About a Property</a></div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="proc-head r">
+    <div class="s-tag center">How It Works</div>
+    <h2 class="s-title" style="text-align:center">Four steps to <em>effortless ownership.</em></h2>
+  </div>
+  <div class="proc-steps r">
+    <div class="proc-step"><div class="proc-circle">I</div><h4>Consultation</h4><p>We assess your property, goals, and preferred involvement to build the right plan.</p></div>
+    <div class="proc-step"><div class="proc-circle">II</div><h4>Preparation</h4><p>Photography, pricing strategy, furnishing if needed, and deep-clean to get market-ready.</p></div>
+    <div class="proc-step"><div class="proc-circle">III</div><h4>Placement</h4><p>Marketing &amp; advertising, tenant screening, tours, and contract signing, all handled.</p></div>
+    <div class="proc-step"><div class="proc-circle">IV</div><h4>Management</h4><p>Monthly reporting, maintenance, rent collection, and tenant relations, fully managed.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="test-head r">
+    <div class="s-tag center">Client Feedback</div>
+    <h2 class="s-title" style="text-align:center">What our <em>owners say.</em></h2>
+  </div>
+  <div class="test-grid r">
+    <div class="test"><div class="test-mark">&ldquo;</div><div class="test-q">Rentra gave me complete peace of mind. My apartment in Lisbon is perfectly managed, I don&apos;t have to worry about anything from abroad.</div><div class="test-author"><div class="test-name">Sophie M.</div><div class="test-role">Property Owner &middot; Paris, France</div></div></div>
+    <div class="test"><div class="test-mark">&ldquo;</div><div class="test-q">Professional, responsive, and honest. They found me a quality tenant fast and the contract was rock solid.</div><div class="test-author"><div class="test-name">James K.</div><div class="test-role">Property Owner &middot; London, UK</div></div></div>
+    <div class="test"><div class="test-mark">&ldquo;</div><div class="test-q">The trespasse process was complex but Rentra handled it flawlessly. Every detail was taken care of, from due diligence to final handover.</div><div class="test-author"><div class="test-name">Carlos R.</div><div class="test-role">Business Transfer Client &middot; Lisbon</div></div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="r">
+      <div class="s-tag">Get In Touch</div>
+      <h2 class="s-title">Let&apos;s talk about <em>your property.</em></h2>
+      <p class="s-body">Whether you&apos;re ready to list or just exploring options, our team is here to build a plan around your needs.</p>
+      <div class="c-list">
+        <div class="c-item"><div class="c-icon">&#128222;</div><div><div class="c-lbl">Phone</div><div class="c-val"><a href="tel:+351912419653">+351 912 419 653</a></div></div></div>
+        <div class="c-item"><div class="c-icon">&#9993;</div><div><div class="c-lbl">Email</div><div class="c-val"><a href="mailto:lisbon@rentra.pt">lisbon@rentra.pt</a></div></div></div>
+        <div class="c-item"><div class="c-icon">&#128205;</div><div><div class="c-lbl">Office</div><div class="c-val">R. Luciano Cordeiro 109B<br>1150-103 Lisboa</div></div></div>
+      </div>
+    </div>
+    <div class="r">
+      <div class="f-row">
+        <div class="f-g"><label>First Name</label><input type="text" placeholder="Your name"></div>
+        <div class="f-g"><label>Last Name</label><input type="text" placeholder="Last name"></div>
+      </div>
+      <div class="f-g"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+      <div class="f-g"><label>Phone</label><input type="tel" placeholder="+351 ..."></div>
+      <div class="f-g"><label>Subject</label><select>
+          <option value="">Select a subject</option>
+          <option>Property Management</option>
+          <option>Trespasse</option>
+          <option disabled>─────────────────</option>
+          <option>Rua de São Paulo — 2bd · €2,300/mo</option>
+          <option>Travessa do Almada — 2bd · €2,000/mo</option>
+          <option>Travessa Almas — 2bd · €1,900/mo</option>
+          <option>R. São José F — 1bd · €1,800/mo</option>
+          <option>Rua do Sol a Santa Catarina — 2bd · €2,100/mo</option>
+          <option>R. de São Filipe — Trespasse · €60,000</option>
+        </select></div>
+      <div class="f-g"><label>Message</label><textarea placeholder="Tell us about your property or inquiry..."></textarea></div>
+      <button class="f-submit" onclick="this.textContent='Sent ✓';this.style.opacity='0.6'">Send Message</button>
+      <div class="f-note">We respond within 24 hours on business days.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo"><img src="images/image3.png" alt="Rentra"></div>
+  <div class="foot-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#properties">Properties</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="foot-copy">&copy; 2025 Rentra &middot; Lisbon</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e,i) => {
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add("on"),i*70);obs.unobserve(e.target)}
+  });
+},{threshold:0.07});
+document.querySelectorAll(".r").forEach(el=>obs.observe(el));
+
+// Gallery functions
+const galleryPhotos = {
+  'arrochela': [
+    document.querySelector ? null : null
+  ]
+};
+const gallerySrcs = {
+  'arrochela': ["placeholder.jpg","placeholder.jpg","placeholder.jpg","placeholder.jpg"]
+};
+let galleryIndex = {'arrochela': 0};
+
+function openGallery(id) {
+  document.getElementById('gallery-' + id).style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeGallery(id) {
+  document.getElementById('gallery-' + id).style.display = 'none';
+  document.body.style.overflow = '';
+}
+function setPhoto(id, idx) {
+  galleryIndex[id] = idx;
+  document.getElementById('gallery-' + id + '-main').src = gallerySrcs[id][idx];
+}
+function nextPhoto(id) {
+  galleryIndex[id] = (galleryIndex[id] + 1) % gallerySrcs[id].length;
+  setPhoto(id, galleryIndex[id]);
+}
+function prevPhoto(id) {
+  galleryIndex[id] = (galleryIndex[id] - 1 + gallerySrcs[id].length) % gallerySrcs[id].length;
+  setPhoto(id, galleryIndex[id]);
+}
+</script>
+</body>
+</html>

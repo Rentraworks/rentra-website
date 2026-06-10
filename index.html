@@ -897,27 +897,32 @@ footer{
       </div>
     </div>
     <div class="r">
+      <form action="https://formspree.io/f/mpqejwbg" method="POST">
       <div class="f-row">
-        <div class="f-g"><label>First Name</label><input type="text" placeholder="Your name"></div>
-        <div class="f-g"><label>Last Name</label><input type="text" placeholder="Last name"></div>
+        <div class="f-g"><label>First Name</label><input type="text" name="first_name" placeholder="Your name"></div>
+        <div class="f-g"><label>Last Name</label><input type="text" name="last_name" placeholder="Last name"></div>
       </div>
-      <div class="f-g"><label>Email</label><input type="email" placeholder="your@email.com"></div>
-      <div class="f-g"><label>Phone</label><input type="tel" placeholder="+351 ..."></div>
-      <div class="f-g"><label>Subject</label><select>
+      <div class="f-g"><label>Email</label><input type="email" name="email" placeholder="your@email.com"></div>
+      <div class="f-g"><label>Phone</label><input type="tel" name="phone" placeholder="+351 ..."></div>
+      <div class="f-g"><label>Subject</label><select name="subject">
           <option value="">Select a subject</option>
           <option>Property Management</option>
           <option>Trespasse</option>
           <option disabled>─────────────────</option>
-          <option>Rua de São Paulo — 2bd · €2,300/mo</option>
-          <option>Travessa do Almada — 2bd · €2,000/mo</option>
-          <option>Travessa Almas — 2bd · €1,900/mo</option>
+          <option>Travessa da Arrochela N23 — 2bd · €1,900/mo</option>
           <option>Rua do Almada — 1bd · €1,450/mo</option>
-          <option>Rua do Sol a Santa Catarina — 2bd · €2,100/mo</option>
-          <option>R. de São Filipe — Trespasse · €60,000</option>
+          <option>Rua Angelina Vidal — Trespasse · €55,000</option>
+          <option>Rua do Sol a Santa Catarina — 2bd · €2,200/mo</option>
+          <option>Rua de São Paulo 29 — 2bd · €2,000/mo</option>
+          <option>Travessa da Laranjeira — 2bd · €1,700/mo</option>
+          <option>Rua do Arsenal — 1bd · €1,500/mo</option>
+          <option>Rua Damasceno Monteiro — 2bd · €2,000/mo</option>
+          <option>Rua São José — Studio · €1,400/mo</option>
         </select></div>
-      <div class="f-g"><label>Message</label><textarea placeholder="Tell us about your property or inquiry..."></textarea></div>
-      <button class="f-submit" onclick="this.textContent='Sent ✓';this.style.opacity='0.6'">Send Message</button>
+      <div class="f-g"><label>Message</label><textarea name="message" placeholder="Tell us about your property or inquiry..."></textarea></div>
+      <button type="submit" class="f-submit">Send Message</button>
       <div class="f-note">We respond within 24 hours on business days.</div>
+      </form>
     </div>
   </div>
 </section>

@@ -615,7 +615,19 @@ footer{
         <div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>65 m&sup2;</span></div>
       </div>
     </div>
-    <div class="prop-card"><div class="prop-thumb"><img src="placeholder.jpg" alt=""><span class="prop-badge">For Rent</span></div><div class="prop-body"><div class="prop-price">&euro;1,450 <span>/ month</span></div><div class="prop-addr">Rua do Almada</div><div class="prop-meta"><span>Lisbon</span></div><div class="prop-meta"><span>1 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>49 m&sup2;</span></div></div></div>
+    <div class="prop-card" onclick="openGallery('almada')" style="cursor:pointer;">
+      <div class="prop-thumb" style="position:relative;">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106586/SRE_4386-HDR_xong2m.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Rua do Almada">
+        <span class="prop-badge">For Rent</span>
+        <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">13 PHOTOS</div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-price">&euro;1,450 <span>/ month</span></div>
+        <div class="prop-addr">Rua do Almada</div>
+        <div class="prop-meta"><span>Lisbon</span></div>
+        <div class="prop-meta"><span>1 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>49 m&sup2;</span></div>
+      </div>
+    </div>
     <div class="prop-card"><div class="prop-thumb"><img src="placeholder.jpg" alt=""><span class="prop-badge">Trespasse</span></div><div class="prop-body"><div class="prop-price">&euro;60,000</div><div class="prop-addr">R. de S&atilde;o Filipe</div><div class="prop-meta"><span>Lisbon</span></div><div class="prop-meta"><span>108 m&sup2;</span><span>&middot;</span><span>2 floors</span></div></div></div>
     <div class="prop-card" onclick="openGallery('santa')" style="cursor:pointer;">
       <div class="prop-thumb" style="position:relative;">
@@ -657,6 +669,18 @@ footer{
         <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960434/SRE_2612_oypkbk.jpg" onclick="setPhoto('arrochela',12)" style="width:80px;height:55px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;">
       </div>
       <div style="font-size:0.75rem;color:var(--au);letter-spacing:0.1em;margin-top:0.25rem;">Travessa da Arrochela N23 &middot; 65 m&sup2; &middot; &euro;1,900/mo</div>
+    </div>
+
+    <!-- Gallery Modal Rua do Almada -->
+    <div id="gallery-almada" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:var(--g);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:1rem;margin:0;padding:0;box-sizing:border-box;">
+      <button onclick="closeGallery('almada')" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--cr);font-size:2rem;cursor:pointer;z-index:10001;">&times;</button>
+      <div style="display:flex;align-items:center;gap:0;width:100%;height:75vh;padding:0 0.5rem;">
+        <button onclick="prevPhoto('almada')" style="background:none;border:1px solid rgba(221,173,117,0.3);color:var(--au);font-size:1.5rem;padding:0.5rem 1.2rem;cursor:pointer;border-radius:1px;flex-shrink:0;min-width:60px;text-align:center;">&#8592;</button>
+        <img id="gallery-almada-main" src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106586/SRE_4386-HDR_xong2m.jpg" style="flex:1;height:100%;width:100%;object-fit:cover;">
+        <button onclick="nextPhoto('almada')" style="background:none;border:1px solid rgba(221,173,117,0.3);color:var(--au);font-size:1.5rem;padding:0.5rem 1.2rem;cursor:pointer;border-radius:1px;flex-shrink:0;min-width:60px;text-align:center;">&#8594;</button>
+      </div>
+      <div style="display:flex;gap:0.5rem;margin-top:0.5rem;overflow-x:auto;max-width:95%;padding:0.25rem;"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106586/SRE_4386-HDR_xong2m.jpg" onclick="setPhoto('almada',0)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106587/SRE_4392-HDR_dldmwi.jpg" onclick="setPhoto('almada',1)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106587/SRE_4398-HDR_wu2ryw.jpg" onclick="setPhoto('almada',2)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106588/SRE_4401-HDR_mtbdr9.jpg" onclick="setPhoto('almada',3)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106602/SRE_4404-HDR_s8lwfh.jpg" onclick="setPhoto('almada',4)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106589/SRE_4407-HDR_r90ggj.jpg" onclick="setPhoto('almada',5)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106589/SRE_4410-HDR_osqt8p.jpg" onclick="setPhoto('almada',6)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106590/SRE_4413-HDR_t5dnuz.jpg" onclick="setPhoto('almada',7)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106591/SRE_4416-HDR_p6cggi.jpg" onclick="setPhoto('almada',8)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106591/SRE_4419-HDR_bcvhqx.jpg" onclick="setPhoto('almada',9)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106603/SRE_4422-HDR_e2nsf2.jpg" onclick="setPhoto('almada',10)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106592/SRE_4425-HDR_twfv5n.jpg" onclick="setPhoto('almada',11)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106594/SRE_4431-HDR_so5mml.jpg" onclick="setPhoto('almada',12)" style="width:70px;height:50px;object-fit:cover;cursor:pointer;border:1px solid rgba(221,173,117,0.3);border-radius:1px;opacity:0.7;flex-shrink:0;"></div>
+      <div style="font-size:0.75rem;color:var(--au);letter-spacing:0.1em;">Rua do Almada &middot; 49 m&sup2; &middot; &euro;1,450/mo</div>
     </div>
 
     <!-- Gallery Modal Santa Catarina -->
@@ -778,9 +802,24 @@ const gallerySrcs = {
     "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960435/SRE_2607_ubrjwy.jpg",
     "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960434/SRE_2612_oypkbk.jpg"
   ],
-  'santa': []
+  'santa': [],
+  'almada': [
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106586/SRE_4386-HDR_xong2m.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106587/SRE_4392-HDR_dldmwi.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106587/SRE_4398-HDR_wu2ryw.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106588/SRE_4401-HDR_mtbdr9.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106602/SRE_4404-HDR_s8lwfh.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106589/SRE_4407-HDR_r90ggj.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106589/SRE_4410-HDR_osqt8p.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106590/SRE_4413-HDR_t5dnuz.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106591/SRE_4416-HDR_p6cggi.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106591/SRE_4419-HDR_bcvhqx.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106603/SRE_4422-HDR_e2nsf2.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106592/SRE_4425-HDR_twfv5n.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106594/SRE_4431-HDR_so5mml.jpg"
+  ]
 };
-let galleryIndex = {'arrochela': 0, 'santa': 0};
+let galleryIndex = {'arrochela': 0, 'santa': 0, 'almada': 0};
 
 function openGallery(id) {
   document.getElementById('gallery-' + id).style.display = 'flex';

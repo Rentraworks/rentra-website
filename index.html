@@ -885,7 +885,7 @@ footer{
       </div>
     </div>
     <div class="r">
-      <form action="https://formspree.io/f/meewlown" method="POST">
+      <form id="contact-form">
       <div class="f-row">
         <div class="f-g"><label>First Name</label><input type="text" name="first_name" placeholder="Your name"></div>
         <div class="f-g"><label>Last Name</label><input type="text" name="last_name" placeholder="Last name"></div>
@@ -909,8 +909,38 @@ footer{
         </select></div>
       <div class="f-g"><label>Message</label><textarea name="message" placeholder="Tell us about your property or inquiry..."></textarea></div>
       <button type="submit" class="f-submit">Send Message</button>
+      <div id="form-success" style="display:none;color:var(--au);font-size:0.9rem;margin-top:1rem;letter-spacing:0.05em;">Thank you, we'll be in touch within 24 hours.</div>
+      <div id="form-error" style="display:none;color:#e07070;font-size:0.9rem;margin-top:1rem;">Something went wrong. Please try again or email us directly.</div>
       <div class="f-note">We respond within 24 hours on business days.</div>
       </form>
+      <script>
+      document.getElementById('contact-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        document.getElementById('form-success').style.display = 'none';
+        document.getElementById('form-error').style.display = 'none';
+        try {
+          const res = await fetch('https://formspree.io/f/meewlown', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form)
+          });
+          if (res.ok) {
+            document.getElementById('form-success').style.display = 'block';
+            form.reset();
+          } else {
+            document.getElementById('form-error').style.display = 'block';
+          }
+        } catch {
+          document.getElementById('form-error').style.display = 'block';
+        }
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+      });
+      </script>
     </div>
   </div>
 </section>

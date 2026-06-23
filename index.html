@@ -152,15 +152,10 @@ h2.s-title em{color:var(--au);font-style:italic}
 .gold-rule{width:48px;height:1px;background:var(--au);opacity:0.4;margin:2.5rem 0}
 
 /* ── ABOUT ── */
-#about{border-top:1px solid var(--line2);padding:0!important;overflow:hidden;}
-#about .r{
-  display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;
-  padding:7rem 0 7rem 5%;
-}
-.about-col-left{padding-right:4rem;}
-.about-col-right{position:relative;min-height:500px;overflow:hidden;clip-path:polygon(14% 0,100% 0,100% 100%,0% 100%);}
-.about-col-right img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0.35;}
-.about-col-right::after{display:none;}
+#about{border-top:1px solid var(--line2);position:relative;overflow:hidden;}
+.about-photo{position:absolute;right:0;top:0;bottom:0;width:50%;background:url("https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1782247106/andreas-brucker-X87yB-jvYHw-unsplash_tumkhc.jpg") center/cover;opacity:0.35;clip-path:polygon(14% 0,100% 0,100% 100%,0% 100%);}
+.about-photo-overlay{position:absolute;right:0;top:0;bottom:0;width:50%;background:linear-gradient(90deg,var(--g) 0%,transparent 30%);pointer-events:none;}
+.about-content{position:relative;z-index:1;max-width:540px;}
 .about-list{margin-top:2.5rem;display:flex;flex-direction:column}
 .about-item{
   padding:1.4rem 0;border-bottom:1px solid var(--line2);
@@ -435,9 +430,8 @@ footer{
   .nav-links{display:none}
   .mob-btn{display:block}
   section{padding:4.5rem 5%}
-  #about .r{grid-template-columns:1fr;gap:0;padding:4.5rem 5%;}
-  .about-col-left{padding-right:0;}
-  .about-col-right{height:280px;margin-top:2.5rem;}
+  .about-photo,.about-photo-overlay{width:100%;top:auto;height:280px;bottom:0;opacity:0.25;}
+  .about-photo{clip-path:none;}
   #about,.contact-grid,.srv-head{grid-template-columns:1fr;gap:3rem}
   .about-visual{display:none}
   .srv-head-right p{text-align:left}
@@ -500,19 +494,16 @@ footer{
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="r">
-    <div class="about-col-left">
-      <div class="s-tag">Who We Are</div>
-      <h2 class="s-title">A trusted partner<br><em>in Lisbon.</em></h2>
-      <p class="s-body">Founded to serve international property owners who need a reliable local partner. We combine market expertise, legal knowledge, and hands-on management so your investment works for you.</p>
-      <div class="about-list">
-        <div class="about-item"><div class="a-num">01</div><div><h4>Licensed Professionals</h4><p>Fully licensed under Portuguese real estate law, with expertise in residential and commercial transactions.</p></div></div>
-        <div class="about-item"><div class="a-num">02</div><div><h4>International Focus</h4><p>We work with international property owners and communicate in English, French, Hebrew and Portuguese.</p></div></div>
-        <div class="about-item"><div class="a-num">03</div><div><h4>End-to-End Management</h4><p>From tenant sourcing to maintenance, contracts, and monthly reporting, fully handled, fully transparent.</p></div></div>
-      </div>
-    </div>
-    <div class="about-col-right">
-      <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1782247106/andreas-brucker-X87yB-jvYHw-unsplash_tumkhc.jpg" alt="Lisbon">
+  <div class="about-photo"></div>
+  <div class="about-photo-overlay"></div>
+  <div class="about-content r">
+    <div class="s-tag">Who We Are</div>
+    <h2 class="s-title">A trusted partner<br><em>in Lisbon.</em></h2>
+    <p class="s-body">Founded to serve international property owners who need a reliable local partner. We combine market expertise, legal knowledge, and hands-on management so your investment works for you.</p>
+    <div class="about-list">
+      <div class="about-item"><div class="a-num">01</div><div><h4>Licensed Professionals</h4><p>Fully licensed under Portuguese real estate law, with expertise in residential and commercial transactions.</p></div></div>
+      <div class="about-item"><div class="a-num">02</div><div><h4>International Focus</h4><p>We work with international property owners and communicate in English, French, Hebrew and Portuguese.</p></div></div>
+      <div class="about-item"><div class="a-num">03</div><div><h4>End-to-End Management</h4><p>From tenant sourcing to maintenance, contracts, and monthly reporting, fully handled, fully transparent.</p></div></div>
     </div>
   </div>
 </section>

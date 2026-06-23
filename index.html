@@ -155,9 +155,9 @@ h2.s-title em{color:var(--au);font-style:italic}
 #about{border-top:1px solid var(--line2);}
 #about .r{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1200px;}
 .about-col-left{}
-.about-col-right{position:relative;height:520px;overflow:hidden;border-radius:2px;}
+.about-col-right{position:relative;height:100%;min-height:500px;overflow:hidden;border-radius:0;}
 .about-col-right img{width:100%;height:100%;object-fit:cover;display:block;}
-.about-col-right::after{content:"";position:absolute;inset:0;background:rgba(0,69,57,0.28);pointer-events:none;}
+.about-col-right::after{content:"";position:absolute;inset:0;background:rgba(0,69,57,0.35);pointer-events:none;}
 .about-list{margin-top:2.5rem;display:flex;flex-direction:column}
 .about-item{
   padding:1.4rem 0;border-bottom:1px solid var(--line2);

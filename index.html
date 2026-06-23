@@ -146,11 +146,10 @@ h2.s-title em{color:var(--au);font-style:italic}
 .gold-rule{width:48px;height:1px;background:var(--au);opacity:0.4;margin:2.5rem 0}
 
 /* ── ABOUT ── */
-#about{border-top:1px solid var(--line2);overflow:hidden;padding:0!important;}
-#about .r{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;padding:7rem 0 4rem 5%;}
-.about-col-left{padding-right:3rem;position:relative;z-index:1;}
+#about{border-top:1px solid var(--line2);display:grid;grid-template-columns:1fr 1fr;align-items:stretch;padding:0!important;overflow:hidden;}
+.about-col-left{padding:7rem 3rem 4rem 5%;position:relative;z-index:1;}
 .about-col-right{position:relative;overflow:hidden;clip-path:polygon(14% 0,100% 0,100% 100%,0% 100%);}
-.about-col-right img{position:absolute;inset:0;width:100%;height:100%;min-height:100%;object-fit:cover;display:block;opacity:0.35;}
+.about-col-right img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0.35;}
 .about-col-right::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--g) 0%,transparent 40%);pointer-events:none;}
 .about-list{margin-top:2.5rem;display:flex;flex-direction:column}
 .about-item{
@@ -428,8 +427,8 @@ footer{
   section{padding:4.5rem 5%}
   #about,.contact-grid,.srv-head{grid-template-columns:1fr;gap:3rem}
   .about-visual{display:none}
-  #about .r{grid-template-columns:1fr;padding:4.5rem 5%;}
-  .about-col-left{padding-right:0;}
+  #about{grid-template-columns:1fr;}
+  .about-col-left{padding:4.5rem 5%;}
   .about-col-right{display:none;}
   .srv-head-right p{text-align:left}
   .srv-main-header,.srv-includes,.srv-trespasse{padding:1.75rem}
@@ -491,8 +490,7 @@ footer{
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="r">
-    <div class="about-col-left">
+    <div class="about-col-left r">
       <div class="s-tag">Who We Are</div>
       <h2 class="s-title">A trusted partner<br><em>in Lisbon.</em></h2>
       <p class="s-body">Founded to serve international property owners who need a reliable local partner. We combine market expertise, legal knowledge, and hands-on management so your investment works for you.</p>
@@ -505,7 +503,6 @@ footer{
     <div class="about-col-right">
       <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1782247106/andreas-brucker-X87yB-jvYHw-unsplash_tumkhc.jpg" alt="Lisbon">
     </div>
-  </div>
 </section>
 
 <!-- SERVICES -->

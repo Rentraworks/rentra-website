@@ -927,7 +927,7 @@ footer{
         const form = e.target;
         const btn = form.querySelector('button[type="submit"]');
         btn.disabled = true;
-        btn.textContent = 'Sending...';
+        btn.textContent = currentLang === 'pt' ? 'A enviar...' : 'Sending...';
         document.getElementById('form-success').style.display = 'none';
         document.getElementById('form-error').style.display = 'none';
         try {
@@ -946,7 +946,7 @@ footer{
           document.getElementById('form-error').style.display = 'block';
         }
         btn.disabled = false;
-        btn.textContent = 'Send Message';
+        btn.textContent = T['i18n-f-submit'][currentLang];
       });
       </script>
     </div>

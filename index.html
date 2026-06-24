@@ -330,13 +330,13 @@ h2.s-title em{color:var(--au);font-style:italic}
 .prop-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem}
 #properties{padding:7rem 5%;}
 .prop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem}
-.prop-card{background:var(--g);overflow:hidden;position:relative;cursor:pointer;}
+.prop-card{background:var(--g);overflow:hidden;position:relative;cursor:pointer;box-shadow:0 0 0 2px transparent;transition:box-shadow 0.25s ease,background 0.25s ease;}
+.prop-card:hover{box-shadow:0 0 0 2px rgba(0,100,70,0.9);background:rgb(0,55,43);}
 .prop-thumb{height:220px;overflow:hidden;position:relative;}
 .prop-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(0.75) saturate(0.85);transition:transform 0.6s ease;}
 .prop-card:hover .prop-thumb img{transform:scale(1.04);}
 .prop-badge{position:absolute;top:1rem;left:1rem;z-index:3;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;background:rgba(0,69,57,0.9);color:var(--au);border:1px solid rgba(221,173,117,0.35);padding:0.28rem 0.7rem;}
-.prop-body{padding:1.4rem 1.5rem;border-top:1px solid var(--line2);transition:background 0.3s ease;}
-.prop-card:hover .prop-body{background:rgba(0,30,22,0.55);}
+.prop-body{padding:1.4rem 1.5rem;border-top:1px solid var(--line2);}
 .prop-price{font-family:"Playfair Display",serif;font-size:1.4rem;font-weight:300;color:var(--au);}
 .prop-price span{font-family:"Jost",sans-serif;font-size:1rem;color:var(--cr2);font-weight:400;}
 .prop-addr{font-size:0.9rem;color:var(--cr);margin-top:0.25rem;}

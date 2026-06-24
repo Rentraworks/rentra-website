@@ -128,8 +128,11 @@ h1.hero-title em{color:var(--au);font-style:italic;display:block}
 .hero-scroll-line{width:40px;height:1px;background:var(--cr2);opacity:0.4;animation:scrollPulse 2s ease-in-out infinite}
 
 /* ── LANG BUTTON ── */
-#lang-btn{background:none;border:1px solid rgba(221,173,117,0.35);color:var(--au);font-family:"Jost",sans-serif;font-size:0.72rem;letter-spacing:0.15em;padding:0.3rem 0.65rem;cursor:pointer;border-radius:1px;transition:border-color 0.2s,color 0.2s;margin-left:0.5rem;}
-#lang-btn:hover{border-color:var(--au);}
+.lang-switcher{display:inline-flex;margin-left:0.5rem;}
+.lang-switcher button{background:none;border:1px solid rgba(221,173,117,0.35);color:rgba(221,173,117,0.5);font-family:"Jost",sans-serif;font-size:0.72rem;letter-spacing:0.15em;padding:1rem 0.85rem;cursor:pointer;border-radius:0;transition:background 0.2s,color 0.2s;line-height:1;}
+.lang-switcher button:first-child{border-right:none;}
+.lang-switcher button:hover{color:var(--au);}
+.lang-switcher button.active{background:rgba(221,173,117,0.12);color:var(--au);border-color:var(--au);}
 /* ── SECTIONS ── */
 section{padding:7rem 5%}
 .s-tag{
@@ -464,7 +467,7 @@ footer{
     <a href="#process" id="i18n-nav-process">How It Works</a>
     <a href="#contact" class="nav-cta" id="i18n-nav-contact">Contact</a>
   </div>
-  <button id="lang-btn" onclick="toggleLang()">PT</button>
+  <div class="lang-switcher"><button id="lang-en" onclick="setLangBtn('en')" class="active">EN</button><button id="lang-pt" onclick="setLangBtn('pt')">PT</button></div>
   <button class="mob-btn" onclick="document.querySelector('.mob-menu').classList.add('open')">&#9776;</button>
 </nav>
 <div class="mob-menu">
@@ -1301,8 +1304,8 @@ function applyLang(lang) {
   });
   document.querySelectorAll('.i18n-badge').forEach(el => { el.textContent = lang==='pt' ? 'Para Arrendar' : 'For Rent'; });
   document.querySelectorAll('.i18n-month').forEach(el => { el.innerHTML = lang==='pt' ? '/ m&ecirc;s' : '/ month'; });
-  const btn = document.getElementById('lang-btn');
-  if (btn) btn.textContent = lang==='pt' ? 'EN' : 'PT';
+  document.getElementById('lang-en').classList.toggle('active', lang==='en');
+  document.getElementById('lang-pt').classList.toggle('active', lang==='pt');
   document.documentElement.lang = lang==='pt' ? 'pt' : 'en';
   // form messages (update text even when hidden)
   const s = document.getElementById('form-success');
@@ -1311,10 +1314,10 @@ function applyLang(lang) {
   if (e) e.textContent = lang==='pt' ? 'Algo correu mal. Por favor tente novamente ou envie-nos um email.' : 'Something went wrong. Please try again or email us directly.';
 }
 
-function toggleLang() {
-  currentLang = currentLang === 'en' ? 'pt' : 'en';
-  localStorage.setItem('rentra-lang', currentLang);
-  applyLang(currentLang);
+function setLangBtn(lang) {
+  currentLang = lang;
+  localStorage.setItem('rentra-lang', lang);
+  applyLang(lang);
 }
 
 if (currentLang === 'pt') applyLang('pt');

@@ -127,6 +127,9 @@ h1.hero-title em{color:var(--au);font-style:italic;display:block}
 }
 .hero-scroll-line{width:40px;height:1px;background:var(--cr2);opacity:0.4;animation:scrollPulse 2s ease-in-out infinite}
 
+/* ── LANG BUTTON ── */
+#lang-btn{background:none;border:1px solid rgba(221,173,117,0.35);color:var(--au);font-family:"Jost",sans-serif;font-size:0.72rem;letter-spacing:0.15em;padding:0.3rem 0.65rem;cursor:pointer;border-radius:1px;transition:border-color 0.2s,color 0.2s;margin-left:0.5rem;}
+#lang-btn:hover{border-color:var(--au);}
 /* ── SECTIONS ── */
 section{padding:7rem 5%}
 .s-tag{
@@ -455,21 +458,22 @@ footer{
 <nav>
   <a href="#hero" class="nav-logo"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781103472/image2_k44kmr.png" alt="Rentra"></a>
   <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#properties">Properties</a>
-    <a href="#process">How It Works</a>
-    <a href="#contact" class="nav-cta">Contact</a>
+    <a href="#about" id="i18n-nav-about">About</a>
+    <a href="#services" id="i18n-nav-services">Services</a>
+    <a href="#properties" id="i18n-nav-props">Properties</a>
+    <a href="#process" id="i18n-nav-process">How It Works</a>
+    <a href="#contact" class="nav-cta" id="i18n-nav-contact">Contact</a>
   </div>
+  <button id="lang-btn" onclick="toggleLang()">PT</button>
   <button class="mob-btn" onclick="document.querySelector('.mob-menu').classList.add('open')">&#9776;</button>
 </nav>
 <div class="mob-menu">
   <button class="mob-close" onclick="document.querySelector('.mob-menu').classList.remove('open')">&#10005;</button>
-  <a href="#about" onclick="document.querySelector('.mob-menu').classList.remove('open')">About</a>
-  <a href="#services" onclick="document.querySelector('.mob-menu').classList.remove('open')">Services</a>
-  <a href="#properties" onclick="document.querySelector('.mob-menu').classList.remove('open')">Properties</a>
-  <a href="#process" onclick="document.querySelector('.mob-menu').classList.remove('open')">How It Works</a>
-  <a href="#contact" onclick="document.querySelector('.mob-menu').classList.remove('open')">Contact</a>
+  <a href="#about" id="i18n-mob-about" onclick="document.querySelector('.mob-menu').classList.remove('open')">About</a>
+  <a href="#services" id="i18n-mob-services" onclick="document.querySelector('.mob-menu').classList.remove('open')">Services</a>
+  <a href="#properties" id="i18n-mob-props" onclick="document.querySelector('.mob-menu').classList.remove('open')">Properties</a>
+  <a href="#process" id="i18n-mob-process" onclick="document.querySelector('.mob-menu').classList.remove('open')">How It Works</a>
+  <a href="#contact" id="i18n-mob-contact" onclick="document.querySelector('.mob-menu').classList.remove('open')">Contact</a>
 </div>
 
 <!-- HERO -->
@@ -478,11 +482,11 @@ footer{
   <div class="hero-photo"></div>
   <div class="hero-photo-overlay"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Property Management &middot; Lisbon</div>
-    <h1 class="hero-title">Your property,<em>perfectly managed.</em></h1>
-    <p class="hero-desc">Rentra is a Lisbon-based property management company specializing in serving international property owners.</p>
+    <div class="hero-eyebrow" id="i18n-hero-eyebrow">Property Management &middot; Lisbon</div>
+    <h1 class="hero-title" id="i18n-hero-title">Your property,<em>perfectly managed.</em></h1>
+    <p class="hero-desc" id="i18n-hero-desc">Rentra is a Lisbon-based property management company specializing in serving international property owners.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Get a Free Consultation</a>
+      <a href="#contact" class="btn-primary" id="i18n-hero-cta">Get a Free Consultation</a>
     </div>
   </div>
   <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll</div>
@@ -491,13 +495,13 @@ footer{
 <!-- ABOUT -->
 <section id="about">
     <div class="about-col-left r">
-      <div class="s-tag">Who We Are</div>
-      <h2 class="s-title">A trusted partner<br><em>in Lisbon.</em></h2>
-      <p class="s-body">Founded to serve international property owners who need a reliable local partner. We combine market expertise, legal knowledge, and hands-on management so your investment works for you.</p>
+      <div class="s-tag" id="i18n-about-tag">Who We Are</div>
+      <h2 class="s-title" id="i18n-about-title">A trusted partner<br><em>in Lisbon.</em></h2>
+      <p class="s-body" id="i18n-about-body">Founded to serve international property owners who need a reliable local partner. We combine market expertise, legal knowledge, and hands-on management so your investment works for you.</p>
       <div class="about-list">
-        <div class="about-item"><div class="a-num">01</div><div><h4>Licensed Professionals</h4><p>Fully licensed under Portuguese real estate law, with expertise in residential and commercial transactions.</p></div></div>
-        <div class="about-item"><div class="a-num">02</div><div><h4>International Focus</h4><p>We work with international property owners and communicate in English, French, Hebrew and Portuguese.</p></div></div>
-        <div class="about-item"><div class="a-num">03</div><div><h4>End-to-End Management</h4><p>From tenant sourcing to maintenance, contracts, and monthly reporting, fully handled, fully transparent.</p></div></div>
+        <div class="about-item"><div class="a-num">01</div><div><h4 id="i18n-about-01-h">Licensed Professionals</h4><p id="i18n-about-01-p">Fully licensed under Portuguese real estate law, with expertise in residential and commercial transactions.</p></div></div>
+        <div class="about-item"><div class="a-num">02</div><div><h4 id="i18n-about-02-h">International Focus</h4><p id="i18n-about-02-p">We work with international property owners and communicate in English, French, Hebrew and Portuguese.</p></div></div>
+        <div class="about-item"><div class="a-num">03</div><div><h4 id="i18n-about-03-h">End-to-End Management</h4><p id="i18n-about-03-p">From tenant sourcing to maintenance, contracts, and monthly reporting, fully handled, fully transparent.</p></div></div>
       </div>
     </div>
     <div class="about-col-right">
@@ -509,11 +513,11 @@ footer{
 <section id="services">
   <div class="srv-head r">
     <div>
-      <div class="s-tag">What We Offer</div>
-      <h2 class="s-title">Two services,<br><em>one trusted partner.</em></h2>
+      <div class="s-tag" id="i18n-srv-tag">What We Offer</div>
+      <h2 class="s-title" id="i18n-srv-title">Two services,<br><em>one trusted partner.</em></h2>
     </div>
     <div class="srv-head-right">
-      <p>Every service is tailored to your property, your goals, and your preferred level of involvement.</p>
+      <p id="i18n-srv-intro">Every service is tailored to your property, your goals, and your preferred level of involvement.</p>
     </div>
   </div>
 
@@ -522,40 +526,40 @@ footer{
     <div class="srv-main">
       <div class="srv-main-header">
         <div class="srv-main-num">01</div>
-        <h3>Property Management</h3>
-        <p class="srv-main-desc">Full end-to-end management for your property in Lisbon, from tenant sourcing to monthly reporting.</p>
+        <h3 id="i18n-srv1-h">Property Management</h3>
+        <p class="srv-main-desc" id="i18n-srv1-desc">Full end-to-end management for your property in Lisbon, from tenant sourcing to monthly reporting.</p>
       </div>
       <div class="srv-includes">
-        <div class="srv-includes-label">Included in all plans</div>
+        <div class="srv-includes-label" id="i18n-srv-includes-label">Included in all plans</div>
         <ul class="srv-includes-grid">
-          <li>Market analysis &amp; pricing</li>
-          <li>Professional photography</li>
-          <li>Tenant screening</li>
-          <li>Contract signing</li>
-          <li>Check-in / check-out inventory</li>
-          <li>Maintenance coordination</li>
+          <li id="i18n-srv-inc-1">Market analysis &amp; pricing</li>
+          <li id="i18n-srv-inc-2">Professional photography</li>
+          <li id="i18n-srv-inc-3">Tenant screening</li>
+          <li id="i18n-srv-inc-4">Contract signing</li>
+          <li id="i18n-srv-inc-5">Check-in / check-out inventory</li>
+          <li id="i18n-srv-inc-6">Maintenance coordination</li>
         </ul>
       </div>
       <div class="srv-tracks">
         <div class="srv-track">
-          <div class="srv-track-label">Long-Term Rental</div>
-          <p>Yearly leases for residents, families &amp; expats. Stable income, minimal turnover.</p>
+          <div class="srv-track-label" id="i18n-trk1-label">Long-Term Rental</div>
+          <p id="i18n-trk1-p">Yearly leases for residents, families &amp; expats. Stable income, minimal turnover.</p>
           <ul>
-            <li>NRAU-compliant contracts</li>
-            <li>Tenant background verification</li>
-            <li>Monthly reporting to owner</li>
+            <li id="i18n-trk1-li1">NRAU-compliant contracts</li>
+            <li id="i18n-trk1-li2">Tenant background verification</li>
+            <li id="i18n-trk1-li3">Monthly reporting to owner</li>
           </ul>
-          <div class="srv-fee">Commission: 15% of monthly rent</div>
+          <div class="srv-fee" id="i18n-trk1-fee">Commission: 15% of monthly rent</div>
         </div>
         <div class="srv-track">
-          <div class="srv-track-label">Mid-Term Rental</div>
-          <p>Monthly leases for digital nomads &amp; business professionals. Higher yield, flexible terms.</p>
+          <div class="srv-track-label" id="i18n-trk2-label">Mid-Term Rental</div>
+          <p id="i18n-trk2-p">Monthly leases for digital nomads &amp; business professionals. Higher yield, flexible terms.</p>
           <ul>
-            <li>Multi-platform advertising</li>
-            <li>High-standard cleaning &amp; inventory</li>
-            <li>Tenant support throughout stay</li>
+            <li id="i18n-trk2-li1">Multi-platform advertising</li>
+            <li id="i18n-trk2-li2">High-standard cleaning &amp; inventory</li>
+            <li id="i18n-trk2-li3">Tenant support throughout stay</li>
           </ul>
-          <div class="srv-fee">Commission: 15&ndash;20% of monthly rent</div>
+          <div class="srv-fee" id="i18n-trk2-fee">Commission: 15&ndash;20% of monthly rent</div>
         </div>
       </div>
     </div>
@@ -565,16 +569,16 @@ footer{
       <div>
         <div class="srv-main-num">02</div>
         <h3>Trespasse</h3>
-        <p>Buying or selling a business in Lisbon? We manage the full transfer process, legally sound, fully coordinated, stress-free.</p>
-        <div class="srv-fee" style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--line2)">Fee: discussed per transaction</div>
+        <p id="i18n-trp-p">Buying or selling a business in Lisbon? We manage the full transfer process, legally sound, fully coordinated, stress-free.</p>
+        <div class="srv-fee" id="i18n-trp-fee" style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--line2)">Fee: discussed per transaction</div>
       </div>
       <ul>
-        <li>Transaction coordination &amp; documentation</li>
-        <li>Due diligence support</li>
-        <li>Contract drafting &amp; legal review</li>
-        <li>License &amp; permit transfer handling</li>
-        <li>Buyer &amp; seller representation</li>
-        <li>Negotiation support</li>
+        <li id="i18n-trp-li1">Transaction coordination &amp; documentation</li>
+        <li id="i18n-trp-li2">Due diligence support</li>
+        <li id="i18n-trp-li3">Contract drafting &amp; legal review</li>
+        <li id="i18n-trp-li4">License &amp; permit transfer handling</li>
+        <li id="i18n-trp-li5">Buyer &amp; seller representation</li>
+        <li id="i18n-trp-li6">Negotiation support</li>
       </ul>
     </div>
   </div>
@@ -583,16 +587,16 @@ footer{
 <!-- WHY -->
 <section id="why">
   <div class="why-head r">
-    <div class="s-tag center">Why Rentra</div>
-    <h2 class="s-title" style="text-align:center">Everything your <em>property needs.</em></h2>
+    <div class="s-tag center" id="i18n-why-tag">Why Rentra</div>
+    <h2 class="s-title" id="i18n-why-title" style="text-align:center">Everything your <em>property needs.</em></h2>
   </div>
   <div class="why-grid r">
-    <div class="why-item"><div class="why-n">01</div><h4>Property Strategy</h4><p>We assess your property and the local market to define the optimal rental strategy, maximizing your return and reducing vacancy periods.</p></div>
-    <div class="why-item"><div class="why-n">02</div><h4>In-House Marketing</h4><p>Professional photography and multi-platform listings, handled internally to ensure quality, consistency, and fast time-to-market.</p></div>
-    <div class="why-item"><div class="why-n">03</div><h4>Maintenance Network</h4><p>We coordinate all maintenance work through trusted contractors and oversee every job from start to finish.</p></div>
-    <div class="why-item"><div class="why-n">04</div><h4>Tenant Screening</h4><p>We screen every applicant by reviewing income documents and employment contracts before any lease is signed.</p></div>
-    <div class="why-item"><div class="why-n">05</div><h4>Legal Compliance</h4><p>All contracts are drafted in compliance with Portuguese law, clearly defining the rights and obligations of both parties.</p></div>
-    <div class="why-item"><div class="why-n">06</div><h4>Furniture Solutions</h4><p>We source and install furniture suited to your rental type, from procurement to delivery and assembly.</p><p style="margin-top:0.5rem;font-size:0.72rem;color:var(--au);opacity:0.8;">Available as an additional paid service.</p></div>
+    <div class="why-item"><div class="why-n">01</div><h4 id="i18n-why-01-h">Property Strategy</h4><p id="i18n-why-01-p">We assess your property and the local market to define the optimal rental strategy, maximizing your return and reducing vacancy periods.</p></div>
+    <div class="why-item"><div class="why-n">02</div><h4 id="i18n-why-02-h">In-House Marketing</h4><p id="i18n-why-02-p">Professional photography and multi-platform listings, handled internally to ensure quality, consistency, and fast time-to-market.</p></div>
+    <div class="why-item"><div class="why-n">03</div><h4 id="i18n-why-03-h">Maintenance Network</h4><p id="i18n-why-03-p">We coordinate all maintenance work through trusted contractors and oversee every job from start to finish.</p></div>
+    <div class="why-item"><div class="why-n">04</div><h4 id="i18n-why-04-h">Tenant Screening</h4><p id="i18n-why-04-p">We screen every applicant by reviewing income documents and employment contracts before any lease is signed.</p></div>
+    <div class="why-item"><div class="why-n">05</div><h4 id="i18n-why-05-h">Legal Compliance</h4><p id="i18n-why-05-p">All contracts are drafted in compliance with Portuguese law, clearly defining the rights and obligations of both parties.</p></div>
+    <div class="why-item"><div class="why-n">06</div><h4 id="i18n-why-06-h">Furniture Solutions</h4><p id="i18n-why-06-p">We source and install furniture suited to your rental type, from procurement to delivery and assembly.</p><p style="margin-top:0.5rem;font-size:0.72rem;color:var(--au);opacity:0.8;">Available as an additional paid service.</p></div>
   </div>
 </section>
 
@@ -600,8 +604,8 @@ footer{
 <section id="properties">
   <div class="prop-head r">
     <div>
-      <div class="s-tag">Current Listings</div>
-      <h2 class="s-title">Properties <em>for rent.</em></h2>
+      <div class="s-tag" id="i18n-prop-tag">Current Listings</div>
+      <h2 class="s-title" id="i18n-prop-title">Properties <em>for rent.</em></h2>
     </div>
     <a href="https://wa.me/351912419653" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;align-items:center;gap:0.5rem;"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>WhatsApp</a>
   </div>
@@ -609,11 +613,11 @@ footer{
     <div class="prop-card" onclick="openGallery('arrochela')" style="cursor:pointer;">
       <div class="prop-thumb" style="position:relative;">
         <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960448/SRE_2577-HDR_bkayzv.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <span class="prop-badge">For Rent</span>
+        <span class="prop-badge i18n-badge">For Rent</span>
         <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">4 PHOTOS</div>
       </div>
       <div class="prop-body">
-        <div class="prop-price">&euro;1,900 <span>/ month</span></div>
+        <div class="prop-price">&euro;1,900 <span class="i18n-month">/ month</span></div>
         <div class="prop-addr">Travessa da Arrochela N23</div>
         <div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div>
         <div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>65 m&sup2;</span></div>
@@ -622,11 +626,11 @@ footer{
     <div class="prop-card" onclick="openGallery('almada')" style="cursor:pointer;">
       <div class="prop-thumb" style="position:relative;">
         <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106586/SRE_4386-HDR_xong2m.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Rua do Almada">
-        <span class="prop-badge">For Rent</span>
+        <span class="prop-badge i18n-badge">For Rent</span>
         <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">13 PHOTOS</div>
       </div>
       <div class="prop-body">
-        <div class="prop-price">&euro;1,450 <span>/ month</span></div>
+        <div class="prop-price">&euro;1,450 <span class="i18n-month">/ month</span></div>
         <div class="prop-addr">Rua do Almada</div>
         <div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div>
         <div class="prop-meta"><span>1 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>49 m&sup2;</span></div>
@@ -648,11 +652,11 @@ footer{
     <div class="prop-card" onclick="openGallery('santa')" style="cursor:pointer;">
       <div class="prop-thumb" style="position:relative;">
         <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114468/Rua_do_Sol_a_Santa_Catarina_37-1_usiihq.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Rua do Sol a Santa Catarina">
-        <span class="prop-badge">For Rent</span>
+        <span class="prop-badge i18n-badge">For Rent</span>
         <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">27 PHOTOS</div>
       </div>
       <div class="prop-body">
-        <div class="prop-price">&euro;2,200 <span>/ month</span></div>
+        <div class="prop-price">&euro;2,200 <span class="i18n-month">/ month</span></div>
         <div class="prop-addr">Rua do Sol a Santa Catarina</div>
         <div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div>
         <div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>2 bath</span><span>&middot;</span><span>120 m&sup2;</span></div>
@@ -661,11 +665,11 @@ footer{
     <div class="prop-card" onclick="openGallery('saopaulo')" style="cursor:pointer;">
       <div class="prop-thumb" style="position:relative;">
         <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111090/IMG_7991_qo3urj.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Rua de São Paulo 29">
-        <span class="prop-badge">For Rent</span>
+        <span class="prop-badge i18n-badge">For Rent</span>
         <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">21 PHOTOS</div>
       </div>
       <div class="prop-body">
-        <div class="prop-price">&euro;2,000 <span>/ month</span></div>
+        <div class="prop-price">&euro;2,000 <span class="i18n-month">/ month</span></div>
         <div class="prop-addr">Rua de S&atilde;o Paulo 29</div>
         <div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div>
         <div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>140 m&sup2;</span></div>
@@ -674,11 +678,11 @@ footer{
     <div class="prop-card" onclick="openGallery('laranjeira')" style="cursor:pointer;">
       <div class="prop-thumb" style="position:relative;">
         <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110649/2-2_nwbnfr.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Travessa da Laranjeira">
-        <span class="prop-badge">For Rent</span>
+        <span class="prop-badge i18n-badge">For Rent</span>
         <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">18 PHOTOS</div>
       </div>
       <div class="prop-body">
-        <div class="prop-price">&euro;1,700 <span>/ month</span></div>
+        <div class="prop-price">&euro;1,700 <span class="i18n-month">/ month</span></div>
         <div class="prop-addr">Travessa da Laranjeira</div>
         <div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div>
         <div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>66 m&sup2;</span></div>
@@ -687,11 +691,11 @@ footer{
     <div class="prop-card" onclick="openGallery('castro')" style="cursor:pointer;">
       <div class="prop-thumb" style="position:relative;">
         <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112961/IMG_4592_wryih1.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Travessa Castro">
-        <span class="prop-badge">For Rent</span>
+        <span class="prop-badge i18n-badge">For Rent</span>
         <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">20 PHOTOS</div>
       </div>
       <div class="prop-body">
-        <div class="prop-price">&euro;1,800 <span>/ month</span></div>
+        <div class="prop-price">&euro;1,800 <span class="i18n-month">/ month</span></div>
         <div class="prop-addr">Travessa Castro</div>
         <div class="prop-meta"><span>Alcântara &middot; Estrela &middot; Lisbon</span></div>
         <div class="prop-meta"><span>1 bed</span><span>&middot;</span><span>65 m&sup2; + garden</span><span>&middot;</span><span>Parking</span></div>
@@ -700,11 +704,11 @@ footer{
     <div class="prop-card" onclick="openGallery('arsenal')" style="cursor:pointer;">
       <div class="prop-thumb" style="position:relative;">
         <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107627/WhatsApp_Image_2024-11-20_at_16.40.23_7_xs3dne.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Rua do Arsenal">
-        <span class="prop-badge">For Rent</span>
+        <span class="prop-badge i18n-badge">For Rent</span>
         <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">14 PHOTOS</div>
       </div>
       <div class="prop-body">
-        <div class="prop-price">&euro;1,500 <span>/ month</span></div>
+        <div class="prop-price">&euro;1,500 <span class="i18n-month">/ month</span></div>
         <div class="prop-addr">Rua do Arsenal</div>
         <div class="prop-meta"><span>Santa Maria Maior &middot; Lisbon</span></div>
         <div class="prop-meta"><span>1 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>50 m&sup2;</span></div>
@@ -713,11 +717,11 @@ footer{
     <div class="prop-card" onclick="openGallery('saojose')" style="cursor:pointer;">
       <div class="prop-thumb" style="position:relative;">
         <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118670/bc174b88-fb2b-46ec-a48e-af0a0db536fb_yedhqj.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Rua São José">
-        <span class="prop-badge">For Rent</span>
+        <span class="prop-badge i18n-badge">For Rent</span>
         <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">17 PHOTOS</div>
       </div>
       <div class="prop-body">
-        <div class="prop-price">&euro;1,400 <span>/ month</span></div>
+        <div class="prop-price">&euro;1,400 <span class="i18n-month">/ month</span></div>
         <div class="prop-addr">Rua S&atilde;o Jos&eacute;</div>
         <div class="prop-meta"><span>Santo António &middot; Lisbon</span></div>
         <div class="prop-meta"><span>Studio</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>39 m&sup2;</span></div>
@@ -851,27 +855,27 @@ footer{
 <!-- PROCESS -->
 <section id="process">
   <div class="proc-head r">
-    <div class="s-tag center">How It Works</div>
-    <h2 class="s-title" style="text-align:center">Four steps to <em>effortless ownership.</em></h2>
+    <div class="s-tag center" id="i18n-proc-tag">How It Works</div>
+    <h2 class="s-title" id="i18n-proc-title" style="text-align:center">Four steps to <em>effortless ownership.</em></h2>
   </div>
   <div class="proc-steps r">
-    <div class="proc-step"><div class="proc-circle">I</div><h4>Consultation</h4><p>We assess your property, goals, and preferred involvement to build the right plan.</p></div>
-    <div class="proc-step"><div class="proc-circle">II</div><h4>Preparation</h4><p>Photography, pricing strategy, furnishing if needed, and deep-clean to get market-ready.</p></div>
-    <div class="proc-step"><div class="proc-circle">III</div><h4>Placement</h4><p>Marketing &amp; advertising, tenant screening, tours, and contract signing, all handled.</p></div>
-    <div class="proc-step"><div class="proc-circle">IV</div><h4>Management</h4><p>Monthly reporting, maintenance, rent collection, and tenant relations, fully managed.</p></div>
+    <div class="proc-step"><div class="proc-circle">I</div><h4 id="i18n-proc-1-h">Consultation</h4><p id="i18n-proc-1-p">We assess your property, goals, and preferred involvement to build the right plan.</p></div>
+    <div class="proc-step"><div class="proc-circle">II</div><h4 id="i18n-proc-2-h">Preparation</h4><p id="i18n-proc-2-p">Photography, pricing strategy, furnishing if needed, and deep-clean to get market-ready.</p></div>
+    <div class="proc-step"><div class="proc-circle">III</div><h4 id="i18n-proc-3-h">Placement</h4><p id="i18n-proc-3-p">Marketing &amp; advertising, tenant screening, tours, and contract signing, all handled.</p></div>
+    <div class="proc-step"><div class="proc-circle">IV</div><h4 id="i18n-proc-4-h">Management</h4><p id="i18n-proc-4-p">Monthly reporting, maintenance, rent collection, and tenant relations, fully managed.</p></div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="test-head r">
-    <div class="s-tag center">Client Feedback</div>
-    <h2 class="s-title" style="text-align:center">What our <em>owners say.</em></h2>
+    <div class="s-tag center" id="i18n-test-tag">Client Feedback</div>
+    <h2 class="s-title" id="i18n-test-title" style="text-align:center">What our <em>owners say.</em></h2>
   </div>
   <div class="test-grid r">
-    <div class="test"><div class="test-mark">&ldquo;</div><div class="test-q">Rentra gave me complete peace of mind. My apartment in Lisbon is perfectly managed, I don&apos;t have to worry about anything from abroad.</div><div class="test-author"><div class="test-name">Sophie M.</div><div class="test-role">Property Owner &middot; Paris, France</div></div></div>
-    <div class="test"><div class="test-mark">&ldquo;</div><div class="test-q">Professional, responsive, and honest. They found me a quality tenant fast and the contract was rock solid.</div><div class="test-author"><div class="test-name">James K.</div><div class="test-role">Property Owner &middot; London, UK</div></div></div>
-    <div class="test"><div class="test-mark">&ldquo;</div><div class="test-q">The trespasse process was complex but Rentra handled it flawlessly. Every detail was taken care of, from due diligence to final handover.</div><div class="test-author"><div class="test-name">Carlos R.</div><div class="test-role">Business Transfer Client &middot; Lisbon</div></div></div>
+    <div class="test"><div class="test-mark">&ldquo;</div><div class="test-q" id="i18n-test-1-q">Rentra gave me complete peace of mind. My apartment in Lisbon is perfectly managed, I don&apos;t have to worry about anything from abroad.</div><div class="test-author"><div class="test-name">Sophie M.</div><div class="test-role" id="i18n-test-1-r">Property Owner &middot; Paris, France</div></div></div>
+    <div class="test"><div class="test-mark">&ldquo;</div><div class="test-q" id="i18n-test-2-q">Professional, responsive, and honest. They found me a quality tenant fast and the contract was rock solid.</div><div class="test-author"><div class="test-name">James K.</div><div class="test-role" id="i18n-test-2-r">Property Owner &middot; London, UK</div></div></div>
+    <div class="test"><div class="test-mark">&ldquo;</div><div class="test-q" id="i18n-test-3-q">The trespasse process was complex but Rentra handled it flawlessly. Every detail was taken care of, from due diligence to final handover.</div><div class="test-author"><div class="test-name">Carlos R.</div><div class="test-role" id="i18n-test-3-r">Business Transfer Client &middot; Lisbon</div></div></div>
   </div>
 </section>
 
@@ -879,26 +883,26 @@ footer{
 <section id="contact">
   <div class="contact-grid">
     <div class="r">
-      <div class="s-tag">Get In Touch</div>
-      <h2 class="s-title">Let&apos;s talk about <em>your property.</em></h2>
-      <p class="s-body">Whether you&apos;re ready to list or just exploring options, our team is here to build a plan around your needs.</p>
+      <div class="s-tag" id="i18n-contact-tag">Get In Touch</div>
+      <h2 class="s-title" id="i18n-contact-title">Let&apos;s talk about <em>your property.</em></h2>
+      <p class="s-body" id="i18n-contact-body">Whether you&apos;re ready to list or just exploring options, our team is here to build a plan around your needs.</p>
       <div class="c-list">
-        <div class="c-item"><div class="c-icon">&#128222;</div><div><div class="c-lbl">Phone</div><div class="c-val"><a href="tel:+351912419653">+351 912 419 653</a></div></div></div>
+        <div class="c-item"><div class="c-icon">&#128222;</div><div><div class="c-lbl" id="i18n-c-phone">Phone</div><div class="c-val"><a href="tel:+351912419653">+351 912 419 653</a></div></div></div>
         <div class="c-item"><div class="c-icon">&#9993;</div><div><div class="c-lbl">Email</div><div class="c-val"><a href="mailto:lisbon@rentra.pt">lisbon@rentra.pt</a></div></div></div>
-        <div class="c-item"><div class="c-icon">&#128205;</div><div><div class="c-lbl">Office</div><div class="c-val">R. Luciano Cordeiro 109B<br>1150-103 Lisboa</div></div></div>
+        <div class="c-item"><div class="c-icon">&#128205;</div><div><div class="c-lbl" id="i18n-c-office">Office</div><div class="c-val">R. Luciano Cordeiro 109B<br>1150-103 Lisboa</div></div></div>
       </div>
     </div>
     <div class="r">
       <form id="contact-form">
       <div class="f-row">
-        <div class="f-g"><label>First Name</label><input type="text" name="first_name" placeholder="Your name"></div>
-        <div class="f-g"><label>Last Name</label><input type="text" name="last_name" placeholder="Last name"></div>
+        <div class="f-g"><label id="i18n-f-fname">First Name</label><input type="text" name="first_name" placeholder="Your name"></div>
+        <div class="f-g"><label id="i18n-f-lname">Last Name</label><input type="text" name="last_name" placeholder="Last name"></div>
       </div>
-      <div class="f-g"><label>Email</label><input type="email" name="email" placeholder="your@email.com"></div>
-      <div class="f-g"><label>Phone</label><input type="tel" name="phone" placeholder="+351 ..."></div>
-      <div class="f-g"><label>Subject</label><select name="subject">
-          <option value="">Select a subject</option>
-          <option>Property Management</option>
+      <div class="f-g"><label id="i18n-f-email">Email</label><input type="email" name="email" placeholder="your@email.com"></div>
+      <div class="f-g"><label id="i18n-f-phone">Phone</label><input type="tel" name="phone" placeholder="+351 ..."></div>
+      <div class="f-g"><label id="i18n-f-subject">Subject</label><select name="subject">
+          <option value="" id="i18n-f-select-default">Select a subject</option>
+          <option id="i18n-f-select-pm">Property Management</option>
           <option>Trespasse</option>
           <option disabled>─────────────────</option>
           <option>Travessa da Arrochela N23 — 2bd · €1,900/mo</option>
@@ -911,11 +915,11 @@ footer{
           <option>Rua do Arsenal — 1bd · €1,500/mo</option>
           <option>Rua São José — Studio · €1,400/mo</option>
         </select></div>
-      <div class="f-g"><label>Message</label><textarea name="message" placeholder="Tell us about your property or inquiry..."></textarea></div>
-      <button type="submit" class="f-submit">Send Message</button>
+      <div class="f-g"><label id="i18n-f-message">Message</label><textarea name="message" placeholder="Tell us about your property or inquiry..."></textarea></div>
+      <button type="submit" class="f-submit" id="i18n-f-submit">Send Message</button>
       <div id="form-success" style="display:none;color:var(--au);font-size:0.9rem;margin-top:1rem;letter-spacing:0.05em;">Thank you, we'll be in touch within 24 hours.</div>
       <div id="form-error" style="display:none;color:#e07070;font-size:0.9rem;margin-top:1rem;">Something went wrong. Please try again or email us directly.</div>
-      <div class="f-note">We respond within 24 hours on business days.</div>
+      <div class="f-note" id="i18n-f-note">We respond within 24 hours on business days.</div>
       </form>
       <script>
       document.getElementById('contact-form').addEventListener('submit', async function(e) {
@@ -953,10 +957,10 @@ footer{
 <footer>
   <div class="foot-logo"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781103472/image2_k44kmr.png" alt="Rentra"></div>
   <div class="foot-links">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#properties">Properties</a>
-    <a href="#contact">Contact</a>
+    <a href="#about" id="i18n-foot-about">About</a>
+    <a href="#services" id="i18n-foot-services">Services</a>
+    <a href="#properties" id="i18n-foot-props">Properties</a>
+    <a href="#contact" id="i18n-foot-contact">Contact</a>
   </div>
   <div class="foot-copy">&copy; 2025 Rentra &middot; Lisbon</div>
 </footer>
@@ -1175,6 +1179,145 @@ function prevPhoto(id) {
   galleryIndex[id] = (galleryIndex[id] - 1 + gallerySrcs[id].length) % gallerySrcs[id].length;
   setPhoto(id, galleryIndex[id]);
 }
+</script>
+<script>
+const T={
+  'i18n-nav-about':{en:'About',pt:'Sobre'},
+  'i18n-nav-services':{en:'Services',pt:'Servi&ccedil;os'},
+  'i18n-nav-props':{en:'Properties',pt:'Im&oacute;veis'},
+  'i18n-nav-process':{en:'How It Works',pt:'Como Funciona'},
+  'i18n-nav-contact':{en:'Contact',pt:'Contacto'},
+  'i18n-mob-about':{en:'About',pt:'Sobre'},
+  'i18n-mob-services':{en:'Services',pt:'Servi&ccedil;os'},
+  'i18n-mob-props':{en:'Properties',pt:'Im&oacute;veis'},
+  'i18n-mob-process':{en:'How It Works',pt:'Como Funciona'},
+  'i18n-mob-contact':{en:'Contact',pt:'Contacto'},
+  'i18n-hero-eyebrow':{en:'Property Management &middot; Lisbon',pt:'Gest&atilde;o de Im&oacute;veis &middot; Lisboa'},
+  'i18n-hero-title':{en:'Your property,<em>perfectly managed.</em>',pt:'O seu im&oacute;vel,<em>gerido na perfei&ccedil;&atilde;o.</em>'},
+  'i18n-hero-desc':{en:'Rentra is a Lisbon-based property management company specializing in serving international property owners.',pt:'A Rentra &eacute; uma empresa de gest&atilde;o imobili&aacute;ria sediada em Lisboa, especializada em apoiar propriet&aacute;rios internacionais.'},
+  'i18n-hero-cta':{en:'Get a Free Consultation',pt:'Consulta Gratuita'},
+  'i18n-about-tag':{en:'Who We Are',pt:'Quem Somos'},
+  'i18n-about-title':{en:'A trusted partner<br><em>in Lisbon.</em>',pt:'Um parceiro de confian&ccedil;a<br><em>em Lisboa.</em>'},
+  'i18n-about-body':{en:'Founded to serve international property owners who need a reliable local partner. We combine market expertise, legal knowledge, and hands-on management so your investment works for you.',pt:'Fundada para apoiar propriet&aacute;rios internacionais que precisam de um parceiro local de confian&ccedil;a. Combinamos conhecimento de mercado, experi&ecirc;ncia jur&iacute;dica e gest&atilde;o pr&aacute;tica para que o seu investimento trabalhe para si.'},
+  'i18n-about-01-h':{en:'Licensed Professionals',pt:'Profissionais Licenciados'},
+  'i18n-about-01-p':{en:'Fully licensed under Portuguese real estate law, with expertise in residential and commercial transactions.',pt:'Totalmente licenciados ao abrigo da lei imobili&aacute;ria portuguesa, com experi&ecirc;ncia em transa&ccedil;&otilde;es residenciais e comerciais.'},
+  'i18n-about-02-h':{en:'International Focus',pt:'Foco Internacional'},
+  'i18n-about-02-p':{en:'We work with international property owners and communicate in English, French, Hebrew and Portuguese.',pt:'Trabalhamos com propriet&aacute;rios internacionais e comunicamos em ingl&ecirc;s, franc&ecirc;s, hebraico e portugu&ecirc;s.'},
+  'i18n-about-03-h':{en:'End-to-End Management',pt:'Gest&atilde;o Integral'},
+  'i18n-about-03-p':{en:'From tenant sourcing to maintenance, contracts, and monthly reporting, fully handled, fully transparent.',pt:'Da procura de inquilinos &agrave; manuten&ccedil;&atilde;o, contratos e relat&oacute;rios mensais, totalmente gerido e totalmente transparente.'},
+  'i18n-srv-tag':{en:'What We Offer',pt:'O Que Oferecemos'},
+  'i18n-srv-title':{en:'Two services,<br><em>one trusted partner.</em>',pt:'Dois servi&ccedil;os,<br><em>um parceiro de confian&ccedil;a.</em>'},
+  'i18n-srv-intro':{en:'Every service is tailored to your property, your goals, and your preferred level of involvement.',pt:'Cada servi&ccedil;o &eacute; adaptado ao seu im&oacute;vel, aos seus objetivos e ao n&iacute;vel de envolvimento que preferir.'},
+  'i18n-srv1-h':{en:'Property Management',pt:'Gest&atilde;o de Im&oacute;veis'},
+  'i18n-srv1-desc':{en:'Full end-to-end management for your property in Lisbon, from tenant sourcing to monthly reporting.',pt:'Gest&atilde;o integral do seu im&oacute;vel em Lisboa, desde a angaria&ccedil;&atilde;o de inquilinos at&eacute; aos relat&oacute;rios mensais.'},
+  'i18n-srv-includes-label':{en:'Included in all plans',pt:'Inclu&iacute;do em todos os planos'},
+  'i18n-srv-inc-1':{en:'Market analysis &amp; pricing',pt:'An&aacute;lise de mercado e fixa&ccedil;&atilde;o de pre&ccedil;o'},
+  'i18n-srv-inc-2':{en:'Professional photography',pt:'Fotografia profissional'},
+  'i18n-srv-inc-3':{en:'Tenant screening',pt:'Sele&ccedil;&atilde;o de inquilinos'},
+  'i18n-srv-inc-4':{en:'Contract signing',pt:'Assinatura de contrato'},
+  'i18n-srv-inc-5':{en:'Check-in / check-out inventory',pt:'Invent&aacute;rio de check-in / check-out'},
+  'i18n-srv-inc-6':{en:'Maintenance coordination',pt:'Coordena&ccedil;&atilde;o de manuten&ccedil;&atilde;o'},
+  'i18n-trk1-label':{en:'Long-Term Rental',pt:'Arrendamento de Longa Dura&ccedil;&atilde;o'},
+  'i18n-trk1-p':{en:'Yearly leases for residents, families &amp; expats. Stable income, minimal turnover.',pt:'Contratos anuais para residentes, fam&iacute;lias e expatriados. Rendimento est&aacute;vel, rotatividade m&iacute;nima.'},
+  'i18n-trk1-li1':{en:'NRAU-compliant contracts',pt:'Contratos conformes ao NRAU'},
+  'i18n-trk1-li2':{en:'Tenant background verification',pt:'Verifica&ccedil;&atilde;o de antecedentes do inquilino'},
+  'i18n-trk1-li3':{en:'Monthly reporting to owner',pt:'Relat&oacute;rio mensal ao propriet&aacute;rio'},
+  'i18n-trk1-fee':{en:'Commission: 15% of monthly rent',pt:'Comiss&atilde;o: 15% da renda mensal'},
+  'i18n-trk2-label':{en:'Mid-Term Rental',pt:'Arrendamento de M&eacute;dio Prazo'},
+  'i18n-trk2-p':{en:'Monthly leases for digital nomads &amp; business professionals. Higher yield, flexible terms.',pt:'Contratos mensais para n&oacute;madas digitais e profissionais. Maior rentabilidade, condi&ccedil;&otilde;es flex&iacute;veis.'},
+  'i18n-trk2-li1':{en:'Multi-platform advertising',pt:'Divulga&ccedil;&atilde;o em m&uacute;ltiplas plataformas'},
+  'i18n-trk2-li2':{en:'High-standard cleaning &amp; inventory',pt:'Limpeza de alta qualidade e invent&aacute;rio'},
+  'i18n-trk2-li3':{en:'Tenant support throughout stay',pt:'Apoio ao inquilino durante toda a estadia'},
+  'i18n-trk2-fee':{en:'Commission: 15–20% of monthly rent',pt:'Comissão: 15–20% da renda mensal'},
+  'i18n-trp-p':{en:'Buying or selling a business in Lisbon? We manage the full transfer process, legally sound, fully coordinated, stress-free.',pt:'Comprar ou vender um neg&oacute;cio em Lisboa? Gerimos todo o processo de transmiss&atilde;o &mdash; juridicamente seguro, totalmente coordenado e sem complica&ccedil;&otilde;es.'},
+  'i18n-trp-fee':{en:'Fee: discussed per transaction',pt:'Honor&aacute;rios: discutidos por transa&ccedil;&atilde;o'},
+  'i18n-trp-li1':{en:'Transaction coordination &amp; documentation',pt:'Coordena&ccedil;&atilde;o e documenta&ccedil;&atilde;o da transa&ccedil;&atilde;o'},
+  'i18n-trp-li2':{en:'Due diligence support',pt:'Apoio em due diligence'},
+  'i18n-trp-li3':{en:'Contract drafting &amp; legal review',pt:'Elabora&ccedil;&atilde;o de contratos e revis&atilde;o jur&iacute;dica'},
+  'i18n-trp-li4':{en:'License &amp; permit transfer handling',pt:'Transfer&ecirc;ncia de licen&ccedil;as e alvar&aacute;s'},
+  'i18n-trp-li5':{en:'Buyer &amp; seller representation',pt:'Representa&ccedil;&atilde;o de comprador e vendedor'},
+  'i18n-trp-li6':{en:'Negotiation support',pt:'Apoio na negocia&ccedil;&atilde;o'},
+  'i18n-why-tag':{en:'Why Rentra',pt:'Porqu&ecirc; a Rentra'},
+  'i18n-why-title':{en:'Everything your <em>property needs.</em>',pt:'Tudo o que o seu <em>im&oacute;vel precisa.</em>'},
+  'i18n-why-01-h':{en:'Property Strategy',pt:'Estrat&eacute;gia Imobili&aacute;ria'},
+  'i18n-why-01-p':{en:'We assess your property and the local market to define the optimal rental strategy, maximizing your return and reducing vacancy periods.',pt:'Avaliamos o seu im&oacute;vel e o mercado local para definir a estrat&eacute;gia de arrendamento ideal, maximizando o retorno e reduzindo os per&iacute;odos de desocupa&ccedil;&atilde;o.'},
+  'i18n-why-02-h':{en:'In-House Marketing',pt:'Marketing Interno'},
+  'i18n-why-02-p':{en:'Professional photography and multi-platform listings, handled internally to ensure quality, consistency, and fast time-to-market.',pt:'Fotografia profissional e an&uacute;ncios em m&uacute;ltiplas plataformas, geridos internamente para garantir qualidade, consist&ecirc;ncia e rapidez.'},
+  'i18n-why-03-h':{en:'Maintenance Network',pt:'Rede de Manuten&ccedil;&atilde;o'},
+  'i18n-why-03-p':{en:'We coordinate all maintenance work through trusted contractors and oversee every job from start to finish.',pt:'Coordenamos todos os trabalhos de manuten&ccedil;&atilde;o atrav&eacute;s de prestadores de confian&ccedil;a e acompanhamos cada trabalho do in&iacute;cio ao fim.'},
+  'i18n-why-04-h':{en:'Tenant Screening',pt:'Sele&ccedil;&atilde;o de Inquilinos'},
+  'i18n-why-04-p':{en:'We screen every applicant by reviewing income documents and employment contracts before any lease is signed.',pt:'Analisamos cada candidato, verificando documentos de rendimento e contratos de trabalho antes de qualquer contrato ser assinado.'},
+  'i18n-why-05-h':{en:'Legal Compliance',pt:'Conformidade Legal'},
+  'i18n-why-05-p':{en:'All contracts are drafted in compliance with Portuguese law, clearly defining the rights and obligations of both parties.',pt:'Todos os contratos s&atilde;o elaborados em conformidade com a lei portuguesa, definindo claramente os direitos e obriga&ccedil;&otilde;es de ambas as partes.'},
+  'i18n-why-06-h':{en:'Furniture Solutions',pt:'Solu&ccedil;&otilde;es de Mobili&aacute;rio'},
+  'i18n-why-06-p':{en:'We source and install furniture suited to your rental type, from procurement to delivery and assembly.',pt:'Selecionamos e instalamos mobili&aacute;rio adequado ao tipo de arrendamento, desde a aquisi&ccedil;&atilde;o at&eacute; &agrave; entrega e montagem.'},
+  'i18n-prop-tag':{en:'Current Listings',pt:'Im&oacute;veis Dispon&iacute;veis'},
+  'i18n-prop-title':{en:'Properties <em>for rent.</em>',pt:'Im&oacute;veis <em>para arrendar.</em>'},
+  'i18n-proc-tag':{en:'How It Works',pt:'Como Funciona'},
+  'i18n-proc-title':{en:'Four steps to <em>effortless ownership.</em>',pt:'Quatro passos para uma <em>gest&atilde;o sem preocupa&ccedil;&otilde;es.</em>'},
+  'i18n-proc-1-h':{en:'Consultation',pt:'Consulta'},
+  'i18n-proc-1-p':{en:'We assess your property, goals, and preferred involvement to build the right plan.',pt:'Avaliamos o seu im&oacute;vel, objetivos e n&iacute;vel de envolvimento preferido para definir o plano certo.'},
+  'i18n-proc-2-h':{en:'Preparation',pt:'Prepara&ccedil;&atilde;o'},
+  'i18n-proc-2-p':{en:'Photography, pricing strategy, furnishing if needed, and deep-clean to get market-ready.',pt:'Fotografia, estrat&eacute;gia de pre&ccedil;o, mobilar se necess&aacute;rio e limpeza profunda para estar pronto para o mercado.'},
+  'i18n-proc-3-h':{en:'Placement',pt:'Coloca&ccedil;&atilde;o'},
+  'i18n-proc-3-p':{en:'Marketing &amp; advertising, tenant screening, tours, and contract signing, all handled.',pt:'Marketing e divulga&ccedil;&atilde;o, sele&ccedil;&atilde;o de inquilinos, visitas e assinatura de contrato, tudo tratado.'},
+  'i18n-proc-4-h':{en:'Management',pt:'Gest&atilde;o'},
+  'i18n-proc-4-p':{en:'Monthly reporting, maintenance, rent collection, and tenant relations, fully managed.',pt:'Relat&oacute;rios mensais, manuten&ccedil;&atilde;o, cobran&ccedil;a de renda e rela&ccedil;&atilde;o com inquilinos, totalmente geridos.'},
+  'i18n-test-tag':{en:'Client Feedback',pt:'Opini&atilde;o dos Clientes'},
+  'i18n-test-title':{en:'What our <em>owners say.</em>',pt:'O que os nossos <em>propriet&aacute;rios dizem.</em>'},
+  'i18n-test-1-q':{en:"Rentra gave me complete peace of mind. My apartment in Lisbon is perfectly managed, I don't have to worry about anything from abroad.",pt:'A Rentra deu-me total tranquilidade. O meu apartamento em Lisboa est&aacute; perfeitamente gerido, n&atilde;o me preocupo com nada estando no estrangeiro.'},
+  'i18n-test-1-r':{en:'Property Owner &middot; Paris, France',pt:'Propriet&aacute;ria &middot; Paris, Fran&ccedil;a'},
+  'i18n-test-2-q':{en:'Professional, responsive, and honest. They found me a quality tenant fast and the contract was rock solid.',pt:'Profissional, dispon&iacute;vel e honesto. Encontraram-me um inquilino de qualidade rapidamente e o contrato era s&oacute;lido.'},
+  'i18n-test-2-r':{en:'Property Owner &middot; London, UK',pt:'Propriet&aacute;rio &middot; Londres, Reino Unido'},
+  'i18n-test-3-q':{en:'The trespasse process was complex but Rentra handled it flawlessly. Every detail was taken care of, from due diligence to final handover.',pt:'O processo de trespasse foi complexo, mas a Rentra tratou de tudo na perfei&ccedil;&atilde;o. Cada detalhe foi cuidado, da due diligence &agrave; entrega final.'},
+  'i18n-test-3-r':{en:'Business Transfer Client &middot; Lisbon',pt:'Cliente de Trespasse &middot; Lisboa'},
+  'i18n-contact-tag':{en:'Get In Touch',pt:'Entre em Contacto'},
+  'i18n-contact-title':{en:"Let's talk about <em>your property.</em>",pt:'Vamos falar sobre <em>o seu im&oacute;vel.</em>'},
+  'i18n-contact-body':{en:"Whether you're ready to list or just exploring options, our team is here to build a plan around your needs.",pt:'Quer esteja pronto para listar ou apenas a explorar op&ccedil;&otilde;es, a nossa equipa est&aacute; dispon&iacute;vel para criar um plano adequado &agrave;s suas necessidades.'},
+  'i18n-c-phone':{en:'Phone',pt:'Telefone'},
+  'i18n-c-office':{en:'Office',pt:'Escrit&oacute;rio'},
+  'i18n-f-fname':{en:'First Name',pt:'Nome'},
+  'i18n-f-lname':{en:'Last Name',pt:'Apelido'},
+  'i18n-f-email':{en:'Email',pt:'Email'},
+  'i18n-f-phone':{en:'Phone',pt:'Telefone'},
+  'i18n-f-subject':{en:'Subject',pt:'Assunto'},
+  'i18n-f-select-default':{en:'Select a subject',pt:'Selecione um assunto'},
+  'i18n-f-select-pm':{en:'Property Management',pt:'Gest&atilde;o de Im&oacute;veis'},
+  'i18n-f-message':{en:'Message',pt:'Mensagem'},
+  'i18n-f-submit':{en:'Send Message',pt:'Enviar Mensagem'},
+  'i18n-f-note':{en:'We respond within 24 hours on business days.',pt:'Respondemos dentro de 24 horas em dias &uacute;teis.'},
+  'i18n-foot-about':{en:'About',pt:'Sobre'},
+  'i18n-foot-services':{en:'Services',pt:'Servi&ccedil;os'},
+  'i18n-foot-props':{en:'Properties',pt:'Im&oacute;veis'},
+  'i18n-foot-contact':{en:'Contact',pt:'Contacto'}
+};
+
+let currentLang = localStorage.getItem('rentra-lang') || 'en';
+
+function applyLang(lang) {
+  Object.entries(T).forEach(([id, texts]) => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = texts[lang];
+  });
+  document.querySelectorAll('.i18n-badge').forEach(el => { el.textContent = lang==='pt' ? 'Para Arrendar' : 'For Rent'; });
+  document.querySelectorAll('.i18n-month').forEach(el => { el.innerHTML = lang==='pt' ? '/ m&ecirc;s' : '/ month'; });
+  const btn = document.getElementById('lang-btn');
+  if (btn) btn.textContent = lang==='pt' ? 'EN' : 'PT';
+  document.documentElement.lang = lang==='pt' ? 'pt' : 'en';
+  // form messages (update text even when hidden)
+  const s = document.getElementById('form-success');
+  if (s) s.textContent = lang==='pt' ? 'Obrigado, entraremos em contacto nas próximas 24 horas.' : "Thank you, we'll be in touch within 24 hours.";
+  const e = document.getElementById('form-error');
+  if (e) e.textContent = lang==='pt' ? 'Algo correu mal. Por favor tente novamente ou envie-nos um email.' : 'Something went wrong. Please try again or email us directly.';
+}
+
+function toggleLang() {
+  currentLang = currentLang === 'en' ? 'pt' : 'en';
+  localStorage.setItem('rentra-lang', currentLang);
+  applyLang(currentLang);
+}
+
+if (currentLang === 'pt') applyLang('pt');
 </script>
 </body>
 </html>

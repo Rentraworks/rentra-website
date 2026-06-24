@@ -328,27 +328,28 @@ h2.s-title em{color:var(--au);font-style:italic}
 /* ── PROPERTIES ── */
 #properties{border-top:1px solid var(--line2)}
 .prop-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem}
-#properties{padding:7rem 5%;}
-.prop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem}
-.prop-card{background:var(--g);overflow:hidden;position:relative;cursor:pointer;border-radius:12px;box-shadow:0 0 0 2px transparent;transition:box-shadow 0.25s ease,background 0.25s ease;}
-.prop-card:hover{box-shadow:0 0 0 2px rgba(0,100,70,0.9);background:rgb(0,55,43);}
-.prop-thumb{height:280px;overflow:hidden;position:relative;}
-.prop-photo-count{position:absolute;bottom:0.75rem;right:0.75rem;z-index:2;background:rgba(0,69,57,0.9);border:1px solid rgba(221,173,117,0.35);color:var(--au);font-size:0.6rem;letter-spacing:0.15em;padding:0.25rem 0.6rem;}
-.prop-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(0.75) saturate(0.85);transition:transform 0.6s ease;}
-.prop-card:hover .prop-thumb img{transform:scale(1.04);}
-.prop-badge{position:absolute;top:1rem;left:1rem;z-index:3;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;background:rgba(0,69,57,0.9);color:var(--au);border:1px solid rgba(221,173,117,0.35);padding:0.28rem 0.7rem;}
-.prop-body{padding:1.4rem 1.5rem;border-top:1px solid var(--line2);}
-.prop-price{font-family:"Playfair Display",serif;font-size:1.4rem;font-weight:300;color:var(--au);}
-.prop-price span{font-family:"Jost",sans-serif;font-size:1rem;color:var(--cr2);font-weight:400;}
-.prop-addr{font-size:0.9rem;color:var(--cr);margin-top:0.25rem;}
-.prop-meta{display:flex;gap:1rem;margin-top:0.6rem;flex-wrap:wrap;}
-.prop-meta span{font-size:0.88rem;color:var(--cr2);}
-.prop-cta{text-align:center;margin-top:3.5rem;}
-.prop-cta p{font-size:0.92rem;color:var(--cr2);margin-bottom:1.25rem;}
-@media(max-width:768px){
-  .prop-grid{grid-template-columns:1fr;}
-  .prop-head{flex-direction:column;align-items:flex-start;gap:1rem;}
+.prop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;background:transparent}
+.prop-card{background:var(--g);overflow:hidden;transition:background 0.25s;position:relative}
+.prop-card:hover{background:rgba(0,0,0,0.15)}
+.prop-thumb{height:220px;position:relative;overflow:hidden}
+.prop-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(0.7) saturate(0.8);transition:transform 0.6s ease,filter 0.4s ease}
+.prop-card:hover .prop-thumb img{transform:scale(1.04);filter:brightness(0.8) saturate(0.9)}
+.prop-badge{
+  position:absolute;top:1rem;left:1rem;z-index:1;
+  font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;
+  background:rgba(0,69,57,0.9);color:var(--au);
+  border:1px solid rgba(221,173,117,0.35);padding:0.3rem 0.75rem;border-radius:1px;
 }
+.prop-body{padding:1.4rem 1.5rem;border-top:1px solid var(--line2)}
+.prop-price{
+  font-family:"Playfair Display",serif;font-size:1.4rem;font-weight:300;color:var(--au);
+}
+.prop-price span{font-family:"Jost",sans-serif;font-size:1rem;color:var(--cr2);font-weight:400}
+.prop-addr{font-size:0.92rem;color:var(--cr);margin-top:0.25rem;letter-spacing:0.02em}
+.prop-meta{display:flex;gap:1rem;margin-top:0.65rem;flex-wrap:wrap}
+.prop-meta span{font-size:0.92rem;color:var(--cr2)}
+.prop-cta{text-align:center;margin-top:3.5rem}
+.prop-cta p{font-size:0.92rem;color:var(--cr2);margin-bottom:1.25rem}
 
 /* ── PROCESS ── */
 #process{border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);padding-bottom:4rem}
@@ -477,7 +478,7 @@ footer{
   .srv-includes-grid{grid-template-columns:1fr 1fr}
   .srv-trespasse{grid-template-columns:1fr}
   .why-grid{grid-template-columns:1fr 1fr}
-  .prop-grid{grid-template-columns:1fr;}
+  .prop-grid{grid-template-columns:1fr}
   .proc-steps{grid-template-columns:1fr 1fr}
   .proc-step:nth-child(2){border-right:none}
   .proc-step:nth-child(1),.proc-step:nth-child(2){border-bottom:1px solid var(--line2)}
@@ -647,74 +648,122 @@ footer{
     <a href="https://wa.me/351912419653" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;align-items:center;gap:0.5rem;"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>WhatsApp</a>
   </div>
   <div class="prop-grid r">
-    <div class="prop-card" onclick="openGallery('arrochela')">
-      <div class="prop-thumb"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960448/SRE_2577-HDR_bkayzv.jpg" alt="Travessa da Arrochela N23"><span class="prop-badge i18n-badge">For Rent</span><span class="prop-photo-count">13 PHOTOS</span></div>
-      <div class="prop-body"><div class="prop-price">&euro;1,900 <span class="i18n-month">/ month</span></div><div class="prop-addr">Travessa da Arrochela N23</div><div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div><div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>65 m&sup2;</span></div></div>
+    <div class="prop-card" onclick="openGallery('arrochela')" style="cursor:pointer;">
+      <div class="prop-thumb" style="position:relative;">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960448/SRE_2577-HDR_bkayzv.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <span class="prop-badge i18n-badge">For Rent</span>
+        <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">4 PHOTOS</div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-price">&euro;1,900 <span class="i18n-month">/ month</span></div>
+        <div class="prop-addr">Travessa da Arrochela N23</div>
+        <div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div>
+        <div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>65 m&sup2;</span></div>
+      </div>
     </div>
-    <div class="prop-card" onclick="openGallery('almada')">
-      <div class="prop-thumb"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106586/SRE_4386-HDR_xong2m.jpg" alt="Rua do Almada"><span class="prop-badge i18n-badge">For Rent</span><span class="prop-photo-count">13 PHOTOS</span></div>
-      <div class="prop-body"><div class="prop-price">&euro;1,450 <span class="i18n-month">/ month</span></div><div class="prop-addr">Rua do Almada</div><div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div><div class="prop-meta"><span>1 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>49 m&sup2;</span></div></div>
+    <div class="prop-card" onclick="openGallery('almada')" style="cursor:pointer;">
+      <div class="prop-thumb" style="position:relative;">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106586/SRE_4386-HDR_xong2m.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Rua do Almada">
+        <span class="prop-badge i18n-badge">For Rent</span>
+        <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">13 PHOTOS</div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-price">&euro;1,450 <span class="i18n-month">/ month</span></div>
+        <div class="prop-addr">Rua do Almada</div>
+        <div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div>
+        <div class="prop-meta"><span>1 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>49 m&sup2;</span></div>
+      </div>
     </div>
-    <div class="prop-card" onclick="openGallery('angelina')">
-      <div class="prop-thumb"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113489/SRE_9427_ezzat8.jpg" alt="Rua Angelina Vidal"><span class="prop-badge">Trespasse</span><span class="prop-photo-count">19 PHOTOS</span></div>
-      <div class="prop-body"><div class="prop-price">&euro;55,000</div><div class="prop-addr">Rua Angelina Vidal</div><div class="prop-meta"><span>Arroios &middot; Lisbon</span></div><div class="prop-meta"><span>47 m&sup2;</span><span>&middot;</span><span>Rental &euro;600/mo</span></div></div>
+    <div class="prop-card" onclick="openGallery('angelina')" style="cursor:pointer;">
+      <div class="prop-thumb" style="position:relative;">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113489/SRE_9427_ezzat8.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Rua Angelina Vidal">
+        <span class="prop-badge">Trespasse</span>
+        <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">19 PHOTOS</div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-price">&euro;55,000</div>
+        <div class="prop-addr">Rua Angelina Vidal</div>
+        <div class="prop-meta"><span>Arroios &middot; Lisbon</span></div>
+        <div class="prop-meta"><span>47 m&sup2;</span><span>&middot;</span><span>Rental &euro;600/mo</span></div>
+      </div>
     </div>
-    <div class="prop-card" onclick="openGallery('santa')">
-      <div class="prop-thumb"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114468/Rua_do_Sol_a_Santa_Catarina_37-1_usiihq.jpg" alt="Rua do Sol a Santa Catarina"><span class="prop-badge i18n-badge">For Rent</span><span class="prop-photo-count">27 PHOTOS</span></div>
-      <div class="prop-body"><div class="prop-price">&euro;2,200 <span class="i18n-month">/ month</span></div><div class="prop-addr">Rua do Sol a Santa Catarina</div><div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div><div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>2 bath</span><span>&middot;</span><span>120 m&sup2;</span></div></div>
+    <div class="prop-card" onclick="openGallery('santa')" style="cursor:pointer;">
+      <div class="prop-thumb" style="position:relative;">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114468/Rua_do_Sol_a_Santa_Catarina_37-1_usiihq.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Rua do Sol a Santa Catarina">
+        <span class="prop-badge i18n-badge">For Rent</span>
+        <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">27 PHOTOS</div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-price">&euro;2,200 <span class="i18n-month">/ month</span></div>
+        <div class="prop-addr">Rua do Sol a Santa Catarina</div>
+        <div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div>
+        <div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>2 bath</span><span>&middot;</span><span>120 m&sup2;</span></div>
+      </div>
     </div>
-    <div class="prop-card" onclick="openGallery('saopaulo')">
-      <div class="prop-thumb"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111090/IMG_7991_qo3urj.jpg" alt="Rua de S&atilde;o Paulo 29"><span class="prop-badge i18n-badge">For Rent</span><span class="prop-photo-count">21 PHOTOS</span></div>
-      <div class="prop-body"><div class="prop-price">&euro;2,000 <span class="i18n-month">/ month</span></div><div class="prop-addr">Rua de S&atilde;o Paulo 29</div><div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div><div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>140 m&sup2;</span></div></div>
+    <div class="prop-card" onclick="openGallery('saopaulo')" style="cursor:pointer;">
+      <div class="prop-thumb" style="position:relative;">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111090/IMG_7991_qo3urj.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Rua de São Paulo 29">
+        <span class="prop-badge i18n-badge">For Rent</span>
+        <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">21 PHOTOS</div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-price">&euro;2,000 <span class="i18n-month">/ month</span></div>
+        <div class="prop-addr">Rua de S&atilde;o Paulo 29</div>
+        <div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div>
+        <div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>140 m&sup2;</span></div>
+      </div>
     </div>
-    <div class="prop-card" onclick="openGallery('laranjeira')">
-      <div class="prop-thumb"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110649/2-2_nwbnfr.jpg" alt="Travessa da Laranjeira"><span class="prop-badge i18n-badge">For Rent</span><span class="prop-photo-count">18 PHOTOS</span></div>
-      <div class="prop-body"><div class="prop-price">&euro;1,700 <span class="i18n-month">/ month</span></div><div class="prop-addr">Travessa da Laranjeira</div><div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div><div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>66 m&sup2;</span></div></div>
+    <div class="prop-card" onclick="openGallery('laranjeira')" style="cursor:pointer;">
+      <div class="prop-thumb" style="position:relative;">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110649/2-2_nwbnfr.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Travessa da Laranjeira">
+        <span class="prop-badge i18n-badge">For Rent</span>
+        <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">18 PHOTOS</div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-price">&euro;1,700 <span class="i18n-month">/ month</span></div>
+        <div class="prop-addr">Travessa da Laranjeira</div>
+        <div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div>
+        <div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>66 m&sup2;</span></div>
+      </div>
     </div>
-    <div class="prop-card" onclick="openGallery('castro')">
-      <div class="prop-thumb"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112961/IMG_4592_wryih1.jpg" alt="Travessa Castro"><span class="prop-badge i18n-badge">For Rent</span><span class="prop-photo-count">20 PHOTOS</span></div>
-      <div class="prop-body"><div class="prop-price">&euro;1,800 <span class="i18n-month">/ month</span></div><div class="prop-addr">Travessa Castro</div><div class="prop-meta"><span>Alcântara &middot; Estrela &middot; Lisbon</span></div><div class="prop-meta"><span>1 bed</span><span>&middot;</span><span>65 m&sup2; + garden</span><span>&middot;</span><span>Parking</span></div></div>
+    <div class="prop-card" onclick="openGallery('castro')" style="cursor:pointer;">
+      <div class="prop-thumb" style="position:relative;">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112961/IMG_4592_wryih1.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Travessa Castro">
+        <span class="prop-badge i18n-badge">For Rent</span>
+        <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">20 PHOTOS</div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-price">&euro;1,800 <span class="i18n-month">/ month</span></div>
+        <div class="prop-addr">Travessa Castro</div>
+        <div class="prop-meta"><span>Alcântara &middot; Estrela &middot; Lisbon</span></div>
+        <div class="prop-meta"><span>1 bed</span><span>&middot;</span><span>65 m&sup2; + garden</span><span>&middot;</span><span>Parking</span></div>
+      </div>
     </div>
-    <div class="prop-card" onclick="openGallery('arsenal')">
-      <div class="prop-thumb"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107627/WhatsApp_Image_2024-11-20_at_16.40.23_7_xs3dne.jpg" alt="Rua do Arsenal"><span class="prop-badge i18n-badge">For Rent</span><span class="prop-photo-count">14 PHOTOS</span></div>
-      <div class="prop-body"><div class="prop-price">&euro;1,500 <span class="i18n-month">/ month</span></div><div class="prop-addr">Rua do Arsenal</div><div class="prop-meta"><span>Santa Maria Maior &middot; Lisbon</span></div><div class="prop-meta"><span>1 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>50 m&sup2;</span></div></div>
+    <div class="prop-card" onclick="openGallery('arsenal')" style="cursor:pointer;">
+      <div class="prop-thumb" style="position:relative;">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107627/WhatsApp_Image_2024-11-20_at_16.40.23_7_xs3dne.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Rua do Arsenal">
+        <span class="prop-badge i18n-badge">For Rent</span>
+        <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">14 PHOTOS</div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-price">&euro;1,500 <span class="i18n-month">/ month</span></div>
+        <div class="prop-addr">Rua do Arsenal</div>
+        <div class="prop-meta"><span>Santa Maria Maior &middot; Lisbon</span></div>
+        <div class="prop-meta"><span>1 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>50 m&sup2;</span></div>
+      </div>
     </div>
-    <div class="prop-card" onclick="openGallery('saojose')">
-      <div class="prop-thumb"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118670/bc174b88-fb2b-46ec-a48e-af0a0db536fb_yedhqj.jpg" alt="Rua S&atilde;o Jos&eacute;"><span class="prop-badge i18n-badge">For Rent</span><span class="prop-photo-count">17 PHOTOS</span></div>
-      <div class="prop-body"><div class="prop-price">&euro;1,400 <span class="i18n-month">/ month</span></div><div class="prop-addr">Rua S&atilde;o Jos&eacute;</div><div class="prop-meta"><span>Santo António &middot; Lisbon</span></div><div class="prop-meta"><span>Studio</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>39 m&sup2;</span></div></div>
-    </div>
-  </div>
-    <div class="prop-card" onclick="openGallery('almada')">
-      <div class="prop-thumb"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106586/SRE_4386-HDR_xong2m.jpg" alt="Rua do Almada"><span class="prop-badge i18n-badge">For Rent</span><div class="prop-ov-addr">Rua do Almada</div><div class="prop-ov-meta"><span>1 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>49 m²</span></div></div></div>
-      <div class="prop-body"><div class="prop-price">&euro;1,450 <span class="i18n-month">/ month</span></div><div class="prop-addr">Rua do Almada</div><div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div><div class="prop-meta"><span>1 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>49 m&sup2;</span></div></div>
-    </div>
-    <div class="prop-card" onclick="openGallery('angelina')">
-      <div class="prop-thumb"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113489/SRE_9427_ezzat8.jpg" alt="Rua Angelina Vidal"><span class="prop-badge">Trespasse</span><div class="prop-ov-addr">Rua Angelina Vidal</div><div class="prop-ov-meta"><span>47 m²</span><span>&middot;</span><span>Rental €600/mo</span></div></div></div>
-      <div class="prop-body"><div class="prop-price">&euro;55,000</div><div class="prop-addr">Rua Angelina Vidal</div><div class="prop-meta"><span>Arroios &middot; Lisbon</span></div><div class="prop-meta"><span>47 m&sup2;</span><span>&middot;</span><span>Rental &euro;600/mo</span></div></div>
-    </div>
-    <div class="prop-card" onclick="openGallery('santa')">
-      <div class="prop-thumb"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114468/Rua_do_Sol_a_Santa_Catarina_37-1_usiihq.jpg" alt="Rua do Sol a Santa Catarina"><span class="prop-badge i18n-badge">For Rent</span><div class="prop-ov-addr">Rua do Sol a Santa Catarina</div><div class="prop-ov-meta"><span>2 bed</span><span>&middot;</span><span>2 bath</span><span>&middot;</span><span>120 m²</span></div></div></div>
-      <div class="prop-body"><div class="prop-price">&euro;2,200 <span class="i18n-month">/ month</span></div><div class="prop-addr">Rua do Sol a Santa Catarina</div><div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div><div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>2 bath</span><span>&middot;</span><span>120 m&sup2;</span></div></div>
-    </div>
-    <div class="prop-card" onclick="openGallery('saopaulo')">
-      <div class="prop-thumb"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111090/IMG_7991_qo3urj.jpg" alt="Rua de S&atilde;o Paulo 29"><span class="prop-badge i18n-badge">For Rent</span><div class="prop-ov-addr">Rua de São Paulo 29</div><div class="prop-ov-meta"><span>2 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>140 m²</span></div></div></div>
-      <div class="prop-body"><div class="prop-price">&euro;2,000 <span class="i18n-month">/ month</span></div><div class="prop-addr">Rua de S&atilde;o Paulo 29</div><div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div><div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>140 m&sup2;</span></div></div>
-    </div>
-    <div class="prop-card" onclick="openGallery('laranjeira')">
-      <div class="prop-thumb"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110649/2-2_nwbnfr.jpg" alt="Travessa da Laranjeira"><span class="prop-badge i18n-badge">For Rent</span><div class="prop-ov-addr">Travessa da Laranjeira</div><div class="prop-ov-meta"><span>2 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>66 m²</span></div></div></div>
-      <div class="prop-body"><div class="prop-price">&euro;1,700 <span class="i18n-month">/ month</span></div><div class="prop-addr">Travessa da Laranjeira</div><div class="prop-meta"><span>Misericórdia &middot; Lisbon</span></div><div class="prop-meta"><span>2 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>66 m&sup2;</span></div></div>
-    </div>
-    <div class="prop-card" onclick="openGallery('castro')">
-      <div class="prop-thumb"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112961/IMG_4592_wryih1.jpg" alt="Travessa Castro"><span class="prop-badge i18n-badge">For Rent</span><div class="prop-ov-addr">Travessa Castro</div><div class="prop-ov-meta"><span>1 bed</span><span>&middot;</span><span>65 m² + garden</span><span>&middot;</span><span>Parking</span></div></div></div>
-      <div class="prop-body"><div class="prop-price">&euro;1,800 <span class="i18n-month">/ month</span></div><div class="prop-addr">Travessa Castro</div><div class="prop-meta"><span>Alcântara &middot; Estrela &middot; Lisbon</span></div><div class="prop-meta"><span>1 bed</span><span>&middot;</span><span>65 m&sup2; + garden</span><span>&middot;</span><span>Parking</span></div></div>
-    </div>
-    <div class="prop-card" onclick="openGallery('arsenal')">
-      <div class="prop-thumb"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107627/WhatsApp_Image_2024-11-20_at_16.40.23_7_xs3dne.jpg" alt="Rua do Arsenal"><span class="prop-badge i18n-badge">For Rent</span><div class="prop-ov-addr">Rua do Arsenal</div><div class="prop-ov-meta"><span>1 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>50 m²</span></div></div></div>
-      <div class="prop-body"><div class="prop-price">&euro;1,500 <span class="i18n-month">/ month</span></div><div class="prop-addr">Rua do Arsenal</div><div class="prop-meta"><span>Santa Maria Maior &middot; Lisbon</span></div><div class="prop-meta"><span>1 bed</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>50 m&sup2;</span></div></div>
-    </div>
-    <div class="prop-card" onclick="openGallery('saojose')">
-      <div class="prop-thumb"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118670/bc174b88-fb2b-46ec-a48e-af0a0db536fb_yedhqj.jpg" alt="Rua S&atilde;o Jos&eacute;"><span class="prop-badge i18n-badge">For Rent</span><div class="prop-ov-addr">Rua São José</div><div class="prop-ov-meta"><span>Studio</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>39 m²</span></div></div></div>
-      <div class="prop-body"><div class="prop-price">&euro;1,400 <span class="i18n-month">/ month</span></div><div class="prop-addr">Rua S&atilde;o Jos&eacute;</div><div class="prop-meta"><span>Santo António &middot; Lisbon</span></div><div class="prop-meta"><span>Studio</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>39 m&sup2;</span></div></div>
+    <div class="prop-card" onclick="openGallery('saojose')" style="cursor:pointer;">
+      <div class="prop-thumb" style="position:relative;">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118670/bc174b88-fb2b-46ec-a48e-af0a0db536fb_yedhqj.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Rua São José">
+        <span class="prop-badge i18n-badge">For Rent</span>
+        <div style="position:absolute;bottom:0.75rem;right:0.75rem;background:rgba(0,69,57,0.85);border:1px solid rgba(221,173,117,0.35);padding:0.25rem 0.6rem;border-radius:1px;font-size:0.6rem;letter-spacing:0.1em;color:var(--au);">17 PHOTOS</div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-price">&euro;1,400 <span class="i18n-month">/ month</span></div>
+        <div class="prop-addr">Rua S&atilde;o Jos&eacute;</div>
+        <div class="prop-meta"><span>Santo António &middot; Lisbon</span></div>
+        <div class="prop-meta"><span>Studio</span><span>&middot;</span><span>1 bath</span><span>&middot;</span><span>39 m&sup2;</span></div>
+      </div>
     </div>
   </div>
   <!-- WALKTHROUGH MODAL -->
@@ -849,7 +898,6 @@ const obs = new IntersectionObserver((entries) => {
   });
 },{threshold:0.07});
 document.querySelectorAll(".r").forEach(el=>obs.observe(el));
-
 
 // Gallery functions
 const gallerySrcs = {

@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rentra | Property Management & Rental · Lisbon</title>
+<meta name="description" content="Rentra — Property management and rental services in Lisbon, Portugal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --g: #004539;
+  --au: #ddad75;
+  --cr: #ede5d2;
+  --cr2: #b8a98a;
+  --ink: rgba(237,229,210,0.85);
+  --line: rgba(221,173,117,0.18);
+  --line2: rgba(221,173,117,0.08);
+  --card: rgba(0,0,0,0.18);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Jost",sans-serif;background:var(--g);color:var(--cr);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── CURSOR ── */
+*, a, button { cursor: default; }
+
+/* ── GRAIN OVERLAY ── */
+body::before {
+  content:"";position:fixed;inset:0;z-index:999;pointer-events:none;opacity:0.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px 180px;
+}
+
+/* ── NAV ── */
+nav {
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 5%;
+  border-bottom:1px solid var(--line2);
+  background:rgba(0,69,57,0.92);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+}
+.nav-logo img{height:42px;width:auto;display:block}
+.nav-links{display:flex;gap:2.5rem;align-items:center}
+.nav-links a{
+  font-size:0.92rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--cr2);text-decoration:none;transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--au)}
+.nav-cta{
+  border:1px solid rgba(221,173,117,0.4)!important;color:var(--au)!important;
+  padding:0.5rem 1.4rem;border-radius:1px;
+  transition:background 0.25s,color 0.25s!important;
+  letter-spacing:0.18em!important;
+}
+.nav-cta:hover{background:var(--au)!important;color:var(--g)!important}
+.mob-btn{display:none;background:none;border:none;color:var(--au);font-size:1.4rem;cursor:pointer}
+.mob-menu{display:none;position:fixed;inset:0;background:var(--g);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:3rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:"Playfair Display",serif;font-size:3rem;font-weight:300;color:var(--cr);text-decoration:none;letter-spacing:0.05em}
+.mob-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--au);font-size:1.4rem;cursor:pointer}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:0 5%;padding-top:80px;
+  position:relative;
+}
+.hero-bg{position:absolute;inset:0;background:var(--g);}
+.hero-lines{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(var(--line2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line2) 1px, transparent 1px);
+  background-size:72px 72px;
+  opacity:0.015;
+  mask-image:radial-gradient(ellipse 60% 60% at 60% 50%, black 0%, transparent 65%);
+}
+.hero-photo{position:absolute;right:0;top:0;bottom:0;width:44%;background:url("https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781102704/hero_lsvhjr.jpg") center/cover;opacity:0.55;clip-path:polygon(14% 0,100% 0,100% 100%,0% 100%)}
+.hero-photo-overlay{position:absolute;right:0;top:0;bottom:0;width:44%;background:linear-gradient(90deg,var(--g) 0%,transparent 55%);pointer-events:none}
+.hero-content{position:relative;z-index:1;max-width:640px}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:1rem;
+  font-size:0.9rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--au);
+  margin-bottom:2.5rem;
+  animation:fadeUp 1s ease both;
+}
+.hero-eyebrow::before{content:"";display:block;width:40px;height:1px;background:var(--au);opacity:0.6;flex-shrink:0}
+h1.hero-title{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(3.2rem,6vw,5.5rem);
+  font-weight:300;line-height:0.95;color:var(--cr);
+  letter-spacing:-0.01em;
+  animation:fadeUp 1s ease 0.12s both;
+}
+h1.hero-title em{color:var(--au);font-style:italic;display:block}
+.hero-desc{
+  margin-top:2rem;font-size:1rem;font-weight:400;
+  line-height:1.95;color:var(--cr2);max-width:420px;
+  animation:fadeUp 1s ease 0.22s both;
+}
+.hero-actions{display:flex;gap:1rem;margin-top:3rem;animation:fadeUp 1s ease 0.32s both}
+.btn-primary{
+  background:var(--au);color:var(--g);border:none;
+  padding:1rem 2.4rem;font-family:"Jost",sans-serif;
+  font-size:0.92rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;
+  cursor:pointer;border-radius:1px;text-decoration:none;display:inline-block;
+  transition:background 0.2s,transform 0.2s;
+  box-shadow:0 4px 24px rgba(221,173,117,0.2);
+}
+.btn-primary:hover{background:#e8c48a;transform:translateY(-2px);box-shadow:0 8px 32px rgba(221,173,117,0.3)}
+.btn-secondary{
+  background:transparent;color:var(--cr);border:1px solid rgba(237,229,210,0.2);
+  padding:1rem 2.4rem;font-family:"Jost",sans-serif;
+  font-size:0.92rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;
+  cursor:pointer;border-radius:1px;text-decoration:none;display:inline-block;
+  transition:border-color 0.2s,color 0.2s;
+}
+.btn-secondary:hover{border-color:var(--au);color:var(--au)}
+.hero-scroll{
+  position:absolute;bottom:2.5rem;left:5%;
+  display:flex;align-items:center;gap:0.75rem;
+  font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--cr2);
+  animation:fadeUp 1s ease 0.5s both;
+}
+.hero-scroll-line{width:40px;height:1px;background:var(--cr2);opacity:0.4;animation:scrollPulse 2s ease-in-out infinite}
+
+/* ── WALKTHROUGH MODAL ── */
+#wt-modal{display:none;position:fixed;inset:0;z-index:9999;background:#000;}
+#wt-modal.open{display:block;}
+#wt-scroller{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth;}
+#wt-scroller::-webkit-scrollbar{display:none;}
+.wt-slide{position:relative;height:100vh;scroll-snap-align:start;overflow:hidden;display:flex;align-items:flex-end;}
+.wt-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.08);transition:transform 1.2s cubic-bezier(0.25,0.46,0.45,0.94);will-change:transform;}
+.wt-slide.wt-active .wt-bg{transform:scale(1);}
+.wt-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.2) 45%,transparent 100%);z-index:1;}
+.wt-content{position:relative;z-index:2;padding:0 7% 5rem;width:100%;transform:translateY(20px);opacity:0;transition:transform 0.9s ease 0.3s,opacity 0.9s ease 0.3s;}
+.wt-slide.wt-active .wt-content{transform:translateY(0);opacity:1;}
+.wt-tag{font-size:0.72rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--au);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.75rem;}
+.wt-tag::before{content:"";width:32px;height:1px;background:var(--au);opacity:0.7;flex-shrink:0;}
+.wt-title{font-family:"Playfair Display",serif;font-size:clamp(1.8rem,4vw,3.8rem);font-weight:300;line-height:1.05;color:var(--cr);margin-bottom:0.75rem;}
+.wt-title em{color:var(--au);font-style:italic;display:block;}
+.wt-meta{display:flex;gap:2rem;align-items:center;margin-top:1rem;flex-wrap:wrap;}
+.wt-meta-item{display:flex;flex-direction:column;gap:0.2rem;}
+.wt-meta-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--cr);opacity:0.85;}
+.wt-meta-value{font-family:"Playfair Display",serif;font-size:1.05rem;color:var(--cr);}
+.wt-meta-sep{width:1px;height:32px;background:rgba(221,173,117,0.2);}
+.wt-photo-num{position:absolute;top:2rem;right:5%;z-index:2;font-family:"Playfair Display",serif;font-size:5rem;font-weight:300;line-height:1;color:rgba(255,255,255,0.05);user-select:none;pointer-events:none;}
+#wt-close{position:fixed;top:1.5rem;right:1.5rem;z-index:10001;background:rgba(0,0,0,0.4);border:1px solid rgba(221,173,117,0.35);color:var(--au);width:2.5rem;height:2.5rem;font-size:1.3rem;cursor:pointer;border-radius:1px;display:flex;align-items:center;justify-content:center;transition:background 0.2s;backdrop-filter:blur(8px);}
+#wt-close:hover{background:rgba(221,173,117,0.15);}
+#wt-dots{position:fixed;right:2rem;top:50%;transform:translateY(-50%);z-index:10001;display:flex;flex-direction:column;gap:0.75rem;align-items:center;}
+.wt-dot{width:5px;height:5px;border-radius:50%;background:rgba(221,173,117,0.25);border:1px solid rgba(221,173,117,0.4);cursor:pointer;transition:background 0.3s,transform 0.3s;}
+.wt-dot.wt-active{background:var(--au);transform:scale(1.5);}
+#wt-progress{position:fixed;left:0;top:0;width:2px;height:0%;background:linear-gradient(180deg,var(--au),rgba(221,173,117,0.2));z-index:10001;transition:height 0.3s ease;}
+#wt-hint{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);z-index:10001;display:flex;flex-direction:column;align-items:center;gap:0.4rem;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--cr2);opacity:0.5;animation:wt-bounce 2s ease-in-out infinite;transition:opacity 0.5s;}
+#wt-hint.hidden{opacity:0;pointer-events:none;}
+@keyframes wt-bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
+.wt-cta-slide{background:var(--g);display:flex;align-items:center;justify-content:center;}
+.wt-cta-content{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.5rem;max-width:520px;padding:0 5%;transform:translateY(20px);opacity:0;transition:transform 0.9s ease 0.3s,opacity 0.9s ease 0.3s;}
+.wt-cta-slide.wt-active .wt-cta-content{transform:translateY(0);opacity:1;}
+.wt-cta-rule{width:48px;height:1px;background:var(--au);opacity:0.4;}
+@media(max-width:768px){#wt-dots{display:none;}.wt-content{padding:0 5% 4rem;}.wt-title{font-size:2rem;}}
+/* ── LANG BUTTON ── */
+.lang-switcher{display:inline-flex;margin-left:0.5rem;}
+.lang-switcher button{background:none;border:1px solid rgba(221,173,117,0.35);color:rgba(221,173,117,0.5);font-family:"Jost",sans-serif;font-size:0.72rem;letter-spacing:0.15em;padding:1rem 0.85rem;cursor:pointer;border-radius:0;transition:background 0.2s,color 0.2s;line-height:1;}
+.lang-switcher button:first-child{border-right:none;}
+.lang-switcher button:hover{color:var(--au);}
+.lang-switcher button.active{background:rgba(221,173,117,0.12);color:var(--au);border-color:var(--au);}
+/* ── SECTIONS ── */
+section{padding:7rem 5%}
+.s-tag{
+  font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--au);
+  display:flex;align-items:center;gap:0.75rem;margin-bottom:1.1rem;
+}
+.s-tag::before{content:"";width:28px;height:1px;background:var(--au);opacity:0.7;flex-shrink:0}
+.s-tag.center{justify-content:center}
+.s-tag.center::before{display:none}
+h2.s-title{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2rem,4vw,3.5rem);font-weight:300;line-height:1.05;color:var(--cr);
+  letter-spacing:-0.01em;
+}
+h2.s-title em{color:var(--au);font-style:italic}
+.s-body{font-size:1rem;color:var(--cr2);line-height:1.95;margin-top:1.1rem;max-width:460px}
+.gold-rule{width:48px;height:1px;background:var(--au);opacity:0.4;margin:2.5rem 0}
+
+/* ── ABOUT ── */
+#about{margin-top:3rem;border-top:1px solid var(--line2);position:relative;padding:0!important;overflow:hidden;min-height:680px;}
+.about-col-left{padding:5rem 3rem 4rem 5vw;position:relative;z-index:1;width:50%;min-height:680px;}
+.about-col-right{position:absolute;right:0;top:0;bottom:0;width:50%;overflow:hidden;clip-path:polygon(14% 0,100% 0,100% 100%,0% 100%);}
+.about-col-right img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom;display:block;opacity:0.55;}
+.about-col-right::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--g) 0%,transparent 40%),linear-gradient(to bottom,rgba(0,55,70,0.82) 0%,rgba(0,55,70,0.2) 50%,transparent 100%);pointer-events:none;}
+.about-list{margin-top:2.5rem;display:flex;flex-direction:column}
+.about-item{
+  padding:1.4rem 0;border-bottom:1px solid var(--line2);
+  display:flex;gap:1.25rem;align-items:flex-start;
+  transition:padding-left 0.25s;
+}
+
+.about-item:first-child{border-top:1px solid var(--line2)}
+.a-num{
+  font-family:"Playfair Display",serif;font-size:0.92rem;font-weight:400;
+  color:var(--au);opacity:0.5;flex-shrink:0;margin-top:2px;letter-spacing:0.05em;
+}
+.about-item h4{font-size:0.92rem;font-weight:400;letter-spacing:0.05em;color:var(--cr);margin-bottom:0.3rem}
+.about-item p{font-size:0.9rem;color:var(--cr2);line-height:1.8}
+.about-visual{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:2px;overflow:hidden;
+  aspect-ratio:3/4;
+  background:linear-gradient(145deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.05) 100%);
+}
+.about-grid-inner{
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--line2) 1px,transparent 1px),linear-gradient(90deg,var(--line2) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+.about-center{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:1.25rem;
+}
+.about-city{
+  font-family:"Playfair Display",serif;font-size:5rem;font-weight:300;
+  color:rgba(221,173,117,0.12);letter-spacing:0.08em;line-height:1;
+  user-select:none;
+}
+.about-sep{width:36px;height:1px;background:var(--au);opacity:0.35}
+.about-pt{font-size:0.72rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--au);opacity:0.6}
+.about-office{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:1.5rem 1.75rem;
+  background:linear-gradient(0deg,rgba(0,0,0,0.6) 0%,transparent 100%);
+}
+.about-office-lbl{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--au);margin-bottom:0.35rem;opacity:0.8}
+.about-office-val{font-size:0.92rem;color:var(--cr)}
+
+/* ── SERVICES ── */
+#services{border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+.srv-head{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4rem}
+.srv-head-right p{font-size:0.92rem;color:var(--cr2);line-height:1.85;text-align:right}
+.srv-grid{display:grid;grid-template-columns:1fr}
+/* Service card main */
+.srv-main{
+  border:1px solid var(--line);border-radius:2px;overflow:hidden;
+  margin-bottom:1.5rem;
+  background:var(--card);
+  backdrop-filter:blur(4px);
+}
+.srv-main-header{padding:2.5rem 3rem 2rem;border-bottom:1px solid var(--line2)}
+.srv-main-num{
+  font-family:"Playfair Display",serif;font-size:3.5rem;font-weight:300;
+  color:rgba(221,173,117,0.12);line-height:1;margin-bottom:1rem;
+}
+.srv-main h3{
+  font-family:"Playfair Display",serif;font-size:2rem;font-weight:300;
+  color:var(--cr);letter-spacing:0.02em;margin-bottom:0.6rem;
+}
+.srv-main-desc{font-size:0.92rem;color:var(--cr2);line-height:1.8;max-width:520px}
+.srv-includes{
+  padding:1.75rem 3rem;border-bottom:1px solid var(--line2);
+  background:rgba(0,0,0,0.08);
+}
+.srv-includes-label{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--au);margin-bottom:1rem;opacity:0.8}
+.srv-includes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem 2.5rem}
+.srv-includes-grid li{
+  font-size:1rem;color:var(--cr2);list-style:none;
+  padding-left:0.9rem;position:relative;
+}
+.srv-includes-grid li::before{content:"";position:absolute;left:0;top:9px;width:4px;height:1px;background:var(--au)}
+.srv-tracks{display:grid;grid-template-columns:1fr 1fr}
+.srv-track{padding:2rem 3rem;position:relative}
+.srv-track:first-child{border-right:1px solid var(--line2)}
+.srv-track-label{
+  font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--au);
+  margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem;
+}
+.srv-track-label::after{content:"";flex:1;height:1px;background:var(--au);opacity:0.2}
+.srv-track p{font-size:0.92rem;color:var(--cr2);line-height:1.75;margin-bottom:1rem}
+.srv-track ul{list-style:none;display:flex;flex-direction:column;gap:0.45rem}
+.srv-track ul li{font-size:1rem;color:var(--cr2);padding-left:0.9rem;position:relative}
+.srv-track ul li::before{content:"";position:absolute;left:0;top:9px;width:4px;height:1px;background:var(--au)}
+.srv-fee{
+  margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--line2);
+  font-size:0.92rem;letter-spacing:0.1em;color:var(--au);
+}
+/* Trespasse card */
+.srv-trespasse{
+  border:1px solid var(--line);border-radius:2px;overflow:hidden;
+  background:var(--card);backdrop-filter:blur(4px);
+  padding:2.5rem 3rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;
+}
+.srv-trespasse .srv-main-num{margin-bottom:0.5rem}
+.srv-trespasse h3{font-family:"Playfair Display",serif;font-size:2rem;font-weight:300;color:var(--cr);letter-spacing:0.02em;margin-bottom:0.6rem}
+.srv-trespasse p{font-size:0.92rem;color:var(--cr2);line-height:1.8}
+.srv-trespasse ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-top:1rem}
+.srv-trespasse ul li{font-size:1rem;color:var(--cr2);padding-left:0.9rem;position:relative}
+.srv-trespasse ul li::before{content:"";position:absolute;left:0;top:9px;width:4px;height:1px;background:var(--au)}
+
+/* ── WHY ── */
+#why{border-top:1px solid var(--line2)}
+.why-head{text-align:center;max-width:520px;margin:0 auto 4.5rem}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.why-item{
+  padding:2.25rem 2rem;
+  border-right:1px solid var(--line2);border-bottom:1px solid var(--line2);
+  transition:background 0.3s;position:relative;overflow:hidden;
+}
+.why-item::before{
+  content:"";position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--au),transparent);
+  transform:scaleX(0);transition:transform 0.4s ease;
+}
+.why-item:hover::before{transform:scaleX(1)}
+.why-item:hover{background:rgba(221,173,117,0.03)}
+.why-item:nth-child(3n){border-right:none}
+.why-item:nth-child(n+4){border-bottom:none}
+.why-n{
+  font-family:"Playfair Display",serif;font-size:1.8rem;font-weight:300;
+  color:rgba(221,173,117,0.15);line-height:1;margin-bottom:1rem;
+}
+.why-item h4{font-size:0.92rem;font-weight:400;letter-spacing:0.06em;color:var(--cr);margin-bottom:0.5rem}
+.why-item p{font-size:0.9rem;color:var(--cr2);line-height:1.8}
+
+/* ── PROPERTIES ── */
+#properties{border-top:1px solid var(--line2)}
+.prop-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem}
+.prop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;align-items:start;}
+.prop-card{background:#004539;overflow:hidden;position:relative;border:1px solid rgba(221,173,117,0.2);transition:border-color 0.25s,background 0.25s;}
+.prop-card:hover{background:#003a2f;border-color:rgba(221,173,117,0.45);}
+.prop-thumb{height:260px;position:relative;overflow:hidden;}
+.prop-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(0.88);transition:transform 0.6s ease;}
+.prop-card:hover .prop-thumb img{transform:scale(1.04);}
+.prop-badge{position:absolute;top:1rem;left:1rem;z-index:1;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;background:var(--g);color:var(--au);border:1px solid rgba(221,173,117,0.35);padding:0.28rem 0.75rem;border-radius:4px;}
+.prop-photo-count{position:absolute;bottom:0.75rem;right:0.75rem;z-index:1;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;background:var(--g);color:var(--au);border:1px solid rgba(221,173,117,0.28);padding:0.22rem 0.55rem;border-radius:4px;}
+.prop-body{padding:1.25rem 1.4rem 1.4rem;}
+.prop-addr{font-family:"Playfair Display",serif;font-size:1rem;font-weight:400;color:var(--cr);letter-spacing:0.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prop-area{font-size:0.78rem;color:var(--cr2);margin-top:0.2rem;letter-spacing:0.02em;}
+.prop-price{font-family:"Playfair Display",serif;font-size:1.6rem;font-weight:300;color:var(--au);margin:0.6rem 0 0;}
+.prop-price span{font-family:"Jost",sans-serif;font-size:0.88rem;color:var(--cr2);font-weight:400;}
+.prop-details-row{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line2);}
+.prop-icons{display:flex;gap:1.2rem;}
+.prop-icon-item{display:flex;flex-direction:column;align-items:center;gap:0.2rem;}
+.prop-icon-item svg{opacity:0.6;}
+.prop-icon-label{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--cr2);opacity:0.7;}
+.prop-icon-val{font-family:"Playfair Display",serif;font-size:0.95rem;color:var(--cr);}
+.prop-actions{display:flex;gap:0.5rem;}
+.prop-btn{width:2.4rem;height:2.4rem;border-radius:6px;border:1px solid rgba(221,173,117,0.3);background:transparent;color:var(--au);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s,border-color 0.2s;}
+.prop-btn:hover{background:rgba(221,173,117,0.1);border-color:var(--au);}
+.prop-cta{text-align:center;margin-top:3.5rem}
+.prop-cta p{font-size:0.92rem;color:var(--cr2);margin-bottom:1.25rem}
+@media(max-width:900px){.prop-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:580px){.prop-grid{grid-template-columns:1fr;}}
+
+/* ── PROCESS ── */
+#process{border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);padding-bottom:4rem}
+.proc-head{text-align:center;max-width:500px;margin:0 auto 5rem}
+.proc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.proc-steps::before{
+  content:"";position:absolute;
+  top:20px;left:calc(12.5% + 0.5rem);right:calc(12.5% + 0.5rem);
+  height:1px;background:linear-gradient(90deg,var(--au),rgba(221,173,117,0.1));
+  z-index:0;
+}
+.proc-step{padding:0 1.5rem;text-align:center}
+.proc-circle{
+  width:40px;height:40px;border-radius:50%;
+  border:1px solid var(--au);background:var(--g);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.75rem;position:relative;z-index:1;
+  font-family:"Playfair Display",serif;font-size:1rem;color:var(--au);
+  transition:background 0.2s;
+}
+.proc-step:hover .proc-circle{background:rgba(221,173,117,0.1)}
+.proc-step h4{font-size:0.92rem;font-weight:500;color:var(--cr);margin-bottom:0.5rem}
+.proc-step p{font-size:0.9rem;color:var(--cr2);line-height:1.8}
+
+/* ── TESTIMONIALS ── */
+#testimonials{border-bottom:1px solid var(--line2)}
+.test-head{text-align:center;margin-bottom:3.5rem}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.test{
+  padding:2.25rem;border:1px solid var(--line);border-radius:2px;
+  display:flex;flex-direction:column;
+  background:var(--card);
+  transition:border-color 0.3s,transform 0.3s;
+}
+.test:hover{border-color:rgba(221,173,117,0.35);transform:translateY(-3px)}
+.test-mark{
+  font-family:"Playfair Display",serif;font-size:3rem;font-weight:300;
+  color:var(--au);opacity:0.3;line-height:0.8;margin-bottom:1rem;
+}
+.test-q{font-family:"Playfair Display",serif;font-size:1rem;font-weight:300;color:var(--cr);line-height:1.7;flex:1}
+.test-author{margin-top:1.75rem;padding-top:1.1rem;border-top:1px solid var(--line2)}
+.test-name{font-size:0.9rem;font-weight:400;letter-spacing:0.08em;color:var(--au)}
+.test-role{font-size:0.92rem;color:var(--cr2);margin-top:0.2rem}
+
+/* ── CONTACT ── */
+#contact{}
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:7rem;align-items:start}
+.c-list{margin-top:2.75rem;display:flex;flex-direction:column;gap:0}
+.c-item{
+  display:flex;gap:1.25rem;align-items:flex-start;
+  padding:1.4rem 0;border-bottom:1px solid var(--line2);
+}
+.c-item:first-child{border-top:1px solid var(--line2)}
+.c-icon{
+  width:34px;height:34px;border:1px solid var(--line);border-radius:1px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--au);flex-shrink:0;font-size:1rem;
+}
+.c-lbl{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--cr2)}
+.c-val{font-size:1rem;color:var(--cr);margin-top:0.2rem}
+.c-val a{color:inherit;text-decoration:none;transition:color 0.2s}
+.c-val a:hover{color:var(--au)}
+/* Form */
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.f-g{margin-bottom:0.9rem}
+.f-g label{display:block;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--cr2);margin-bottom:0.5rem}
+.f-g input,.f-g select,.f-g textarea{
+  width:100%;background:rgba(255,255,255,0.03);
+  border:none;border-bottom:1px solid rgba(221,173,117,0.2);
+  color:var(--cr);font-family:"Jost",sans-serif;font-size:1rem;
+  padding:0.75rem 0;outline:none;transition:border-color 0.2s;
+  border-radius:0;-webkit-appearance:none;
+}
+.f-g input::placeholder,.f-g textarea::placeholder{color:var(--cr2);opacity:0.4}
+.f-g input:focus,.f-g select:focus,.f-g textarea:focus{border-bottom-color:var(--au)}
+.f-g select{cursor:pointer}
+.f-g select option{background:var(--g);color:var(--cr)}
+.f-g textarea{min-height:100px;resize:none;border:none;border-bottom:1px solid rgba(221,173,117,0.2)}
+.f-submit{
+  width:100%;background:transparent;color:var(--au);
+  border:1px solid rgba(221,173,117,0.4);
+  padding:1.1rem;font-family:"Jost",sans-serif;
+  font-size:0.92rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;
+  cursor:pointer;border-radius:1px;
+  transition:background 0.25s,color 0.25s,border-color 0.25s;
+  margin-top:0.5rem;
+}
+.f-submit:hover{background:var(--au);color:var(--g);border-color:var(--au)}
+.f-note{font-size:0.92rem;color:var(--cr2);text-align:center;margin-top:0.75rem;opacity:0.5}
+
+/* ── FOOTER ── */
+footer{
+  padding:2rem 5%;
+  border-top:1px solid var(--line2);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.foot-logo img{height:32px;width:auto}
+.foot-links{display:flex;gap:2.5rem}
+.foot-links a{font-size:0.9rem;color:var(--cr2);text-decoration:none;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.2s}
+.foot-links a:hover{color:var(--au)}
+.foot-copy{font-size:0.9rem;color:var(--cr2);opacity:0.4}
+
+/* ── REVEAL ── */
+.r{opacity:0;transform:translateY(16px);transition:opacity 0.8s ease,transform 0.8s ease}
+.r.on{opacity:1;transform:none}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes scrollPulse{0%,100%{opacity:0.4;transform:scaleX(1)}50%{opacity:1;transform:scaleX(1.3)}}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  nav{padding:0.9rem 5%}
+  .nav-links{display:none}
+  .mob-btn{display:block}
+  section{padding:4.5rem 5%}
+  .contact-grid,.srv-head{grid-template-columns:1fr;gap:3rem}
+  .about-visual{display:none}
+  #about .about-col-left{width:100%;}
+  .about-col-left{padding:4.5rem 5%;}
+  .about-col-right{display:none;}
+  .srv-head-right p{text-align:left}
+  .srv-main-header,.srv-includes,.srv-trespasse{padding:1.75rem}
+  .srv-tracks{grid-template-columns:1fr}
+  .srv-track:first-child{border-right:none;border-bottom:1px solid var(--line2)}
+  .srv-includes-grid{grid-template-columns:1fr 1fr}
+  .srv-trespasse{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .prop-grid{grid-template-columns:1fr}
+  .proc-steps{grid-template-columns:1fr 1fr}
+  .proc-step:nth-child(2){border-right:none}
+  .proc-step:nth-child(1),.proc-step:nth-child(2){border-bottom:1px solid var(--line2)}
+  .test-grid{grid-template-columns:1fr}
+  .f-row{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:1.5rem;text-align:center}
+  .prop-head{flex-direction:column;align-items:flex-start;gap:1rem}
+  h1.hero-title{font-size:3.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781103472/image2_k44kmr.png" alt="Rentra"></a>
+  <div class="nav-links">
+    <a href="#about" id="i18n-nav-about">About</a>
+    <a href="#services" id="i18n-nav-services">Services</a>
+    <a href="#properties" id="i18n-nav-props">Properties</a>
+    <a href="#process" id="i18n-nav-process">How It Works</a>
+    <a href="#contact" class="nav-cta" id="i18n-nav-contact">Contact</a>
+  </div>
+  <div class="lang-switcher"><button id="lang-en" onclick="setLangBtn('en')" class="active">EN</button><button id="lang-pt" onclick="setLangBtn('pt')">PT</button></div>
+  <button class="mob-btn" onclick="document.querySelector('.mob-menu').classList.add('open')">&#9776;</button>
+</nav>
+<div class="mob-menu">
+  <button class="mob-close" onclick="document.querySelector('.mob-menu').classList.remove('open')">&#10005;</button>
+  <a href="#about" id="i18n-mob-about" onclick="document.querySelector('.mob-menu').classList.remove('open')">About</a>
+  <a href="#services" id="i18n-mob-services" onclick="document.querySelector('.mob-menu').classList.remove('open')">Services</a>
+  <a href="#properties" id="i18n-mob-props" onclick="document.querySelector('.mob-menu').classList.remove('open')">Properties</a>
+  <a href="#process" id="i18n-mob-process" onclick="document.querySelector('.mob-menu').classList.remove('open')">How It Works</a>
+  <a href="#contact" id="i18n-mob-contact" onclick="document.querySelector('.mob-menu').classList.remove('open')">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-photo"></div>
+  <div class="hero-photo-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow" id="i18n-hero-eyebrow">Property Management &middot; Lisbon</div>
+    <h1 class="hero-title" id="i18n-hero-title">Your property,<em>perfectly managed.</em></h1>
+    <p class="hero-desc" id="i18n-hero-desc">Rentra is a Lisbon-based property management company specializing in serving international property owners.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary" id="i18n-hero-cta">Get a Free Consultation</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="about-col-left r">
+      <div class="s-tag" id="i18n-about-tag">Who We Are</div>
+      <h2 class="s-title" id="i18n-about-title">A trusted partner<br><em>in Lisbon.</em></h2>
+      <p class="s-body" id="i18n-about-body">Founded to serve international property owners who need a reliable local partner. We combine market expertise, legal knowledge, and hands-on management so your investment works for you.</p>
+      <div class="about-list">
+        <div class="about-item"><div class="a-num">01</div><div><h4 id="i18n-about-01-h">Licensed Professionals</h4><p id="i18n-about-01-p">Fully licensed under Portuguese real estate law, with expertise in residential and commercial transactions.</p></div></div>
+        <div class="about-item"><div class="a-num">02</div><div><h4 id="i18n-about-02-h">International Focus</h4><p id="i18n-about-02-p">We work with international property owners and communicate in English, French, Hebrew and Portuguese.</p></div></div>
+        <div class="about-item"><div class="a-num">03</div><div><h4 id="i18n-about-03-h">End-to-End Management</h4><p id="i18n-about-03-p">From tenant sourcing to maintenance, contracts, and monthly reporting, fully handled, fully transparent.</p></div></div>
+      </div>
+    </div>
+    <div class="about-col-right">
+      <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1782247106/andreas-brucker-X87yB-jvYHw-unsplash_tumkhc.jpg" alt="Lisbon">
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="srv-head r">
+    <div>
+      <div class="s-tag" id="i18n-srv-tag">What We Offer</div>
+      <h2 class="s-title" id="i18n-srv-title">Two services,<br><em>one trusted partner.</em></h2>
+    </div>
+    <div class="srv-head-right">
+      <p id="i18n-srv-intro">Every service is tailored to your property, your goals, and your preferred level of involvement.</p>
+    </div>
+  </div>
+
+  <div class="srv-grid r">
+    <!-- Service 1 -->
+    <div class="srv-main">
+      <div class="srv-main-header">
+        <div class="srv-main-num">01</div>
+        <h3 id="i18n-srv1-h">Property Management</h3>
+        <p class="srv-main-desc" id="i18n-srv1-desc">Full end-to-end management for your property in Lisbon, from tenant sourcing to monthly reporting.</p>
+      </div>
+      <div class="srv-includes">
+        <div class="srv-includes-label" id="i18n-srv-includes-label">Included in all plans</div>
+        <ul class="srv-includes-grid">
+          <li id="i18n-srv-inc-1">Market analysis &amp; pricing</li>
+          <li id="i18n-srv-inc-2">Professional photography</li>
+          <li id="i18n-srv-inc-3">Tenant screening</li>
+          <li id="i18n-srv-inc-4">Contract signing</li>
+          <li id="i18n-srv-inc-5">Check-in / check-out inventory</li>
+          <li id="i18n-srv-inc-6">Maintenance coordination</li>
+        </ul>
+      </div>
+      <div class="srv-tracks">
+        <div class="srv-track">
+          <div class="srv-track-label" id="i18n-trk1-label">Long-Term Rental</div>
+          <p id="i18n-trk1-p">Yearly leases for residents, families &amp; expats. Stable income, minimal turnover.</p>
+          <ul>
+            <li id="i18n-trk1-li1">NRAU-compliant contracts</li>
+            <li id="i18n-trk1-li2">Tenant background verification</li>
+            <li id="i18n-trk1-li3">Monthly reporting to owner</li>
+          </ul>
+          <div class="srv-fee" id="i18n-trk1-fee">Commission: 15% of monthly rent</div>
+        </div>
+        <div class="srv-track">
+          <div class="srv-track-label" id="i18n-trk2-label">Mid-Term Rental</div>
+          <p id="i18n-trk2-p">Monthly leases for digital nomads &amp; business professionals. Higher yield, flexible terms.</p>
+          <ul>
+            <li id="i18n-trk2-li1">Multi-platform advertising</li>
+            <li id="i18n-trk2-li2">High-standard cleaning &amp; inventory</li>
+            <li id="i18n-trk2-li3">Tenant support throughout stay</li>
+          </ul>
+          <div class="srv-fee" id="i18n-trk2-fee">Commission: 15&ndash;20% of monthly rent</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 2 -->
+    <div class="srv-trespasse">
+      <div>
+        <div class="srv-main-num">02</div>
+        <h3>Trespasse</h3>
+        <p id="i18n-trp-p">Buying or selling a business in Lisbon? We manage the full transfer process, legally sound, fully coordinated, stress-free.</p>
+        <div class="srv-fee" id="i18n-trp-fee" style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--line2)">Fee: discussed per transaction</div>
+      </div>
+      <ul>
+        <li id="i18n-trp-li1">Transaction coordination &amp; documentation</li>
+        <li id="i18n-trp-li2">Due diligence support</li>
+        <li id="i18n-trp-li3">Contract drafting &amp; legal review</li>
+        <li id="i18n-trp-li4">License &amp; permit transfer handling</li>
+        <li id="i18n-trp-li5">Buyer &amp; seller representation</li>
+        <li id="i18n-trp-li6">Negotiation support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="why-head r">
+    <div class="s-tag center" id="i18n-why-tag">Why Rentra</div>
+    <h2 class="s-title" id="i18n-why-title" style="text-align:center">Everything your <em>property needs.</em></h2>
+  </div>
+  <div class="why-grid r">
+    <div class="why-item"><div class="why-n">01</div><h4 id="i18n-why-01-h">Property Strategy</h4><p id="i18n-why-01-p">We assess your property and the local market to define the optimal rental strategy, maximizing your return and reducing vacancy periods.</p></div>
+    <div class="why-item"><div class="why-n">02</div><h4 id="i18n-why-02-h">In-House Marketing</h4><p id="i18n-why-02-p">Professional photography and multi-platform listings, handled internally to ensure quality, consistency, and fast time-to-market.</p></div>
+    <div class="why-item"><div class="why-n">03</div><h4 id="i18n-why-03-h">Maintenance Network</h4><p id="i18n-why-03-p">We coordinate all maintenance work through trusted contractors and oversee every job from start to finish.</p></div>
+    <div class="why-item"><div class="why-n">04</div><h4 id="i18n-why-04-h">Tenant Screening</h4><p id="i18n-why-04-p">We screen every applicant by reviewing income documents and employment contracts before any lease is signed.</p></div>
+    <div class="why-item"><div class="why-n">05</div><h4 id="i18n-why-05-h">Legal Compliance</h4><p id="i18n-why-05-p">All contracts are drafted in compliance with Portuguese law, clearly defining the rights and obligations of both parties.</p></div>
+    <div class="why-item"><div class="why-n">06</div><h4 id="i18n-why-06-h">Furniture Solutions</h4><p id="i18n-why-06-p">We source and install furniture suited to your rental type, from procurement to delivery and assembly.</p><p style="margin-top:0.5rem;font-size:0.72rem;color:var(--au);opacity:0.8;">Available as an additional paid service.</p></div>
+  </div>
+</section>
+
+<!-- PROPERTIES -->
+<section id="properties">
+  <div class="prop-head r">
+    <div>
+      <div class="s-tag" id="i18n-prop-tag">Current Listings</div>
+      <h2 class="s-title" id="i18n-prop-title">Properties <em>for rent.</em></h2>
+    </div>
+    <a href="https://wa.me/351912419653" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;align-items:center;gap:0.5rem;"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>WhatsApp</a>
+  </div>
+  <div class="prop-grid">
+    <div class="prop-card r" onclick="openGallery('arrochela')">
+      <div class="prop-thumb">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960448/SRE_2577-HDR_bkayzv.jpg" alt="Travessa da Arrochela N23">
+        <span class="prop-badge i18n-badge">For Rent</span>
+        <span class="prop-photo-count">13 PHOTOS</span>
+      </div>
+      <div class="prop-body">
+        <div class="prop-addr">Travessa da Arrochela N23</div>
+        <div class="prop-area">Misericórdia · Lisbon</div>
+        <div class="prop-price">&euro;1,900 <span class="i18n-month">/ month</span></div>
+        <div class="prop-details-row">
+          <div class="prop-icons"><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 9V19M22 9V19M2 14H22M2 9C2 9 4 7 12 7C20 7 22 9 22 9"/></svg><span class="prop-icon-val">2</span><span class="prop-icon-label">Beds</span></div><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12H20V17C20 18.1 19.1 19 18 19H6C4.9 19 4 18.1 4 17V12Z"/><path d="M4 12V6C4 4.9 4.9 4 6 4H9V12"/><path d="M2 19L3 21M22 19L21 21"/></svg><span class="prop-icon-val">1</span><span class="prop-icon-label">Baths</span></div><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9H21M9 3V21"/></svg><span class="prop-icon-val">65 m²</span><span class="prop-icon-label">Size</span></div></div>
+          <div class="prop-actions">
+            <a href="https://wa.me/351912419653" target="_blank" rel="noopener" class="prop-btn" onclick="event.stopPropagation()"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.143.564 4.148 1.55 5.88L0 24l6.254-1.524A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.032-1.384l-.36-.214-3.733.909.947-3.629-.235-.374A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg></a>
+            <button class="prop-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12H19M13 6L19 12L13 18"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="prop-card r" onclick="openGallery('almada')">
+      <div class="prop-thumb">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106586/SRE_4386-HDR_xong2m.jpg" alt="Rua do Almada">
+        <span class="prop-badge i18n-badge">For Rent</span>
+        <span class="prop-photo-count">13 PHOTOS</span>
+      </div>
+      <div class="prop-body">
+        <div class="prop-addr">Rua do Almada</div>
+        <div class="prop-area">Misericórdia · Lisbon</div>
+        <div class="prop-price">&euro;1,450 <span class="i18n-month">/ month</span></div>
+        <div class="prop-details-row">
+          <div class="prop-icons"><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 9V19M22 9V19M2 14H22M2 9C2 9 4 7 12 7C20 7 22 9 22 9"/></svg><span class="prop-icon-val">1</span><span class="prop-icon-label">Beds</span></div><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12H20V17C20 18.1 19.1 19 18 19H6C4.9 19 4 18.1 4 17V12Z"/><path d="M4 12V6C4 4.9 4.9 4 6 4H9V12"/><path d="M2 19L3 21M22 19L21 21"/></svg><span class="prop-icon-val">1</span><span class="prop-icon-label">Baths</span></div><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9H21M9 3V21"/></svg><span class="prop-icon-val">49 m²</span><span class="prop-icon-label">Size</span></div></div>
+          <div class="prop-actions">
+            <a href="https://wa.me/351912419653" target="_blank" rel="noopener" class="prop-btn" onclick="event.stopPropagation()"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.143.564 4.148 1.55 5.88L0 24l6.254-1.524A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.032-1.384l-.36-.214-3.733.909.947-3.629-.235-.374A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg></a>
+            <button class="prop-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12H19M13 6L19 12L13 18"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="prop-card r" onclick="openGallery('angelina')">
+      <div class="prop-thumb">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113501/SRE_9435_wpbyeg.jpg" alt="Rua Angelina Vidal">
+        <span class="prop-badge">Trespasse</span>
+        <span class="prop-photo-count">19 PHOTOS</span>
+      </div>
+      <div class="prop-body">
+        <div class="prop-addr">Rua Angelina Vidal</div>
+        <div class="prop-area">Arroios · Lisbon</div>
+        <div class="prop-price">&euro;55,000</div>
+        <div class="prop-details-row">
+          <div class="prop-icons"><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9H21M9 3V21"/></svg><span class="prop-icon-val">47 m²</span><span class="prop-icon-label">Size</span></div></div>
+          <div class="prop-actions">
+            <a href="https://wa.me/351912419653" target="_blank" rel="noopener" class="prop-btn" onclick="event.stopPropagation()"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.143.564 4.148 1.55 5.88L0 24l6.254-1.524A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.032-1.384l-.36-.214-3.733.909.947-3.629-.235-.374A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg></a>
+            <button class="prop-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12H19M13 6L19 12L13 18"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="prop-card r" onclick="openGallery('santa')">
+      <div class="prop-thumb">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114468/Rua_do_Sol_a_Santa_Catarina_37-1_usiihq.jpg" alt="Rua do Sol a Santa Catarina">
+        <span class="prop-badge i18n-badge">For Rent</span>
+        <span class="prop-photo-count">27 PHOTOS</span>
+      </div>
+      <div class="prop-body">
+        <div class="prop-addr">Rua do Sol a Santa Catarina</div>
+        <div class="prop-area">Misericórdia · Lisbon</div>
+        <div class="prop-price">&euro;2,200 <span class="i18n-month">/ month</span></div>
+        <div class="prop-details-row">
+          <div class="prop-icons"><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 9V19M22 9V19M2 14H22M2 9C2 9 4 7 12 7C20 7 22 9 22 9"/></svg><span class="prop-icon-val">2</span><span class="prop-icon-label">Beds</span></div><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12H20V17C20 18.1 19.1 19 18 19H6C4.9 19 4 18.1 4 17V12Z"/><path d="M4 12V6C4 4.9 4.9 4 6 4H9V12"/><path d="M2 19L3 21M22 19L21 21"/></svg><span class="prop-icon-val">2</span><span class="prop-icon-label">Baths</span></div><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9H21M9 3V21"/></svg><span class="prop-icon-val">120 m²</span><span class="prop-icon-label">Size</span></div></div>
+          <div class="prop-actions">
+            <a href="https://wa.me/351912419653" target="_blank" rel="noopener" class="prop-btn" onclick="event.stopPropagation()"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.143.564 4.148 1.55 5.88L0 24l6.254-1.524A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.032-1.384l-.36-.214-3.733.909.947-3.629-.235-.374A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg></a>
+            <button class="prop-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12H19M13 6L19 12L13 18"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="prop-card r" onclick="openGallery('saopaulo')">
+      <div class="prop-thumb">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111090/IMG_7991_qo3urj.jpg" alt="Rua de São Paulo 29">
+        <span class="prop-badge i18n-badge">For Rent</span>
+        <span class="prop-photo-count">21 PHOTOS</span>
+      </div>
+      <div class="prop-body">
+        <div class="prop-addr">Rua de São Paulo 29</div>
+        <div class="prop-area">Misericórdia · Lisbon</div>
+        <div class="prop-price">&euro;2,000 <span class="i18n-month">/ month</span></div>
+        <div class="prop-details-row">
+          <div class="prop-icons"><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 9V19M22 9V19M2 14H22M2 9C2 9 4 7 12 7C20 7 22 9 22 9"/></svg><span class="prop-icon-val">2</span><span class="prop-icon-label">Beds</span></div><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12H20V17C20 18.1 19.1 19 18 19H6C4.9 19 4 18.1 4 17V12Z"/><path d="M4 12V6C4 4.9 4.9 4 6 4H9V12"/><path d="M2 19L3 21M22 19L21 21"/></svg><span class="prop-icon-val">1</span><span class="prop-icon-label">Baths</span></div><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9H21M9 3V21"/></svg><span class="prop-icon-val">140 m²</span><span class="prop-icon-label">Size</span></div></div>
+          <div class="prop-actions">
+            <a href="https://wa.me/351912419653" target="_blank" rel="noopener" class="prop-btn" onclick="event.stopPropagation()"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.143.564 4.148 1.55 5.88L0 24l6.254-1.524A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.032-1.384l-.36-.214-3.733.909.947-3.629-.235-.374A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg></a>
+            <button class="prop-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12H19M13 6L19 12L13 18"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="prop-card r" onclick="openGallery('laranjeira')">
+      <div class="prop-thumb">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110649/2-2_nwbnfr.jpg" alt="Travessa da Laranjeira">
+        <span class="prop-badge i18n-badge">For Rent</span>
+        <span class="prop-photo-count">18 PHOTOS</span>
+      </div>
+      <div class="prop-body">
+        <div class="prop-addr">Travessa da Laranjeira</div>
+        <div class="prop-area">Misericórdia · Lisbon</div>
+        <div class="prop-price">&euro;1,700 <span class="i18n-month">/ month</span></div>
+        <div class="prop-details-row">
+          <div class="prop-icons"><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 9V19M22 9V19M2 14H22M2 9C2 9 4 7 12 7C20 7 22 9 22 9"/></svg><span class="prop-icon-val">2</span><span class="prop-icon-label">Beds</span></div><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12H20V17C20 18.1 19.1 19 18 19H6C4.9 19 4 18.1 4 17V12Z"/><path d="M4 12V6C4 4.9 4.9 4 6 4H9V12"/><path d="M2 19L3 21M22 19L21 21"/></svg><span class="prop-icon-val">1</span><span class="prop-icon-label">Baths</span></div><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9H21M9 3V21"/></svg><span class="prop-icon-val">66 m²</span><span class="prop-icon-label">Size</span></div></div>
+          <div class="prop-actions">
+            <a href="https://wa.me/351912419653" target="_blank" rel="noopener" class="prop-btn" onclick="event.stopPropagation()"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.143.564 4.148 1.55 5.88L0 24l6.254-1.524A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.032-1.384l-.36-.214-3.733.909.947-3.629-.235-.374A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg></a>
+            <button class="prop-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12H19M13 6L19 12L13 18"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="prop-card r" onclick="openGallery('castro')">
+      <div class="prop-thumb">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112961/IMG_4592_wryih1.jpg" alt="Travessa Castro">
+        <span class="prop-badge i18n-badge">For Rent</span>
+        <span class="prop-photo-count">20 PHOTOS</span>
+      </div>
+      <div class="prop-body">
+        <div class="prop-addr">Travessa Castro</div>
+        <div class="prop-area">Alcântara · Estrela · Lisbon</div>
+        <div class="prop-price">&euro;1,800 <span class="i18n-month">/ month</span></div>
+        <div class="prop-details-row">
+          <div class="prop-icons"><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 9V19M22 9V19M2 14H22M2 9C2 9 4 7 12 7C20 7 22 9 22 9"/></svg><span class="prop-icon-val">1</span><span class="prop-icon-label">Beds</span></div><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9H21M9 3V21"/></svg><span class="prop-icon-val">65+79 m²</span><span class="prop-icon-label">Size</span></div></div>
+          <div class="prop-actions">
+            <a href="https://wa.me/351912419653" target="_blank" rel="noopener" class="prop-btn" onclick="event.stopPropagation()"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.143.564 4.148 1.55 5.88L0 24l6.254-1.524A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.032-1.384l-.36-.214-3.733.909.947-3.629-.235-.374A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg></a>
+            <button class="prop-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12H19M13 6L19 12L13 18"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="prop-card r" onclick="openGallery('arsenal')">
+      <div class="prop-thumb">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107627/WhatsApp_Image_2024-11-20_at_16.40.23_7_xs3dne.jpg" alt="Rua do Arsenal">
+        <span class="prop-badge i18n-badge">For Rent</span>
+        <span class="prop-photo-count">14 PHOTOS</span>
+      </div>
+      <div class="prop-body">
+        <div class="prop-addr">Rua do Arsenal</div>
+        <div class="prop-area">Santa Maria Maior · Lisbon</div>
+        <div class="prop-price">&euro;1,500 <span class="i18n-month">/ month</span></div>
+        <div class="prop-details-row">
+          <div class="prop-icons"><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 9V19M22 9V19M2 14H22M2 9C2 9 4 7 12 7C20 7 22 9 22 9"/></svg><span class="prop-icon-val">1</span><span class="prop-icon-label">Beds</span></div><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12H20V17C20 18.1 19.1 19 18 19H6C4.9 19 4 18.1 4 17V12Z"/><path d="M4 12V6C4 4.9 4.9 4 6 4H9V12"/><path d="M2 19L3 21M22 19L21 21"/></svg><span class="prop-icon-val">1</span><span class="prop-icon-label">Baths</span></div><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9H21M9 3V21"/></svg><span class="prop-icon-val">50 m²</span><span class="prop-icon-label">Size</span></div></div>
+          <div class="prop-actions">
+            <a href="https://wa.me/351912419653" target="_blank" rel="noopener" class="prop-btn" onclick="event.stopPropagation()"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.143.564 4.148 1.55 5.88L0 24l6.254-1.524A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.032-1.384l-.36-.214-3.733.909.947-3.629-.235-.374A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg></a>
+            <button class="prop-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12H19M13 6L19 12L13 18"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="prop-card r" onclick="openGallery('saojose')">
+      <div class="prop-thumb">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118670/bc174b88-fb2b-46ec-a48e-af0a0db536fb_yedhqj.jpg" alt="Rua São José">
+        <span class="prop-badge i18n-badge">For Rent</span>
+        <span class="prop-photo-count">17 PHOTOS</span>
+      </div>
+      <div class="prop-body">
+        <div class="prop-addr">Rua São José</div>
+        <div class="prop-area">Santo António · Lisbon</div>
+        <div class="prop-price">&euro;1,400 <span class="i18n-month">/ month</span></div>
+        <div class="prop-details-row">
+          <div class="prop-icons"><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 9V19M22 9V19M2 14H22M2 9C2 9 4 7 12 7C20 7 22 9 22 9"/></svg><span class="prop-icon-val">Studio</span><span class="prop-icon-label">Beds</span></div><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12H20V17C20 18.1 19.1 19 18 19H6C4.9 19 4 18.1 4 17V12Z"/><path d="M4 12V6C4 4.9 4.9 4 6 4H9V12"/><path d="M2 19L3 21M22 19L21 21"/></svg><span class="prop-icon-val">1</span><span class="prop-icon-label">Baths</span></div><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9H21M9 3V21"/></svg><span class="prop-icon-val">39 m²</span><span class="prop-icon-label">Size</span></div></div>
+          <div class="prop-actions">
+            <a href="https://wa.me/351912419653" target="_blank" rel="noopener" class="prop-btn" onclick="event.stopPropagation()"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.143.564 4.148 1.55 5.88L0 24l6.254-1.524A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.032-1.384l-.36-.214-3.733.909.947-3.629-.235-.374A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg></a>
+            <button class="prop-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12H19M13 6L19 12L13 18"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- WALKTHROUGH MODAL -->
+  <div id="wt-modal">
+    <button id="wt-close" onclick="closeWalkthrough()" title="Close">&times;</button>
+    <div id="wt-progress"></div>
+    <div id="wt-dots"></div>
+    <div id="wt-hint"><span style="font-size:1rem;color:var(--au)">&#8595;</span><span>Scroll</span></div>
+    <div id="wt-scroller"></div>
+  </div>
+
+    <div class="prop-cta r"><p>More properties available, contact us for the full portfolio.</p><a href="#contact" class="btn-primary">Enquire About a Property</a></div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="proc-head r">
+    <div class="s-tag center" id="i18n-proc-tag">How It Works</div>
+    <h2 class="s-title" id="i18n-proc-title" style="text-align:center">Four steps to <em>effortless ownership.</em></h2>
+  </div>
+  <div class="proc-steps r">
+    <div class="proc-step"><div class="proc-circle">I</div><h4 id="i18n-proc-1-h">Consultation</h4><p id="i18n-proc-1-p">We assess your property, goals, and preferred involvement to build the right plan.</p></div>
+    <div class="proc-step"><div class="proc-circle">II</div><h4 id="i18n-proc-2-h">Preparation</h4><p id="i18n-proc-2-p">Photography, pricing strategy, furnishing if needed, and deep-clean to get market-ready.</p></div>
+    <div class="proc-step"><div class="proc-circle">III</div><h4 id="i18n-proc-3-h">Placement</h4><p id="i18n-proc-3-p">Marketing &amp; advertising, tenant screening, tours, and contract signing, all handled.</p></div>
+    <div class="proc-step"><div class="proc-circle">IV</div><h4 id="i18n-proc-4-h">Management</h4><p id="i18n-proc-4-p">Monthly reporting, maintenance, rent collection, and tenant relations, fully managed.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<!-- TESTIMONIALS — hidden until real content is ready
+<section id="testimonials">
+  <div class="test-head r">
+    <div class="s-tag center" id="i18n-test-tag">Client Feedback</div>
+    <h2 class="s-title" id="i18n-test-title" style="text-align:center">What our <em>owners say.</em></h2>
+  </div>
+  <div class="test-grid r">
+    <div class="test"><div class="test-mark">&ldquo;</div><div class="test-q" id="i18n-test-1-q">Rentra gave me complete peace of mind. My apartment in Lisbon is perfectly managed, I don&apos;t have to worry about anything from abroad.</div><div class="test-author"><div class="test-name">Sophie M.</div><div class="test-role" id="i18n-test-1-r">Property Owner &middot; Paris, France</div></div></div>
+    <div class="test"><div class="test-mark">&ldquo;</div><div class="test-q" id="i18n-test-2-q">Professional, responsive, and honest. They found me a quality tenant fast and the contract was rock solid.</div><div class="test-author"><div class="test-name">James K.</div><div class="test-role" id="i18n-test-2-r">Property Owner &middot; London, UK</div></div></div>
+    <div class="test"><div class="test-mark">&ldquo;</div><div class="test-q" id="i18n-test-3-q">The trespasse process was complex but Rentra handled it flawlessly. Every detail was taken care of, from due diligence to final handover.</div><div class="test-author"><div class="test-name">Carlos R.</div><div class="test-role" id="i18n-test-3-r">Business Transfer Client &middot; Lisbon</div></div></div>
+  </div>
+</section>
+-->
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="r">
+      <div class="s-tag" id="i18n-contact-tag">Get In Touch</div>
+      <h2 class="s-title" id="i18n-contact-title">Let&apos;s talk about <em>your property.</em></h2>
+      <p class="s-body" id="i18n-contact-body">Whether you&apos;re ready to list or just exploring options, our team is here to build a plan around your needs.</p>
+      <div class="c-list">
+        <div class="c-item"><div><div class="c-lbl" id="i18n-c-phone">Phone</div><div class="c-val"><a href="tel:+351912419653">+351 912 419 653</a></div></div></div>
+        <div class="c-item"><div><div class="c-lbl">Email</div><div class="c-val"><a href="mailto:lisbon@rentra.pt">lisbon@rentra.pt</a></div></div></div>
+        <div class="c-item"><div><div class="c-lbl" id="i18n-c-office">Office</div><div class="c-val">R. Luciano Cordeiro 109B<br>1150-103 Lisboa</div></div></div>
+      </div>
+    </div>
+    <div class="r">
+      <form id="contact-form">
+      <div class="f-row">
+        <div class="f-g"><label id="i18n-f-fname">First Name</label><input type="text" name="first_name" placeholder="Your name"></div>
+        <div class="f-g"><label id="i18n-f-lname">Last Name</label><input type="text" name="last_name" placeholder="Last name"></div>
+      </div>
+      <div class="f-g"><label id="i18n-f-email">Email</label><input type="email" name="email" placeholder="your@email.com"></div>
+      <div class="f-g"><label id="i18n-f-phone">Phone</label><input type="tel" name="phone" placeholder="+351 ..."></div>
+      <div class="f-g"><label id="i18n-f-subject">Subject</label><select name="subject">
+          <option value="" id="i18n-f-select-default">Select a subject</option>
+          <option id="i18n-f-select-pm">Property Management</option>
+          <option>Trespasse</option>
+          <option disabled>─────────────────</option>
+          <option>Travessa da Arrochela N23 — 2bd · €1,900/mo</option>
+          <option>Rua do Almada — 1bd · €1,450/mo</option>
+          <option>Rua Angelina Vidal — Trespasse · €55,000</option>
+          <option>Rua do Sol a Santa Catarina — 2bd · €2,200/mo</option>
+          <option>Rua de São Paulo 29 — 2bd · €2,000/mo</option>
+          <option>Travessa da Laranjeira — 2bd · €1,700/mo</option>
+          <option>Travessa Castro — 1bd · €1,800/mo</option>
+          <option>Rua do Arsenal — 1bd · €1,500/mo</option>
+          <option>Rua São José — Studio · €1,400/mo</option>
+        </select></div>
+      <div class="f-g"><label id="i18n-f-message">Message</label><textarea name="message" placeholder="Tell us about your property or inquiry..."></textarea></div>
+      <button type="submit" class="f-submit" id="i18n-f-submit">Send Message</button>
+      <div id="form-success" style="display:none;color:var(--au);font-size:0.9rem;margin-top:1rem;letter-spacing:0.05em;">Thank you, we'll be in touch within 24 hours.</div>
+      <div id="form-error" style="display:none;color:#e07070;font-size:0.9rem;margin-top:1rem;">Something went wrong. Please try again or email us directly.</div>
+      <div class="f-note" id="i18n-f-note">We respond within 24 hours on business days.</div>
+      </form>
+      <script>
+      document.getElementById('contact-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.textContent = currentLang === 'pt' ? 'A enviar...' : 'Sending...';
+        document.getElementById('form-success').style.display = 'none';
+        document.getElementById('form-error').style.display = 'none';
+        try {
+          const res = await fetch('https://formspree.io/f/meewlown', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form)
+          });
+          if (res.ok) {
+            document.getElementById('form-success').style.display = 'block';
+            form.reset();
+          } else {
+            document.getElementById('form-error').style.display = 'block';
+          }
+        } catch {
+          document.getElementById('form-error').style.display = 'block';
+        }
+        btn.disabled = false;
+        btn.textContent = T['i18n-f-submit'][currentLang];
+      });
+      </script>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo"><img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781103472/image2_k44kmr.png" alt="Rentra"></div>
+  <div class="foot-links">
+    <a href="#about" id="i18n-foot-about">About</a>
+    <a href="#services" id="i18n-foot-services">Services</a>
+    <a href="#properties" id="i18n-foot-props">Properties</a>
+    <a href="#contact" id="i18n-foot-contact">Contact</a>
+  </div>
+  <div class="foot-copy">&copy; 2025 Rentra &middot; Lisbon</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e,i) => {
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add("on"),i*70);obs.unobserve(e.target)}
+  });
+},{threshold:0.07});
+document.querySelectorAll(".r").forEach(el=>obs.observe(el));
+
+// Gallery functions
+const gallerySrcs = {
+  'arrochela': [
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960448/SRE_2577-HDR_bkayzv.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960446/SRE_2580-HDR_30-05-2023_08_38_30_445_fv7gfj.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960445/SRE_2580-HDR_yhbeic.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960444/SRE_2581_k8a4nx.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960443/SRE_2584-HDR_knso9q.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960442/SRE_2585_oqovsv.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960440/SRE_2587-HDR_cluz9j.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960439/SRE_2589_qnwzke.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960438/SRE_2595-HDR_sbwasg.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960437/SRE_2603_eviddm.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960435/SRE_2604_djqa7o.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960435/SRE_2607_ubrjwy.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1780960434/SRE_2612_oypkbk.jpg"
+  ],
+  'santa': [
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114468/Rua_do_Sol_a_Santa_Catarina_37-1_usiihq.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114468/Rua_do_Sol_a_Santa_Catarina_37-2_vj4fyr.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114469/Rua_do_Sol_a_Santa_Catarina_37-4_ruoru8.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114470/Rua_do_Sol_a_Santa_Catarina_37-5_nuwozi.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114471/Rua_do_Sol_a_Santa_Catarina_37-6_vjauqr.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114472/Rua_do_Sol_a_Santa_Catarina_37-7_ln4e7u.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114472/Rua_do_Sol_a_Santa_Catarina_37-8_scpkxs.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114473/Rua_do_Sol_a_Santa_Catarina_37-9_lc5vyc.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114475/Rua_do_Sol_a_Santa_Catarina_37-11_dqbzfx.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114476/Rua_do_Sol_a_Santa_Catarina_37-12_kvwynf.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114476/Rua_do_Sol_a_Santa_Catarina_37-13_kllnqm.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114477/Rua_do_Sol_a_Santa_Catarina_37-14_wxkm7s.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114478/Rua_do_Sol_a_Santa_Catarina_37-15_xetqlz.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114479/Rua_do_Sol_a_Santa_Catarina_37-16_rimnjv.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114480/Rua_do_Sol_a_Santa_Catarina_37-17_drsbes.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114480/Rua_do_Sol_a_Santa_Catarina_37-18_eabdex.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114481/Rua_do_Sol_a_Santa_Catarina_37-19_rq0ya6.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114482/Rua_do_Sol_a_Santa_Catarina_37-20_hhiv8r.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114483/Rua_do_Sol_a_Santa_Catarina_37-21_t0frlx.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114483/Rua_do_Sol_a_Santa_Catarina_37-22_wgavbd.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114484/Rua_do_Sol_a_Santa_Catarina_37-23_vvwpcc.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114485/Rua_do_Sol_a_Santa_Catarina_37-24_z061jj.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114486/Rua_do_Sol_a_Santa_Catarina_37-25_i8z3mx.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114487/Rua_do_Sol_a_Santa_Catarina_37-26_les6di.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114487/Rua_do_Sol_a_Santa_Catarina_37-27_xqfh2f.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114488/Rua_do_Sol_a_Santa_Catarina_37-28_ypid7j.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781114489/Rua_do_Sol_a_Santa_Catarina_37-29_bp6uui.jpg"
+  ],
+  'angelina': [
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113511/SRE_9451_r5ozjw.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113489/DJI_20260410084815_0312_D_wlyhpi.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113494/SRE_9430_vkjdby.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113494/SRE_9431_k6eg63.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113495/SRE_9428_pv8pmf.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113500/SRE_9432_t5hibw.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113501/SRE_9429_ukgoja.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113501/SRE_9433_jgzqal.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113501/SRE_9434_x3kfg9.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113501/SRE_9435_wpbyeg.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113503/SRE_9437_r8ajla.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113504/SRE_9438_x3sdq2.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113505/SRE_9439_wmwxek.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113505/SRE_9440_qhmilk.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113505/SRE_9441_rmjc0b.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113505/SRE_9442_ejydkv.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113509/SRE_9443_atqaoa.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113509/SRE_9450_oyu0mb.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781113511/SRE_9451_r5ozjw.jpg"
+  ],
+  'saojose': [
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118657/4ef7ca88-6ca0-4a22-8d63-421b683ce848_nyfutg.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118658/9c59110a-e662-4a93-8b18-9c257948d175_mwamfu.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118659/016cbf34-fc55-43a0-8dd9-abb38d258499_ast37p.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118661/86ea0d27-e196-4a3f-b8a6-289f23f522fd_crdood.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118662/01478a23-9655-4cb3-8f97-09919ea55274_dav8c1.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118663/66317a72-2832-460e-9f03-c099ff865ba5_w0uw9o.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118665/a31f008a-a471-4e6e-bc97-14c541f11cae_dimko1.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118667/b3be6eab-ee82-409a-ba8a-4ee186b010a7_tshtl1.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118667/b9d72c3c-ffab-46fd-be2e-98274c1abb03_d8k8cu.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118669/b280096e-b00b-4c1d-91ab-61597a083985_trd23x.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118670/bc174b88-fb2b-46ec-a48e-af0a0db536fb_yedhqj.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118672/bd2be5ff-e882-46ab-aa79-9ba0b03b94a8_ukrijo.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118673/dc9f4c57-a161-44cf-b258-91bba449b546_hpl4it.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118675/de383a0d-166f-40a3-8edb-4f8c78386463_oanoot.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118676/deafe163-c2dd-4c73-a12d-5ce03bb9fd27_f6iqn4.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118678/f0dd1fe5-8312-48a1-95ce-2ca9dc445e0a_i7y8wp.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781118680/fe2075b5-9277-4d76-941c-9542d1e432ef_shhjyh.jpg"
+  ],
+  'castro': [
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112961/IMG_4592_wryih1.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112782/IMG_6965_2_lt7iok.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112782/IMG_7004_t4ob3x.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112783/IMG_7012_cbupxm.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112786/IMG_7013_xgfkck.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112787/IMG_7023_o9bqwp.jpg",
+
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112788/IMG_7029_xk2uq3.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112791/IMG_7039_cvggnm.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112790/IMG_7002_a7vkp4.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112816/IMG_7009_y1mdha.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112819/IMG_7016_rzspwi.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112794/IMG_7569_c3yl8x.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112795/IMG_7571_ptczcj.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112800/IMG_7582_n4fzvh.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112822/IMG_7583_i4ipye.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112800/IMG_7586_p3wnhn.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112821/IMG_7590_kfs41w.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112805/IMG_7592_pw5iad.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112825/IMG_7597_qqgubt.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781112815/IMG_6967_2_wzztdu.jpg"
+  ],
+  'saopaulo': [
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111090/IMG_7991_qo3urj.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111092/IMG_7994_zgrho8.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111095/IMG_7996_mh2cen.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111093/IMG_7997_ommwpy.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111092/IMG_7999_wlb7vw.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111103/IMG_8025_f9c8ak.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111094/IMG_8032_d7wdbz.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111094/IMG_8034_fnljr8.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111098/IMG_8036_l02czm.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111095/IMG_8039_gzjwg0.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111096/IMG_8042_mfn6hp.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111098/IMG_8050_dxybbp.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111099/IMG_8054_okabbd.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111101/IMG_8059_oqmk62.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111101/IMG_8065_vsomoc.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111100/IMG_8067_oohda7.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111103/IMG_8070_nwysu0.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111103/IMG_8078_hajyxf.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111105/IMG_8093_dtf3ch.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111104/IMG_7995_wa49uz.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781111104/IMG_9744_rmzzzs.jpg"
+  ],
+  'laranjeira': [
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110649/2-2_nwbnfr.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110649/2-3_vrjuxg.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110649/2-6_xua5di.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110649/2-7_p5qmwe.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110650/2-8_uneeto.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110650/2-10_yd7asd.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110650/2-11_yzrkc0.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110650/2-12_rnc7gr.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110650/2-13_vs97cn.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110650/2-15_bwxuxd.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110651/2-16_ihwfzb.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110651/2-17_rkqpmx.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110651/2-18_fgesca.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110651/2-20_pomyuu.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110651/2-21_a39ucu.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110651/2-22_dsaf4k.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110651/2-23_g4ywm8.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781110652/2_doosr0.jpg"
+  ],
+  'arsenal': [
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107675/WhatsApp_Image_2024-11-20_at_16.40.23_42_zvj2ed.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107667/WhatsApp_Image_2024-11-20_at_16.40.23_32_abmaio.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107665/WhatsApp_Image_2024-11-20_at_16.40.23_33_kbfj3t.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107660/WhatsApp_Image_2024-11-20_at_16.40.23_31_f0tuys.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107658/WhatsApp_Image_2024-11-20_at_16.40.23_30_huraea.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107654/WhatsApp_Image_2024-11-20_at_16.40.23_24_l071l1.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107651/WhatsApp_Image_2024-11-20_at_16.40.23_28_xorub2.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107649/WhatsApp_Image_2024-11-20_at_16.40.23_23_a90csj.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107646/WhatsApp_Image_2024-11-20_at_16.40.23_20_atn03t.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107636/WhatsApp_Image_2024-11-20_at_16.40.23_12_qp710b.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107633/WhatsApp_Image_2024-11-20_at_16.40.23_9_a0vfop.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107629/WhatsApp_Image_2024-11-20_at_16.40.23_8_gj3dov.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107612/WhatsApp_Image_2024-11-20_at_16.40.23_4_crtvsj.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781107627/WhatsApp_Image_2024-11-20_at_16.40.23_7_xs3dne.jpg"
+  ],
+  'almada': [
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106586/SRE_4386-HDR_xong2m.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106587/SRE_4392-HDR_dldmwi.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106587/SRE_4398-HDR_wu2ryw.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106588/SRE_4401-HDR_mtbdr9.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106602/SRE_4404-HDR_s8lwfh.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106589/SRE_4407-HDR_r90ggj.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106589/SRE_4410-HDR_osqt8p.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106590/SRE_4413-HDR_t5dnuz.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106591/SRE_4416-HDR_p6cggi.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106591/SRE_4419-HDR_bcvhqx.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106603/SRE_4422-HDR_e2nsf2.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106592/SRE_4425-HDR_twfv5n.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1781106594/SRE_4431-HDR_so5mml.jpg"
+  ]
+};
+const galleryMeta = {
+  arrochela: {street:'Travessa da Arrochela N23',area:'Misericórdia · Lisbon',price:'€1,900',period:'/ month',beds:'2',baths:'1',size:'65m²',desc:'Renovated T1 with Gallery Mezzanine · Bica, Lisbon',descBody:'Fully furnished and recently renovated apartment offering a smart and characterful layout in one of Lisbon\'s most iconic hillside neighborhoods. Move-in ready.\n\nThe lower level features a bright open-plan living and dining area, a brand new fully equipped kitchen, a double bedroom, and a full bathroom — all furnished and equipped. Upstairs, a charming gallery mezzanine with a sofa bed, storage, and air conditioning, perfect as a lounge, home office, or extra sleeping space.\n\nLocated on Travessa da Arrochela, a quiet cobblestone lane in Bica, the apartment sits moments from the famous Elevador da Bica, Chiado, Cais do Sodré, and Miradouro de Santa Catarina. The neighborhood is known for its bohemian atmosphere, colourful facades, and lively local scene — with independent cafés, restaurants, and bars just steps away. Excellent public transport connections via Tram 28, Metro, and Commuter Rail.'},
+  santa:     {street:'Rua do Sol a Santa Catarina',area:'Misericórdia · Lisbon',price:'€2,200',period:'/ month',beds:'2',baths:'2',size:'120m²',desc:'Renovated T2 with Patio · Central Lisbon',descBody:'Spacious and recently renovated 2-bedroom apartment, fully furnished and equipped in a modern and practical style. Located on the 1st floor in one of Lisbon\'s most central and sought-after areas.\n\n123 m² featuring a bright and generous living room, a fully equipped kitchen with ceramic hob, oven, fridge, dishwasher, and washing machine, and a lovely private patio. The master bedroom includes an en suite bathroom and walk-in wardrobe. The second bedroom has two single beds that can be configured as needed. Three air conditioning units throughout.\n\nSteps from Chiado, Santos, and the Tagus riverfront, with the city\'s best dining, shopping, and cultural attractions within easy reach.'},
+  almada:    {street:'Rua do Almada',area:'Misericórdia · Lisbon',price:'€1,450',period:'/ month',beds:'1',baths:'1',size:'49m²',desc:'T1 with Terrace · Bica, Lisbon',descBody:'Brand new fully furnished T1 in the heart of Bica, one of Lisbon\'s most authentic neighborhoods. Ready to move in.\n\n45.6 m² interior + 3.4 m² private terrace. Bright living room with integrated kitchenette, cozy bedroom with wardrobe, and full bathroom with premium finishes. Air conditioning, double-glazed windows, and internet included. Fully equipped kitchen with washer/dryer.\n\nSteps from Chiado, Cais do Sodré, and Miradouro de Santa Catarina. Excellent transport links via Metro, Tram, and Train.'},
+  arsenal:   {street:'Rua do Arsenal',area:'Santa Maria Maior · Lisbon',price:'€1,500',period:'/ month',beds:'1',baths:'1',size:'50m²',desc:'Brand New 1-Bedroom Apartment · Rua do Arsenal, Baixa',descBody:'Never occupied, fully furnished apartment on the 2nd floor of a building with elevator in the heart of Lisbon\'s Baixa. Move-in ready.\n\n50 m² of modern living space featuring a bedroom, full bathroom, open-plan living and dining area, and a fully equipped kitchen with state-of-the-art appliances. Air conditioning in the living room.\n\nSituated on Rua do Arsenal, steps from the riverside, Praça do Comércio, and Chiado. Surrounded by cafés, restaurants, and historic shops, with excellent public transport connections throughout the city.'},
+  laranjeira:{street:'Travessa da Laranjeira',area:'Misericórdia · Lisbon',price:'€1,700',period:'/ month',beds:'2',baths:'1',size:'66m²',desc:'T2 Duplex · Bica, Lisbon',descBody:'Sophisticated fully furnished duplex in the heart of Bica, combining the charm of Lisbon\'s historic centre with the comfort of modern construction. Move-in ready.\n\nSpread across two floors with a smart layout that separates the social and private areas. The lower level features a large bright living and dining room integrated with a fully equipped modern kitchen including hob, oven, extractor fan, fridge, dishwasher, and washing machine. The upper level offers two comfortable bedrooms with built-in wardrobes and excellent storage. Two full bathrooms — one on each floor — with contemporary finishes and wall-hung sanitary ware.\n\nSteps from the Bica Funicular, Chiado, and Cais do Sodré, with the city\'s best restaurants, cafés, cultural venues, and public transport all within walking distance.'},
+  saopaulo:  {street:'Rua de São Paulo 29',area:'Misericórdia · Lisbon',price:'€2,000',period:'/ month',beds:'2',baths:'1',size:'140m²',desc:'T2 with Balcony · Rua de São Paulo, Cais do Sodré',descBody:'Elegant and fully furnished 2-bedroom apartment on the 4th floor of a building with elevator, located on the iconic Rua de São Paulo in the heart of Cais do Sodré.\n\nTwo spacious bedrooms, two full bathrooms, a bright and generous living room with access to a private balcony, and a fully equipped kitchen with oven, hob, fridge, dishwasher, and washing machine. Move-in ready.\n\nSet in one of Lisbon\'s most vibrant riverside neighbourhoods, with restaurants, cafés, shops, and public transport all within walking distance. Minutes from the Tagus waterfront, Chiado, and Santos.'},
+  castro:    {street:'Travessa Castro',area:'Alcântara · Estrela · Lisbon',price:'€1,800',period:'/ month',beds:'1',baths:null,size:'65m² + 79m² garden',extra:'Parking included',desc:'T1 with Private Garden · Condomínio Villa Infante, Estrela',descBody:'Bright and modern apartment in one of Lisbon\'s most prestigious gated condominiums, set in the heart of Estrela. 65 m² interior with a generous 79 m² private garden.\n\nElegant entrance hall leading to a bright open-plan living room and fully equipped kitchen with views over the condominium gardens. Comfortable bedroom with built-in wardrobes and high-quality finishes throughout. Parking and internet included. Energy class A.\n\nResidents enjoy access to a fully equipped gym, playground, and landscaped common gardens. Located between the river and the hills in Estrela, with excellent access to Lisbon\'s cultural and gastronomic highlights.'},
+  angelina:  {street:'Rua Angelina Vidal',area:'Arroios · Lisbon',price:'€55,000',period:'Trespasse',beds:null,baths:null,size:'47m²',desc:'Commercial Trespasse · High-Traffic Location, Lisbon',descBody:'Ready-to-operate restaurant space available for immediate transfer. Currently operating as a kebab restaurant with full versatility to be adapted to any gastronomic concept — pizzeria, burger joint, brunch, take-away, and more.\n\n47 m² well distributed across a dining and service area, counter, and fully equipped kitchen. Transfer includes all fixed assets, refrigeration equipment, extraction systems, and existing furniture.\n\nRent of €600/month with a long-term lease secured until 2028 — well below market rate for a commercial space of this type. No interruption to operations required during transition.\n\nAn ideal low-risk opportunity for operators seeking a turnkey setup with minimal entry costs and immediate revenue potential.'},
+  saojose:   {street:'Rua São José',area:'Santo António · Lisbon',price:'€1,400',period:'/ month',beds:'Studio',baths:'1',size:'39m²',desc:'Furnished Studio · Avenida da Liberdade, Lisbon',descBody:'Modern and fully furnished studio in a prime location steps from Avenida da Liberdade, one of Lisbon\'s most iconic avenues. Move-in ready.\n\nOpen-plan living and sleeping area with large windows and abundant natural light. Fully equipped kitchen with stove, oven, fridge, microwave, washing machine, dryer, and dishwasher. Bathroom with quality finishes and spacious shower. Built-in storage throughout and air conditioning for year-round comfort.\n\nSurrounded by high-end shops, gourmet restaurants, and charming cafés, with excellent public transport connections across the city.'}
+};
+
+let wtObserver = null;
+
+function openGallery(id) {
+  const scroller = document.getElementById('wt-scroller');
+  const dotsEl = document.getElementById('wt-dots');
+  const modal = document.getElementById('wt-modal');
+  const hint = document.getElementById('wt-hint');
+  const progress = document.getElementById('wt-progress');
+  const srcs = gallerySrcs[id];
+  const meta = galleryMeta[id];
+  scroller.innerHTML = '';
+  dotsEl.innerHTML = '';
+
+  // Build photo slides
+  srcs.forEach((src, i) => {
+    const slide = document.createElement('div');
+    slide.className = 'wt-slide';
+    const streetParts = meta.street.split(' ');
+    const streetLast = streetParts.pop();
+    const streetFirst = streetParts.join(' ');
+    let metaItems = '';
+    if (meta.beds) metaItems += `<div class="wt-meta-item"><div class="wt-meta-label">${currentLang==='pt'?'Quartos':'Beds'}</div><div class="wt-meta-value">${meta.beds}</div></div><div class="wt-meta-sep"></div>`;
+    if (meta.baths) metaItems += `<div class="wt-meta-item"><div class="wt-meta-label">${currentLang==='pt'?'Casas de banho':'Baths'}</div><div class="wt-meta-value">${meta.baths}</div></div><div class="wt-meta-sep"></div>`;
+    metaItems += `<div class="wt-meta-item"><div class="wt-meta-label">${currentLang==='pt'?'Área':'Size'}</div><div class="wt-meta-value">${meta.size}</div></div>`;
+    if (meta.extra) metaItems += `<div class="wt-meta-sep"></div><div class="wt-meta-item"><div class="wt-meta-label">Extra</div><div class="wt-meta-value">${meta.extra}</div></div>`;
+    slide.innerHTML = `
+      <div class="wt-bg" style="background-image:url('${src}')"></div>
+      ${i === 0 ? `<div class="wt-overlay"></div>` : ''}
+      <div class="wt-photo-num">${String(i+1).padStart(2,'0')}</div>
+      ${i === 0 ? `<div class="wt-content">
+        <div class="wt-tag">${meta.area}</div>
+        <h2 class="wt-title">${streetFirst} <em>${streetLast}</em></h2>
+        <div style="font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--au);font-weight:300;margin-bottom:0.5rem;">${meta.price} <span style="font-family:'Jost',sans-serif;font-size:0.85rem;color:var(--cr2);letter-spacing:0.1em;">${meta.period}</span></div>
+        <div class="wt-meta">${metaItems}</div>
+        ${meta.desc ? `<div style="margin-top:1.5rem;max-width:520px;"><div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--au);margin-bottom:0.5rem;">${meta.desc}</div><div style="font-size:0.95rem;color:var(--cr);line-height:1.8;white-space:pre-line;opacity:0.95;">${meta.descBody}</div></div>` : ''}
+      </div>` : ''}`;
+    scroller.appendChild(slide);
+    // Dot
+    const dot = document.createElement('div');
+    dot.className = 'wt-dot' + (i===0?' wt-active':'');
+    dot.onclick = () => { scroller.children[i].scrollIntoView({behavior:'smooth'}); };
+    dotsEl.appendChild(dot);
+  });
+
+  // CTA slide
+  const cta = document.createElement('div');
+  cta.className = 'wt-slide wt-cta-slide';
+  cta.innerHTML = `<div class="wt-cta-content">
+    <div class="wt-cta-rule"></div>
+    <div style="font-size:0.72rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--au);">${currentLang==='pt'?'Interessado?':'Interested?'}</div>
+    <div style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:300;color:var(--cr);line-height:1.1;">${currentLang==='pt'?'Fale connosco<br>sobre este imóvel':'Get in touch<br>about this property'}</div>
+    <a href="https://wa.me/351912419653" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;align-items:center;gap:0.5rem;margin-top:0.5rem;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.143.564 4.148 1.55 5.88L0 24l6.254-1.524A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.032-1.384l-.36-.214-3.733.909.947-3.629-.235-.374A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>WhatsApp</a>
+    <button onclick="closeWalkthrough()" style="background:none;border:1px solid rgba(221,173,117,0.25);color:var(--cr2);font-family:'Jost',sans-serif;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.75rem 1.5rem;cursor:pointer;margin-top:-0.5rem;">${currentLang==='pt'?'Fechar':'Close gallery'}</button>
+  </div>`;
+  scroller.appendChild(cta);
+  const ctaDot = document.createElement('div');
+  ctaDot.className = 'wt-dot';
+  ctaDot.onclick = () => { cta.scrollIntoView({behavior:'smooth'}); };
+  dotsEl.appendChild(ctaDot);
+
+  // IntersectionObserver for active slide
+  if (wtObserver) wtObserver.disconnect();
+  const allSlides = scroller.querySelectorAll('.wt-slide');
+  const totalSlides = allSlides.length;
+  wtObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const idx = Array.from(allSlides).indexOf(entry.target);
+      allSlides.forEach((s,j) => s.classList.toggle('wt-active', j===idx));
+      dotsEl.querySelectorAll('.wt-dot').forEach((d,j) => d.classList.toggle('wt-active', j===idx));
+      progress.style.height = ((idx+1)/totalSlides*100) + '%';
+      if (idx > 0) hint.classList.add('hidden');
+    });
+  }, {threshold: 0.6});
+  allSlides.forEach(s => wtObserver.observe(s));
+
+  // Reset
+  scroller.scrollTop = 0;
+  allSlides[0].classList.add('wt-active');
+  hint.classList.remove('hidden');
+  progress.style.height = (1/totalSlides*100) + '%';
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Activate first slide after a tick
+  setTimeout(() => { if (allSlides[0]) allSlides[0].classList.add('wt-active'); }, 50);
+}
+
+function closeWalkthrough() {
+  document.getElementById('wt-modal').classList.remove('open');
+  document.body.style.overflow = '';
+  if (wtObserver) { wtObserver.disconnect(); wtObserver = null; }
+  document.getElementById('wt-scroller').innerHTML = '';
+  document.getElementById('wt-dots').innerHTML = '';
+}
+</script>
+<script>
+const T={
+  'i18n-nav-about':{en:'About',pt:'Sobre'},
+  'i18n-nav-services':{en:'Services',pt:'Servi&ccedil;os'},
+  'i18n-nav-props':{en:'Properties',pt:'Im&oacute;veis'},
+  'i18n-nav-process':{en:'How It Works',pt:'Como Funciona'},
+  'i18n-nav-contact':{en:'Contact',pt:'Contacto'},
+  'i18n-mob-about':{en:'About',pt:'Sobre'},
+  'i18n-mob-services':{en:'Services',pt:'Servi&ccedil;os'},
+  'i18n-mob-props':{en:'Properties',pt:'Im&oacute;veis'},
+  'i18n-mob-process':{en:'How It Works',pt:'Como Funciona'},
+  'i18n-mob-contact':{en:'Contact',pt:'Contacto'},
+  'i18n-hero-eyebrow':{en:'Property Management &middot; Lisbon',pt:'Gest&atilde;o de Im&oacute;veis &middot; Lisboa'},
+  'i18n-hero-title':{en:'Your property,<em>perfectly managed.</em>',pt:'O seu im&oacute;vel,<em>gerido na perfei&ccedil;&atilde;o.</em>'},
+  'i18n-hero-desc':{en:'Rentra is a Lisbon-based property management company specializing in serving international property owners.',pt:'A Rentra &eacute; uma empresa de gest&atilde;o imobili&aacute;ria sediada em Lisboa, especializada em apoiar propriet&aacute;rios internacionais.'},
+  'i18n-hero-cta':{en:'Get a Free Consultation',pt:'Consulta Gratuita'},
+  'i18n-about-tag':{en:'Who We Are',pt:'Quem Somos'},
+  'i18n-about-title':{en:'A trusted partner<br><em>in Lisbon.</em>',pt:'Um parceiro de confian&ccedil;a<br><em>em Lisboa.</em>'},
+  'i18n-about-body':{en:'Founded to serve international property owners who need a reliable local partner. We combine market expertise, legal knowledge, and hands-on management so your investment works for you.',pt:'Fundada para apoiar propriet&aacute;rios internacionais que precisam de um parceiro local de confian&ccedil;a. Combinamos conhecimento de mercado, experi&ecirc;ncia jur&iacute;dica e gest&atilde;o pr&aacute;tica para que o seu investimento trabalhe para si.'},
+  'i18n-about-01-h':{en:'Licensed Professionals',pt:'Profissionais Licenciados'},
+  'i18n-about-01-p':{en:'Fully licensed under Portuguese real estate law, with expertise in residential and commercial transactions.',pt:'Totalmente licenciados ao abrigo da lei imobili&aacute;ria portuguesa, com experi&ecirc;ncia em transa&ccedil;&otilde;es residenciais e comerciais.'},
+  'i18n-about-02-h':{en:'International Focus',pt:'Foco Internacional'},
+  'i18n-about-02-p':{en:'We work with international property owners and communicate in English, French, Hebrew and Portuguese.',pt:'Trabalhamos com propriet&aacute;rios internacionais e comunicamos em ingl&ecirc;s, franc&ecirc;s, hebraico e portugu&ecirc;s.'},
+  'i18n-about-03-h':{en:'End-to-End Management',pt:'Gest&atilde;o Integral'},
+  'i18n-about-03-p':{en:'From tenant sourcing to maintenance, contracts, and monthly reporting, fully handled, fully transparent.',pt:'Da procura de inquilinos &agrave; manuten&ccedil;&atilde;o, contratos e relat&oacute;rios mensais, totalmente gerido e totalmente transparente.'},
+  'i18n-srv-tag':{en:'What We Offer',pt:'O Que Oferecemos'},
+  'i18n-srv-title':{en:'Two services,<br><em>one trusted partner.</em>',pt:'Dois servi&ccedil;os,<br><em>um parceiro de confian&ccedil;a.</em>'},
+  'i18n-srv-intro':{en:'Every service is tailored to your property, your goals, and your preferred level of involvement.',pt:'Cada servi&ccedil;o &eacute; adaptado ao seu im&oacute;vel, aos seus objetivos e ao n&iacute;vel de envolvimento que preferir.'},
+  'i18n-srv1-h':{en:'Property Management',pt:'Gest&atilde;o de Im&oacute;veis'},
+  'i18n-srv1-desc':{en:'Full end-to-end management for your property in Lisbon, from tenant sourcing to monthly reporting.',pt:'Gest&atilde;o integral do seu im&oacute;vel em Lisboa, desde a angaria&ccedil;&atilde;o de inquilinos at&eacute; aos relat&oacute;rios mensais.'},
+  'i18n-srv-includes-label':{en:'Included in all plans',pt:'Inclu&iacute;do em todos os planos'},
+  'i18n-srv-inc-1':{en:'Market analysis &amp; pricing',pt:'An&aacute;lise de mercado e fixa&ccedil;&atilde;o de pre&ccedil;o'},
+  'i18n-srv-inc-2':{en:'Professional photography',pt:'Fotografia profissional'},
+  'i18n-srv-inc-3':{en:'Tenant screening',pt:'Sele&ccedil;&atilde;o de inquilinos'},
+  'i18n-srv-inc-4':{en:'Contract signing',pt:'Assinatura de contrato'},
+  'i18n-srv-inc-5':{en:'Check-in / check-out inventory',pt:'Invent&aacute;rio de check-in / check-out'},
+  'i18n-srv-inc-6':{en:'Maintenance coordination',pt:'Coordena&ccedil;&atilde;o de manuten&ccedil;&atilde;o'},
+  'i18n-trk1-label':{en:'Long-Term Rental',pt:'Arrendamento de Longa Dura&ccedil;&atilde;o'},
+  'i18n-trk1-p':{en:'Yearly leases for residents, families &amp; expats. Stable income, minimal turnover.',pt:'Contratos anuais para residentes, fam&iacute;lias e expatriados. Rendimento est&aacute;vel, rotatividade m&iacute;nima.'},
+  'i18n-trk1-li1':{en:'NRAU-compliant contracts',pt:'Contratos conformes ao NRAU'},
+  'i18n-trk1-li2':{en:'Tenant background verification',pt:'Verifica&ccedil;&atilde;o de antecedentes do inquilino'},
+  'i18n-trk1-li3':{en:'Monthly reporting to owner',pt:'Relat&oacute;rio mensal ao propriet&aacute;rio'},
+  'i18n-trk1-fee':{en:'Commission: 15% of monthly rent',pt:'Comiss&atilde;o: 15% da renda mensal'},
+  'i18n-trk2-label':{en:'Mid-Term Rental',pt:'Arrendamento de M&eacute;dio Prazo'},
+  'i18n-trk2-p':{en:'Monthly leases for digital nomads &amp; business professionals. Higher yield, flexible terms.',pt:'Contratos mensais para n&oacute;madas digitais e profissionais. Maior rentabilidade, condi&ccedil;&otilde;es flex&iacute;veis.'},
+  'i18n-trk2-li1':{en:'Multi-platform advertising',pt:'Divulga&ccedil;&atilde;o em m&uacute;ltiplas plataformas'},
+  'i18n-trk2-li2':{en:'High-standard cleaning &amp; inventory',pt:'Limpeza de alta qualidade e invent&aacute;rio'},
+  'i18n-trk2-li3':{en:'Tenant support throughout stay',pt:'Apoio ao inquilino durante toda a estadia'},
+  'i18n-trk2-fee':{en:'Commission: 15–20% of monthly rent',pt:'Comissão: 15–20% da renda mensal'},
+  'i18n-trp-p':{en:'Buying or selling a business in Lisbon? We manage the full transfer process, legally sound, fully coordinated, stress-free.',pt:'Comprar ou vender um neg&oacute;cio em Lisboa? Gerimos todo o processo de transmiss&atilde;o &mdash; juridicamente seguro, totalmente coordenado e sem complica&ccedil;&otilde;es.'},
+  'i18n-trp-fee':{en:'Fee: discussed per transaction',pt:'Honor&aacute;rios: discutidos por transa&ccedil;&atilde;o'},
+  'i18n-trp-li1':{en:'Transaction coordination &amp; documentation',pt:'Coordena&ccedil;&atilde;o e documenta&ccedil;&atilde;o da transa&ccedil;&atilde;o'},
+  'i18n-trp-li2':{en:'Due diligence support',pt:'Apoio em due diligence'},
+  'i18n-trp-li3':{en:'Contract drafting &amp; legal review',pt:'Elabora&ccedil;&atilde;o de contratos e revis&atilde;o jur&iacute;dica'},
+  'i18n-trp-li4':{en:'License &amp; permit transfer handling',pt:'Transfer&ecirc;ncia de licen&ccedil;as e alvar&aacute;s'},
+  'i18n-trp-li5':{en:'Buyer &amp; seller representation',pt:'Representa&ccedil;&atilde;o de comprador e vendedor'},
+  'i18n-trp-li6':{en:'Negotiation support',pt:'Apoio na negocia&ccedil;&atilde;o'},
+  'i18n-why-tag':{en:'Why Rentra',pt:'Porqu&ecirc; a Rentra'},
+  'i18n-why-title':{en:'Everything your <em>property needs.</em>',pt:'Tudo o que o seu <em>im&oacute;vel precisa.</em>'},
+  'i18n-why-01-h':{en:'Property Strategy',pt:'Estrat&eacute;gia Imobili&aacute;ria'},
+  'i18n-why-01-p':{en:'We assess your property and the local market to define the optimal rental strategy, maximizing your return and reducing vacancy periods.',pt:'Avaliamos o seu im&oacute;vel e o mercado local para definir a estrat&eacute;gia de arrendamento ideal, maximizando o retorno e reduzindo os per&iacute;odos de desocupa&ccedil;&atilde;o.'},
+  'i18n-why-02-h':{en:'In-House Marketing',pt:'Marketing Interno'},
+  'i18n-why-02-p':{en:'Professional photography and multi-platform listings, handled internally to ensure quality, consistency, and fast time-to-market.',pt:'Fotografia profissional e an&uacute;ncios em m&uacute;ltiplas plataformas, geridos internamente para garantir qualidade, consist&ecirc;ncia e rapidez.'},
+  'i18n-why-03-h':{en:'Maintenance Network',pt:'Rede de Manuten&ccedil;&atilde;o'},
+  'i18n-why-03-p':{en:'We coordinate all maintenance work through trusted contractors and oversee every job from start to finish.',pt:'Coordenamos todos os trabalhos de manuten&ccedil;&atilde;o atrav&eacute;s de prestadores de confian&ccedil;a e acompanhamos cada trabalho do in&iacute;cio ao fim.'},
+  'i18n-why-04-h':{en:'Tenant Screening',pt:'Sele&ccedil;&atilde;o de Inquilinos'},
+  'i18n-why-04-p':{en:'We screen every applicant by reviewing income documents and employment contracts before any lease is signed.',pt:'Analisamos cada candidato, verificando documentos de rendimento e contratos de trabalho antes de qualquer contrato ser assinado.'},
+  'i18n-why-05-h':{en:'Legal Compliance',pt:'Conformidade Legal'},
+  'i18n-why-05-p':{en:'All contracts are drafted in compliance with Portuguese law, clearly defining the rights and obligations of both parties.',pt:'Todos os contratos s&atilde;o elaborados em conformidade com a lei portuguesa, definindo claramente os direitos e obriga&ccedil;&otilde;es de ambas as partes.'},
+  'i18n-why-06-h':{en:'Furniture Solutions',pt:'Solu&ccedil;&otilde;es de Mobili&aacute;rio'},
+  'i18n-why-06-p':{en:'We source and install furniture suited to your rental type, from procurement to delivery and assembly.',pt:'Selecionamos e instalamos mobili&aacute;rio adequado ao tipo de arrendamento, desde a aquisi&ccedil;&atilde;o at&eacute; &agrave; entrega e montagem.'},
+  'i18n-prop-tag':{en:'Current Listings',pt:'Im&oacute;veis Dispon&iacute;veis'},
+  'i18n-prop-title':{en:'Properties <em>for rent.</em>',pt:'Im&oacute;veis <em>para arrendar.</em>'},
+  'i18n-proc-tag':{en:'How It Works',pt:'Como Funciona'},
+  'i18n-proc-title':{en:'Four steps to <em>effortless ownership.</em>',pt:'Quatro passos para uma <em>gest&atilde;o sem preocupa&ccedil;&otilde;es.</em>'},
+  'i18n-proc-1-h':{en:'Consultation',pt:'Consulta'},
+  'i18n-proc-1-p':{en:'We assess your property, goals, and preferred involvement to build the right plan.',pt:'Avaliamos o seu im&oacute;vel, objetivos e n&iacute;vel de envolvimento preferido para definir o plano certo.'},
+  'i18n-proc-2-h':{en:'Preparation',pt:'Prepara&ccedil;&atilde;o'},
+  'i18n-proc-2-p':{en:'Photography, pricing strategy, furnishing if needed, and deep-clean to get market-ready.',pt:'Fotografia, estrat&eacute;gia de pre&ccedil;o, mobilar se necess&aacute;rio e limpeza profunda para estar pronto para o mercado.'},
+  'i18n-proc-3-h':{en:'Placement',pt:'Coloca&ccedil;&atilde;o'},
+  'i18n-proc-3-p':{en:'Marketing &amp; advertising, tenant screening, tours, and contract signing, all handled.',pt:'Marketing e divulga&ccedil;&atilde;o, sele&ccedil;&atilde;o de inquilinos, visitas e assinatura de contrato, tudo tratado.'},
+  'i18n-proc-4-h':{en:'Management',pt:'Gest&atilde;o'},
+  'i18n-proc-4-p':{en:'Monthly reporting, maintenance, rent collection, and tenant relations, fully managed.',pt:'Relat&oacute;rios mensais, manuten&ccedil;&atilde;o, cobran&ccedil;a de renda e rela&ccedil;&atilde;o com inquilinos, totalmente geridos.'},
+  'i18n-test-tag':{en:'Client Feedback',pt:'Opini&atilde;o dos Clientes'},
+  'i18n-test-title':{en:'What our <em>owners say.</em>',pt:'O que os nossos <em>propriet&aacute;rios dizem.</em>'},
+  'i18n-test-1-q':{en:"Rentra gave me complete peace of mind. My apartment in Lisbon is perfectly managed, I don't have to worry about anything from abroad.",pt:'A Rentra deu-me total tranquilidade. O meu apartamento em Lisboa est&aacute; perfeitamente gerido, n&atilde;o me preocupo com nada estando no estrangeiro.'},
+  'i18n-test-1-r':{en:'Property Owner &middot; Paris, France',pt:'Propriet&aacute;ria &middot; Paris, Fran&ccedil;a'},
+  'i18n-test-2-q':{en:'Professional, responsive, and honest. They found me a quality tenant fast and the contract was rock solid.',pt:'Profissional, dispon&iacute;vel e honesto. Encontraram-me um inquilino de qualidade rapidamente e o contrato era s&oacute;lido.'},
+  'i18n-test-2-r':{en:'Property Owner &middot; London, UK',pt:'Propriet&aacute;rio &middot; Londres, Reino Unido'},
+  'i18n-test-3-q':{en:'The trespasse process was complex but Rentra handled it flawlessly. Every detail was taken care of, from due diligence to final handover.',pt:'O processo de trespasse foi complexo, mas a Rentra tratou de tudo na perfei&ccedil;&atilde;o. Cada detalhe foi cuidado, da due diligence &agrave; entrega final.'},
+  'i18n-test-3-r':{en:'Business Transfer Client &middot; Lisbon',pt:'Cliente de Trespasse &middot; Lisboa'},
+  'i18n-contact-tag':{en:'Get In Touch',pt:'Entre em Contacto'},
+  'i18n-contact-title':{en:"Let's talk about <em>your property.</em>",pt:'Vamos falar sobre <em>o seu im&oacute;vel.</em>'},
+  'i18n-contact-body':{en:"Whether you're ready to list or just exploring options, our team is here to build a plan around your needs.",pt:'Quer esteja pronto para listar ou apenas a explorar op&ccedil;&otilde;es, a nossa equipa est&aacute; dispon&iacute;vel para criar um plano adequado &agrave;s suas necessidades.'},
+  'i18n-c-phone':{en:'Phone',pt:'Telefone'},
+  'i18n-c-office':{en:'Office',pt:'Escrit&oacute;rio'},
+  'i18n-f-fname':{en:'First Name',pt:'Nome'},
+  'i18n-f-lname':{en:'Last Name',pt:'Apelido'},
+  'i18n-f-email':{en:'Email',pt:'Email'},
+  'i18n-f-phone':{en:'Phone',pt:'Telefone'},
+  'i18n-f-subject':{en:'Subject',pt:'Assunto'},
+  'i18n-f-select-default':{en:'Select a subject',pt:'Selecione um assunto'},
+  'i18n-f-select-pm':{en:'Property Management',pt:'Gest&atilde;o de Im&oacute;veis'},
+  'i18n-f-message':{en:'Message',pt:'Mensagem'},
+  'i18n-f-submit':{en:'Send Message',pt:'Enviar Mensagem'},
+  'i18n-f-note':{en:'We respond within 24 hours on business days.',pt:'Respondemos dentro de 24 horas em dias &uacute;teis.'},
+  'i18n-foot-about':{en:'About',pt:'Sobre'},
+  'i18n-foot-services':{en:'Services',pt:'Servi&ccedil;os'},
+  'i18n-foot-props':{en:'Properties',pt:'Im&oacute;veis'},
+  'i18n-foot-contact':{en:'Contact',pt:'Contacto'}
+};
+
+let currentLang = localStorage.getItem('rentra-lang') || 'en';
+
+function applyLang(lang) {
+  Object.entries(T).forEach(([id, texts]) => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = texts[lang];
+  });
+  document.querySelectorAll('.i18n-badge').forEach(el => { el.textContent = lang==='pt' ? 'Para Arrendar' : 'For Rent'; });
+  document.querySelectorAll('.i18n-month').forEach(el => { el.innerHTML = lang==='pt' ? '/ m&ecirc;s' : '/ month'; });
+  document.getElementById('lang-en').classList.toggle('active', lang==='en');
+  document.getElementById('lang-pt').classList.toggle('active', lang==='pt');
+  document.documentElement.lang = lang==='pt' ? 'pt' : 'en';
+  // form messages (update text even when hidden)
+  const s = document.getElementById('form-success');
+  if (s) s.textContent = lang==='pt' ? 'Obrigado, entraremos em contacto nas próximas 24 horas.' : "Thank you, we'll be in touch within 24 hours.";
+  const e = document.getElementById('form-error');
+  if (e) e.textContent = lang==='pt' ? 'Algo correu mal. Por favor tente novamente ou envie-nos um email.' : 'Something went wrong. Please try again or email us directly.';
+}
+
+function setLangBtn(lang) {
+  currentLang = lang;
+  localStorage.setItem('rentra-lang', lang);
+  applyLang(lang);
+}
+
+if (currentLang === 'pt') applyLang('pt');
+</script>
+</body>
+</html>

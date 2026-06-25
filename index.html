@@ -1142,9 +1142,9 @@ const gallerySrcs = {
   ]
 };
 const galleryMeta = {
-  arrochela: {street:'Travessa da Arrochela N23',area:'Misericórdia · Lisbon',price:'€1,900',period:'/ month',beds:'2',baths:'1',size:'65m²',desc:'T1 with Terrace · Bica, Lisbon',descBody:'Brand new fully furnished T1 in the heart of Bica, one of Lisbon\'s most authentic neighborhoods. Ready to move in.\n\n45.6 m² interior + 3.4 m² private terrace. Bright living room with integrated kitchenette, cozy bedroom with wardrobe, and full bathroom with premium finishes. Air conditioning, double-glazed windows, and internet included. Fully equipped kitchen with washer/dryer.\n\nSteps from Chiado, Cais do Sodré, and Miradouro de Santa Catarina. Excellent transport links via Metro, Tram, and Train.'},
+  arrochela: {street:'Travessa da Arrochela N23',area:'Misericórdia · Lisbon',price:'€1,900',period:'/ month',beds:'2',baths:'1',size:'65m²'},
   santa:     {street:'Rua do Sol a Santa Catarina',area:'Misericórdia · Lisbon',price:'€2,200',period:'/ month',beds:'2',baths:'2',size:'120m²'},
-  almada:    {street:'Rua do Almada',area:'Misericórdia · Lisbon',price:'€1,450',period:'/ month',beds:'1',baths:'1',size:'49m²'},
+  almada:    {street:'Rua do Almada',area:'Misericórdia · Lisbon',price:'€1,450',period:'/ month',beds:'1',baths:'1',size:'49m²',desc:'T1 with Terrace · Bica, Lisbon',descBody:'Brand new fully furnished T1 in the heart of Bica, one of Lisbon\'s most authentic neighborhoods. Ready to move in.\n\n45.6 m² interior + 3.4 m² private terrace. Bright living room with integrated kitchenette, cozy bedroom with wardrobe, and full bathroom with premium finishes. Air conditioning, double-glazed windows, and internet included. Fully equipped kitchen with washer/dryer.\n\nSteps from Chiado, Cais do Sodré, and Miradouro de Santa Catarina. Excellent transport links via Metro, Tram, and Train.'},
   arsenal:   {street:'Rua do Arsenal',area:'Santa Maria Maior · Lisbon',price:'€1,500',period:'/ month',beds:'1',baths:'1',size:'50m²'},
   laranjeira:{street:'Travessa da Laranjeira',area:'Misericórdia · Lisbon',price:'€1,700',period:'/ month',beds:'2',baths:'1',size:'66m²'},
   saopaulo:  {street:'Rua de São Paulo 29',area:'Misericórdia · Lisbon',price:'€2,000',period:'/ month',beds:'2',baths:'1',size:'140m²'},
@@ -1187,7 +1187,7 @@ function openGallery(id) {
         <h2 class="wt-title">${streetFirst} <em>${streetLast}</em></h2>
         <div style="font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--au);font-weight:300;margin-bottom:0.5rem;">${meta.price} <span style="font-family:'Jost',sans-serif;font-size:0.85rem;color:var(--cr2);letter-spacing:0.1em;">${meta.period}</span></div>
         <div class="wt-meta">${metaItems}</div>
-        ${meta.desc ? `<div style="margin-top:1.5rem;max-width:520px;"><div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--au);margin-bottom:0.5rem;">${meta.desc}</div><div style="font-size:0.82rem;color:var(--cr2);line-height:1.7;white-space:pre-line;">${meta.descBody}</div></div>` : ''}
+        ${meta.desc ? `<div style="margin-top:1.5rem;max-width:520px;"><div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--au);margin-bottom:0.5rem;">${meta.desc}</div><div style="font-size:0.82rem;color:var(--cr);line-height:1.7;white-space:pre-line;opacity:0.9;">${meta.descBody}</div></div>` : ''}
       </div>` : ''}`;
     scroller.appendChild(slide);
     // Dot

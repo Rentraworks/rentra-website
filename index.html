@@ -1180,14 +1180,14 @@ function openGallery(id) {
     if (meta.extra) metaItems += `<div class="wt-meta-sep"></div><div class="wt-meta-item"><div class="wt-meta-label">Extra</div><div class="wt-meta-value">${meta.extra}</div></div>`;
     slide.innerHTML = `
       <div class="wt-bg" style="background-image:url('${src}')"></div>
-      <div class="wt-overlay"></div>
+      ${i === 0 ? `<div class="wt-overlay"></div>` : ''}
       <div class="wt-photo-num">${String(i+1).padStart(2,'0')}</div>
-      <div class="wt-content">
+      ${i === 0 ? `<div class="wt-content">
         <div class="wt-tag">${meta.area}</div>
         <h2 class="wt-title">${streetFirst} <em>${streetLast}</em></h2>
         <div style="font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--au);font-weight:300;margin-bottom:0.5rem;">${meta.price} <span style="font-family:'Jost',sans-serif;font-size:0.85rem;color:var(--cr2);letter-spacing:0.1em;">${meta.period}</span></div>
         <div class="wt-meta">${metaItems}</div>
-      </div>`;
+      </div>` : ''}`;
     scroller.appendChild(slide);
     // Dot
     const dot = document.createElement('div');

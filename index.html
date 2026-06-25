@@ -1230,6 +1230,7 @@ function openGallery(id) {
 
   // Reset
   scroller.scrollTop = 0;
+  allSlides[0].classList.add('wt-active');
   hint.classList.remove('hidden');
   progress.style.height = (1/totalSlides*100) + '%';
   modal.classList.add('open');

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 144" fill="none">
+  <g fill="#ddad75">
+    <!-- Left upper arm: sweeps up-left, tip curls back right -->
+    <path d="M60,74 C57,64 49,48 38,34 C33,27 27,20 24,13 C21,7 23,1 28,0.5 C33,0 37,5 39,12 C42,21 47,38 60,60"/>
+    <!-- Right upper arm: mirror -->
+    <path d="M60,74 C63,64 71,48 82,34 C87,27 93,20 96,13 C99,7 97,1 92,0.5 C87,0 83,5 81,12 C78,21 73,38 60,60"/>
+    <!-- Center spike -->
+    <path d="M56,70 C58,56 58,38 60,20 C62,38 62,56 64,70 Z"/>
+    <!-- Lower left sweep -->
+    <path d="M58,82 C50,92 36,102 24,116 C22,118 22,120 24,121 C30,112 44,102 62,90"/>
+    <!-- Lower right sweep -->
+    <path d="M62,82 C70,92 84,102 96,116 C98,118 98,120 96,121 C90,112 76,102 58,90"/>
+    <!-- Bottom arc -->
+    <path d="M22,122 Q60,138 98,122 Q60,132 22,122 Z"/>
+  </g>
+</svg>

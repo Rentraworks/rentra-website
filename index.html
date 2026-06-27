@@ -534,14 +534,20 @@ footer{
   <div class="hero-photo-overlay"></div>
   <!-- Rentra symbol watermark -->
   <div class="hero-symbol" aria-hidden="true">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 144" fill="none">
-      <g fill="#ddad75">
-        <path d="M60,74 C57,64 49,48 38,34 C33,27 27,20 24,13 C21,7 23,1 28,0.5 C33,0 37,5 39,12 C42,21 47,38 60,60"/>
-        <path d="M60,74 C63,64 71,48 82,34 C87,27 93,20 96,13 C99,7 97,1 92,0.5 C87,0 83,5 81,12 C78,21 73,38 60,60"/>
-        <path d="M56,70 C58,56 58,38 60,20 C62,38 62,56 64,70 Z"/>
-        <path d="M58,82 C50,92 36,102 24,116 C22,118 22,120 24,121 C30,112 44,102 62,90"/>
-        <path d="M62,82 C70,92 84,102 96,116 C98,118 98,120 96,121 C90,112 76,102 58,90"/>
-        <path d="M22,122 Q60,138 98,122 Q60,132 22,122 Z"/>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 122" fill="none">
+      <g stroke="#ddad75" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <!-- Left upper arm: center → up-left, tip curls inward -->
+        <path stroke-width="5.5" d="M50,60 C47,52 40,40 29,27 C23,20 17,13 18,6 C19,1 25,-1 30,2 C35,5 38,13 42,24 C46,35 49,50 50,58"/>
+        <!-- Right upper arm: mirror -->
+        <path stroke-width="5.5" d="M50,60 C53,52 60,40 71,27 C77,20 83,13 82,6 C81,1 75,-1 70,2 C65,5 62,13 58,24 C54,35 51,50 50,58"/>
+        <!-- Center spike -->
+        <path stroke-width="4" d="M50,56 L50,4"/>
+        <!-- Lower left sweep -->
+        <path stroke-width="5" d="M50,65 C43,73 32,82 20,92"/>
+        <!-- Lower right sweep -->
+        <path stroke-width="5" d="M50,65 C57,73 68,82 80,92"/>
+        <!-- Bottom arc -->
+        <path stroke-width="5" d="M18,94 Q50,110 82,94"/>
       </g>
     </svg>
   </div>

@@ -704,6 +704,25 @@ footer{
     <a href="https://wa.me/351912419653" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;align-items:center;gap:0.5rem;"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>WhatsApp</a>
   </div>
   <div class="prop-grid">
+    <div class="prop-card r" onclick="openGallery('luciano')">
+      <div class="prop-thumb">
+        <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378218/DJI_20250401170929_0078_D_p175wt.jpg" alt="Rua Luciano Cordeiro">
+        <span class="prop-badge i18n-badge">For Rent</span>
+        <span class="prop-photo-count">27 PHOTOS</span>
+      </div>
+      <div class="prop-body">
+        <div class="prop-addr">Rua Luciano Cordeiro</div>
+        <div class="prop-area">Santo António · Lisbon</div>
+        <div class="prop-price">&euro;3,000 <span class="i18n-month">/ month</span></div>
+        <div class="prop-details-row">
+          <div class="prop-icons"><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 9V19M22 9V19M2 14H22M2 9C2 9 4 7 12 7C20 7 22 9 22 9"/></svg><span class="prop-icon-val">4</span><span class="prop-icon-label">Beds</span></div><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12H20V17C20 18.1 19.1 19 18 19H6C4.9 19 4 18.1 4 17V12Z"/><path d="M4 12V6C4 4.9 4.9 4 6 4H9V12"/><path d="M2 19L3 21M22 19L21 21"/></svg><span class="prop-icon-val">2</span><span class="prop-icon-label">Baths</span></div><div class="prop-icon-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9H21M9 3V21"/></svg><span class="prop-icon-val">138 m²</span><span class="prop-icon-label">Size</span></div></div>
+          <div class="prop-actions">
+            <a href="https://wa.me/351912419653" target="_blank" rel="noopener" class="prop-btn" onclick="event.stopPropagation()"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.143.564 4.148 1.55 5.88L0 24l6.254-1.524A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.032-1.384l-.36-.214-3.733.909.947-3.629-.235-.374A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg></a>
+            <button class="prop-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12H19M13 6L19 12L13 18"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="prop-card r" onclick="openGallery('moscavid')">
       <div class="prop-thumb">
         <img src="https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791376988/PHOTO-2024-10-21-17-20-04_copy_axwsqb.jpg" alt="Rua Francisco Marques Beato">
@@ -868,6 +887,7 @@ footer{
           <option>Trespasse</option>
           <option disabled>─────────────────</option>
           <option>Travessa da Arrochela N23 — 2bd · €1,900/mo</option>
+          <option>Rua Luciano Cordeiro — 4bd · €3,000/mo</option>
           <option>Rua Francisco Marques Beato — 2bd · €2,000/mo</option>
           <option>Rua do Almada — 1bd · €1,450/mo</option>
           <option>Rua Angelina Vidal — Trespasse · €55,000</option>
@@ -938,6 +958,35 @@ document.querySelectorAll(".r").forEach(el=>obs.observe(el));
 
 // Gallery functions
 const gallerySrcs = {
+  'luciano': [
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378218/DJI_20250401170929_0078_D_p175wt.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378218/DJI_20250401170941_0079_D_aathr3.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378217/DJI_20250401171001_0081_D_ogysux.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378216/DJI_20250401171142_0089_D_aiyps3.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378216/DJI_20250401171024_0083_D_pv3bt2.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378215/DJI_20250401171117_0087_D_gimu4c.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378215/DJI_20250401171130_0088_D_htcbkk.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378214/DJI_20250401171305_0091_D_cpc3eo.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378213/DJI_20250401171350_0093_D_ppelem.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378212/DJI_20250401171612_0100_D_adirgh.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378210/DJI_20250401171632_0102_D_esdj4q.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378209/DJI_20250401172301_0124_D_ln0ooh.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378209/DJI_20250401172247_0123_D_qrkcqd.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378209/DJI_20250401172216_0121_D_fzdjlk.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378207/DJI_20250401172406_0129_D_ldgess.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378209/DJI_20250401172139_0120_D_nfhbk3.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378209/DJI_20250401172228_0122_D_oabeep.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378206/DJI_20250401172353_0128_D_dibkuy.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378206/DJI_20250401172316_0126_D_n32mp0.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378205/DJI_20250401172707_0141_D_jix4zl.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378206/DJI_20250401172310_0125_D_capb6e.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378205/DJI_20250401172935_0152_D_bawzgv.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378205/DJI_20250401172340_0127_D_pysyi2.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378200/DJI_20250401173202_0155_D_as3dv5.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378200/DJI_20250401173216_0156_D_g38jjq.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378202/DJI_20250401172721_0142_D_uj28ae.jpg",
+    "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791378199/DJI_20250401173225_0157_D_netlzk.jpg"
+  ],
   'moscavid': [
     "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791376988/PHOTO-2024-10-21-17-20-04_copy_axwsqb.jpg",
     "https://res.cloudinary.com/dhd1vapem/image/upload/q_auto/f_auto/v1791376988/PHOTO-2024-10-21-17-20-04_gbfwz3.jpg",
@@ -1036,6 +1085,7 @@ const gallerySrcs = {
   ]
 };
 const galleryMeta = {
+  luciano:   {street:'Rua Luciano Cordeiro',area:'Santo António · Lisbon',price:'€3,000',period:'/ month',beds:'4',baths:'2',size:'138m²',desc:'Luxury T4 · Rua Luciano Cordeiro, Lisbon',descBody:'Luxury T4 flat in the heart of Lisbon, steps from Avenida da Liberdade. 138 m² of beautifully furnished living space with air conditioning throughout.\n\nFour bedrooms: master bedroom with ample storage, a study for two, and two children\'s bedrooms. Two modern bathrooms with high-quality finishes. Spacious open-plan living and dining area with balcony. Fully fitted kitchen with premium appliances and fitted wardrobes throughout.\n\nLocated on prestigious Rua Luciano Cordeiro, a short walk from Marquês de Pombal, Avenida da Liberdade, Parque Eduardo VII, and Avenida Fontes Pereira de Melo. Cafés, fine restaurants, shops and public transport all on your doorstep.'},
   moscavid:  {street:'Rua Francisco Marques Beato',area:'Moscavide · Lisbon',price:'€2,000',period:'/ month',beds:'2',baths:'2',size:'140m²',extra:'Parking included',desc:'Penthouse T2 with Private Terrace · Moscavide, Lisbon',descBody:'New semi-furnished penthouse on the 5th floor with lift, featuring a spectacular private terrace and a garage space with EV pre-installation. Located next to Parque das Nações.\n\n140 m² of bright, airy living space. Generous living room with air conditioning and direct terrace access. Fully equipped modern kitchen also opening to the terrace. Two bedrooms with fitted wardrobes and air conditioning — one en suite. Two full bathrooms.\n\nSet in a vibrant neighbourhood with shops, restaurants and services on your doorstep. Minutes from Moscavide Metro, the train station, and an extensive bus network. Steps from Parque das Nações and the Tagus riverside.'},
   almada:    {street:'Rua do Almada',area:'Misericórdia · Lisbon',price:'€1,450',period:'/ month',beds:'1',baths:'1',size:'49m²',desc:'T1 with Terrace · Bica, Lisbon',descBody:'Brand new fully furnished T1 in the heart of Bica, one of Lisbon\'s most authentic neighborhoods. Ready to move in.\n\n45.6 m² interior + 3.4 m² private terrace. Bright living room with integrated kitchenette, cozy bedroom with wardrobe, and full bathroom with premium finishes. Air conditioning, double-glazed windows, and internet included. Fully equipped kitchen with washer/dryer.\n\nSteps from Chiado, Cais do Sodré, and Miradouro de Santa Catarina. Excellent transport links via Metro, Tram, and Train.'},
   arsenal:   {street:'Rua do Arsenal',area:'Santa Maria Maior · Lisbon',price:'€1,500',period:'/ month',beds:'1',baths:'1',size:'50m²',desc:'Brand New 1-Bedroom Apartment · Rua do Arsenal, Baixa',descBody:'Never occupied, fully furnished apartment on the 2nd floor of a building with elevator in the heart of Lisbon\'s Baixa. Move-in ready.\n\n50 m² of modern living space featuring a bedroom, full bathroom, open-plan living and dining area, and a fully equipped kitchen with state-of-the-art appliances. Air conditioning in the living room.\n\nSituated on Rua do Arsenal, steps from the riverside, Praça do Comércio, and Chiado. Surrounded by cafés, restaurants, and historic shops, with excellent public transport connections throughout the city.'},

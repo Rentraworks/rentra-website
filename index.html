@@ -380,20 +380,20 @@ h2.s-title em{color:var(--au);font-style:italic}
 /* ── PROPERTIES ── */
 #properties{border-top:1px solid var(--line2)}
 .prop-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem}
-.prop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;align-items:start;}
-.prop-card{background:#004539;overflow:hidden;position:relative;border:1px solid rgba(221,173,117,0.2);transition:border-color 0.25s,background 0.25s;}
+.prop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.prop-card{background:#004539;overflow:hidden;position:relative;border:1px solid rgba(221,173,117,0.2);transition:border-color 0.25s,background 0.25s;display:flex;flex-direction:column;}
 .prop-card:hover{background:#003a2f;border-color:rgba(221,173,117,0.45);}
 .prop-thumb{height:260px;position:relative;overflow:hidden;}
 .prop-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(0.88);transition:transform 0.6s ease;}
 .prop-card:hover .prop-thumb img{transform:scale(1.04);}
 .prop-badge{position:absolute;top:1rem;left:1rem;z-index:1;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;background:var(--g);color:var(--au);border:1px solid rgba(221,173,117,0.35);padding:0.28rem 0.75rem;border-radius:4px;}
 .prop-photo-count{position:absolute;bottom:0.75rem;right:0.75rem;z-index:1;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;background:var(--g);color:var(--au);border:1px solid rgba(221,173,117,0.28);padding:0.22rem 0.55rem;border-radius:4px;}
-.prop-body{padding:1.25rem 1.4rem 1.4rem;}
+.prop-body{padding:1.25rem 1.4rem 1.4rem;flex:1;display:flex;flex-direction:column;}
 .prop-addr{font-family:"Playfair Display",serif;font-size:1rem;font-weight:400;color:var(--cr);letter-spacing:0.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .prop-area{font-size:0.78rem;color:var(--cr2);margin-top:0.2rem;letter-spacing:0.02em;}
 .prop-price{font-family:"Playfair Display",serif;font-size:1.6rem;font-weight:300;color:var(--au);margin:0.6rem 0 0;}
 .prop-price span{font-family:"Jost",sans-serif;font-size:0.88rem;color:var(--cr2);font-weight:400;}
-.prop-details-row{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line2);}
+.prop-details-row{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:1rem;border-top:1px solid var(--line2);}
 .prop-icons{display:flex;gap:1.2rem;}
 .prop-icon-item{display:flex;flex-direction:column;align-items:center;gap:0.2rem;}
 .prop-icon-item svg{opacity:0.6;}
